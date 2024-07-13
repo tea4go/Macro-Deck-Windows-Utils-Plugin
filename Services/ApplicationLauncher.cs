@@ -63,7 +63,9 @@ public class ApplicationLauncher
     public static void KillApplication(string path)
     {
         path = WindowsShortcut.GetShortcutTarget(path);
+        MacroDeckLogger.Error(Main.Instance, $"Killing Process 1: {path}");
         if (!IsRunning(path)) return;
+        MacroDeckLogger.Error(Main.Instance, $"Killing Process 2: {path}");
         var p = GetProcessByPath(path);
         if (p == null) return;
         Process.GetProcessesByName(p.ProcessName).ToList().ForEach(p =>

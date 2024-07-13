@@ -7,6 +7,7 @@ using SuchByte.WindowsUtils.Language;
 using SuchByte.WindowsUtils.Models;
 using SuchByte.WindowsUtils.Services;
 using System.Threading.Tasks;
+using SuchByte.MacroDeck.Logging;
 
 namespace SuchByte.WindowsUtils.Actions;
 
@@ -42,10 +43,15 @@ public class StartApplicationAction : PluginAction
                 if (!ApplicationLauncher.IsRunning(configModel.Path))
                 {
                     ApplicationLauncher.StartApplication(configModel.Path, configModel.Arguments, configModel.RunAsAdmin);
-                } else
+                }
+                else
                 {
                     ApplicationLauncher.BringToForeground(configModel.Path);
                 }
+                break;
+            case StartMethod.Stop:
+                MacroDeckLogger.Error(Main.Instance, $"Killing Process");
+                ApplicationLauncher.KillApplication(configModel.Path);
                 break;
         }
     }

@@ -31,4 +31,5 @@ public enum StartMethod
     Start,
     StartStop,
     StartFocus,
+    Stop,
 }

@@ -34,13 +34,13 @@ partial class IconPackSelector
         this.iconPacks = new SuchByte.MacroDeck.GUI.CustomControls.RoundedComboBox();
         this.btnOk = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
         this.SuspendLayout();
-        // 
+        //
         // iconPacks
-        // 
+        //
         this.iconPacks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.iconPacks.Cursor = System.Windows.Forms.Cursors.Hand;
         this.iconPacks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        this.iconPacks.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.iconPacks.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.iconPacks.Icon = null;
         this.iconPacks.Location = new System.Drawing.Point(9, 20);
         this.iconPacks.Name = "iconPacks";
@@ -49,14 +49,14 @@ partial class IconPackSelector
         this.iconPacks.SelectedItem = null;
         this.iconPacks.Size = new System.Drawing.Size(308, 30);
         this.iconPacks.TabIndex = 2;
-        // 
+        //
         // btnOk
-        // 
+        //
         this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
         this.btnOk.BorderRadius = 8;
         this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
         this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnOk.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.btnOk.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.btnOk.ForeColor = System.Drawing.Color.White;
         this.btnOk.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(184)))));
         this.btnOk.Icon = null;
@@ -69,9 +69,9 @@ partial class IconPackSelector
         this.btnOk.Text = "Ok";
         this.btnOk.UseVisualStyleBackColor = true;
         this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
-        // 
+        //
         // IconPackSelector
-        // 
+        //
         this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.ClientSize = new System.Drawing.Size(363, 108);
