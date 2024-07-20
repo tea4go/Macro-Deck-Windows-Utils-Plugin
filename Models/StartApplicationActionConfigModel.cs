@@ -29,7 +29,7 @@ internal class StartApplicationActionConfigModel : ISerializableConfiguration
 public enum StartMethod
 {
     Start,
-    StartStop,
-    StartFocus,
     Stop,
+    Show,
+    Hide,
 }

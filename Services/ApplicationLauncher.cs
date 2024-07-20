@@ -33,10 +33,14 @@ public class ApplicationLauncher
     [return: MarshalAs(UnmanagedType.Bool)]
     static extern bool CloseHandle(IntPtr hObject);
 
-
     private const int SW_MINIMIZE = 0;
     private const int SW_RESTORE = 9;
 
+    public static bool IsRunning(string path)
+    {
+        bool isRunning = GetProcessByPath(path) != null;
+        return isRunning;
+    }
 
     public static void StartApplication(string path, string arguments, bool asAdmin)
     {
@@ -53,34 +57,59 @@ public class ApplicationLauncher
         p.Start();
     }
 
-    public static bool IsRunning(string path)
-    {
-        path = WindowsShortcut.GetShortcutTarget(path);
-        bool isRunning = GetProcessByPath(path) != null;
-        return isRunning;
-    }
-
     public static void KillApplication(string path)
     {
-        path = WindowsShortcut.GetShortcutTarget(path);
-        MacroDeckLogger.Error(Main.Instance, $"Killing Process 1: {path}");
-        if (!IsRunning(path)) return;
-        MacroDeckLogger.Error(Main.Instance, $"Killing Process 2: {path}");
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！");
+            return;
+        }
+
+        // 获取文件的进程
         var p = GetProcessByPath(path);
-        if (p == null) return;
+        if (p == null) {
+            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})");
+            return;
+        }
+
         Process.GetProcessesByName(p.ProcessName).ToList().ForEach(p =>
         {
-            MacroDeckLogger.Trace(Main.Instance, $"Killing process: {p.ProcessName} PID: {p.Id}");
+            MacroDeckLogger.Trace(Main.Instance, $"Killing Process ({p.Id}-{p.ProcessName}");
             p.Kill();
         });
     }
 
+    public static void BringToBackground(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！");
+            return;
+        }
+
+        var p = GetProcessByPath(path);
+        if (p == null) {
+            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})");
+            return;
+        }
+
+        IntPtr handle = p.MainWindowHandle;
+        ShowWindow(handle, SW_MINIMIZE);
+    }
+
     public static void BringToForeground(string path)
     {
-        path = WindowsShortcut.GetShortcutTarget(path);
-        if (!IsRunning(path)) return;
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！");
+            return;
+        }
+
         var p = GetProcessByPath(path);
-        if (p == null) return;
+        if (p == null) {
+            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})");
+            return;
+        }
 
         IntPtr handle = p.MainWindowHandle;
         if (SetForegroundWindow(handle))
@@ -90,45 +119,46 @@ public class ApplicationLauncher
                 return;
             }
         }
-        MinimizeAndRestoreWindow(handle); // Fallback function
+
+        // Fallback function
+        ShowWindow(handle, SW_MINIMIZE);
+        ShowWindow(handle, SW_RESTORE);
     }
 
     public static Process GetProcessByPath(string path)
     {
+        // 查找文件真实路径
         path = WindowsShortcut.GetShortcutTarget(path);
-        return Process.GetProcesses().ToArray().Where(p => GetProcessFileName(p.Id).Equals(path, StringComparison.OrdinalIgnoreCase)).OrderByDescending(p => p.Id).FirstOrDefault();
-    }
 
-
-    private static void MinimizeAndRestoreWindow(IntPtr hWnd)
-    {
-        ShowWindow(hWnd, SW_MINIMIZE);
-        ShowWindow(hWnd, SW_RESTORE);
+        // 查找文件所在进程
+        return Process.GetProcesses().ToArray().Where(
+            p => GetProcessFileName(p.Id).Equals(path, StringComparison.OrdinalIgnoreCase)
+        ).OrderByDescending(p => p.Id).FirstOrDefault();
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static string GetProcessFileName(int pid)
     {
         var processHandle = OpenProcess(0x0400 | 0x0010, false, pid);
-
         if (processHandle == IntPtr.Zero)
         {
-            return "";
+            return null;
         }
 
-        const int lengthSb = 4000;
-
-        var sb = new StringBuilder(lengthSb);
-
-        string result = null;
-
-        if (GetModuleFileNameEx(processHandle, IntPtr.Zero, sb, lengthSb) > 0)
+        try
         {
-            result = sb.ToString();
+            const int lengthSb = 4000;
+            var sb = new StringBuilder(lengthSb);
+            var ppid = GetModuleFileNameEx(processHandle, IntPtr.Zero, sb, lengthSb);
+            if (ppid == 0)
+            {
+                return null;
+            }
+            return sb.ToString();
         }
-
-        CloseHandle(processHandle);
-
-        return result;
+        finally
+        {
+            CloseHandle(processHandle);
+        }
     }
 }

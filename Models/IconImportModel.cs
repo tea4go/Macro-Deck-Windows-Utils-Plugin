@@ -7,7 +7,7 @@ public class IconImportModel
 
     public string IconId { get; set; }
 
-    public string ToString()
+    public override string ToString()
     {
         return $"{this.IconPack}.{this.IconId}";
     }

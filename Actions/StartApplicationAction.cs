@@ -26,20 +26,8 @@ public class StartApplicationAction : PluginAction
 
         switch (configModel.StartMethod)
         {
+            // 启动进程
             case StartMethod.Start:
-                ApplicationLauncher.StartApplication(configModel.Path, configModel.Arguments, configModel.RunAsAdmin);
-                break;
-            case StartMethod.StartStop:
-                if (ApplicationLauncher.IsRunning(configModel.Path))
-                {
-                    ApplicationLauncher.KillApplication(configModel.Path);
-                }
-                else
-                {
-                    ApplicationLauncher.StartApplication(configModel.Path, configModel.Arguments, configModel.RunAsAdmin);
-                }
-                break;
-            case StartMethod.StartFocus:
                 if (!ApplicationLauncher.IsRunning(configModel.Path))
                 {
                     ApplicationLauncher.StartApplication(configModel.Path, configModel.Arguments, configModel.RunAsAdmin);
@@ -50,8 +38,13 @@ public class StartApplicationAction : PluginAction
                 }
                 break;
             case StartMethod.Stop:
-                MacroDeckLogger.Error(Main.Instance, $"Killing Process");
                 ApplicationLauncher.KillApplication(configModel.Path);
+                break;
+            case StartMethod.Show:
+                ApplicationLauncher.BringToForeground(configModel.Path);
+                break;
+            case StartMethod.Hide:
+                ApplicationLauncher.BringToBackground(configModel.Path);
                 break;
         }
     }

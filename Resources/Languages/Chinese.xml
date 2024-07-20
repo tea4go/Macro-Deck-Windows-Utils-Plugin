@@ -17,7 +17,7 @@
 	<ActionOpenFolder>打开文件夹</ActionOpenFolder>
 	<ActionOpenFolderDescription>打开一个文件夹</ActionOpenFolderDescription>
 	<ActionStartApplication>运行程序</ActionStartApplication>
-	<ActionStartApplicationDescription>使用/不使用启动参数运行应用程序</ActionStartApplicationDescription>
+	<ActionStartApplicationDescription>运行应用程序</ActionStartApplicationDescription>
 	<ActionExplorerControl>资源管理器控制</ActionExplorerControl>
 	<ActionExplorerControlDescription>资源管理器/浏览器 (后退/前进/主页/刷新)</ActionExplorerControlDescription>
 	<Path>路径</Path>

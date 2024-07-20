@@ -50,7 +50,7 @@ public class PluginStrings
     public string TypeTextHere = "Type text here";
     public string Method = "Method";
     public string MethodStart = "Start";
-    public string MethodStartStop = "Start/Stop";
-    public string MethodStartFocus = "Start/Focus";
+    public string MethodShow = "Show";
+    public string MethodHide = "Hide";
     public string MethodStop = "Stop";
 }

@@ -46,7 +46,7 @@ partial class StartApplicationActionConfigView
         //
         this.path.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.path.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.path.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.path.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.path.Icon = null;
         this.path.Location = new System.Drawing.Point(216, 145);
         this.path.MaxCharacters = 32767;
@@ -66,7 +66,7 @@ partial class StartApplicationActionConfigView
         //
         // lblPath
         //
-        this.lblPath.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.lblPath.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblPath.Location = new System.Drawing.Point(97, 145);
         this.lblPath.Name = "lblPath";
         this.lblPath.Size = new System.Drawing.Size(83, 29);
@@ -79,7 +79,7 @@ partial class StartApplicationActionConfigView
         this.btnBrowse.BorderRadius = 8;
         this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
         this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnBrowse.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.btnBrowse.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.btnBrowse.ForeColor = System.Drawing.Color.White;
         this.btnBrowse.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(184)))));
         this.btnBrowse.Icon = null;
@@ -96,7 +96,7 @@ partial class StartApplicationActionConfigView
         //
         // lblArguments
         //
-        this.lblArguments.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.lblArguments.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblArguments.Location = new System.Drawing.Point(97, 180);
         this.lblArguments.Name = "lblArguments";
         this.lblArguments.Size = new System.Drawing.Size(113, 29);
@@ -108,7 +108,7 @@ partial class StartApplicationActionConfigView
         //
         this.arguments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.arguments.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.arguments.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.arguments.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.arguments.Icon = null;
         this.arguments.Location = new System.Drawing.Point(216, 180);
         this.arguments.MaxCharacters = 32767;
@@ -127,7 +127,7 @@ partial class StartApplicationActionConfigView
         //
         // checkRunAsAdmin
         //
-        this.checkRunAsAdmin.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.checkRunAsAdmin.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.checkRunAsAdmin.Location = new System.Drawing.Point(497, 215);
         this.checkRunAsAdmin.Name = "checkRunAsAdmin";
         this.checkRunAsAdmin.Size = new System.Drawing.Size(249, 29);
@@ -137,7 +137,7 @@ partial class StartApplicationActionConfigView
         //
         // label1
         //
-        this.label1.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.label1.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.label1.Location = new System.Drawing.Point(97, 215);
         this.label1.Name = "label1";
         this.label1.Size = new System.Drawing.Size(113, 29);
@@ -150,7 +150,7 @@ partial class StartApplicationActionConfigView
         this.method.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.method.Cursor = System.Windows.Forms.Cursors.Hand;
         this.method.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        this.method.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.method.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.method.Icon = null;
         this.method.Location = new System.Drawing.Point(216, 214);
         this.method.Name = "method";
@@ -162,12 +162,12 @@ partial class StartApplicationActionConfigView
         //
         // checkSyncButtonState
         //
-        this.checkSyncButtonState.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.checkSyncButtonState.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.checkSyncButtonState.Location = new System.Drawing.Point(97, 250);
         this.checkSyncButtonState.Name = "checkSyncButtonState";
         this.checkSyncButtonState.Size = new System.Drawing.Size(249, 29);
         this.checkSyncButtonState.TabIndex = 11;
-        this.checkSyncButtonState.Text = "Sync button state";
+        this.checkSyncButtonState.Text = "同步按钮状态";
         this.checkSyncButtonState.UseVisualStyleBackColor = true;
         //
         // StartApplicationActionConfigView

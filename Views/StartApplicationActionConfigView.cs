@@ -27,9 +27,10 @@ public partial class StartApplicationActionConfigView : ActionConfigControl
         this.path.PlaceHolderText = PluginLanguageManager.PluginStrings.ChooseAFileOrDragAndDrop;
 
         this.method.Items.AddRange(new[] { PluginLanguageManager.PluginStrings.MethodStart,
-                                            PluginLanguageManager.PluginStrings.MethodStartStop,
-                                            PluginLanguageManager.PluginStrings.MethodStartFocus,
-                                            PluginLanguageManager.PluginStrings.MethodStop, });
+                                           PluginLanguageManager.PluginStrings.MethodStop,
+                                           PluginLanguageManager.PluginStrings.MethodShow,
+                                           PluginLanguageManager.PluginStrings.MethodHide,
+                                         });
 
         this.path.AllowDrop = true;
         this.path.DragEnter += ApplicationSelector_DragEnter;
@@ -69,11 +70,11 @@ public partial class StartApplicationActionConfigView : ActionConfigControl
             case StartMethod.Start:
                 this.method.Text = PluginLanguageManager.PluginStrings.MethodStart;
                 break;
-            case StartMethod.StartStop:
-                this.method.Text = PluginLanguageManager.PluginStrings.MethodStartStop;
+            case StartMethod.Show:
+                this.method.Text = PluginLanguageManager.PluginStrings.MethodShow;
                 break;
-            case StartMethod.StartFocus:
-                this.method.Text = PluginLanguageManager.PluginStrings.MethodStartFocus;
+            case StartMethod.Hide:
+                this.method.Text = PluginLanguageManager.PluginStrings.MethodHide;
                 break;
             case StartMethod.Stop:
                 this.method.Text = PluginLanguageManager.PluginStrings.MethodStop;
@@ -95,13 +96,13 @@ public partial class StartApplicationActionConfigView : ActionConfigControl
         {
             this._viewModel.StartMethod = StartMethod.Start;
         }
-        else if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStartStop))
+        else if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodShow))
         {
-            this._viewModel.StartMethod = StartMethod.StartStop;
+            this._viewModel.StartMethod = StartMethod.Show;
         }
-        else if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStartFocus))
+        else if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodHide))
         {
-            this._viewModel.StartMethod = StartMethod.StartFocus;
+            this._viewModel.StartMethod = StartMethod.Hide;
         }
         else if (this.method.Text.Equals(PluginLanguageManager.PluginStrings.MethodStop))
         {
