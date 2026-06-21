@@ -46,4 +46,17 @@
 	<ActionWriteTextDescription>将配置的文本写入选定的文本框中</ActionWriteTextDescription>
 	<AddVariable>添加变量</AddVariable>
 	<TypeTextHere>在此处输入文本</TypeTextHere>
+	<ActionNotification>发送通知</ActionNotification>
+	<ActionNotificationDescription>发送带有自定义标题和内容的通知</ActionNotificationDescription>
+	<ActionMuteMicrophone>麦克风静音</ActionMuteMicrophone>
+	<ActionMuteMicrophoneDescription>将默认麦克风静音</ActionMuteMicrophoneDescription>
+	<ActionPowerOption>电源选项</ActionPowerOption>
+	<ActionPowerOptionDescription>根据电源选项关闭计算机</ActionPowerOptionDescription>
+	<ActionWindowSwitch>切换窗口</ActionWindowSwitch>
+	<ActionWindowSwitchDescription>根据窗口标题切换到指定窗口</ActionWindowSwitchDescription>
+	<Message>内容</Message>
+	<Title>标题</Title>
+	<Pattern>匹配模式</Pattern>
+	<MatchMode>匹配方式</MatchMode>
+	<CaseSensitive>区分大小写</CaseSensitive>
 </PluginStrings>

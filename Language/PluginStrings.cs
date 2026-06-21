@@ -22,6 +22,14 @@ public class PluginStrings
     public string ActionStartApplicationDescription = "Start a application with and without start arguments";
     public string ActionExplorerControl = "Explorer control";
     public string ActionExplorerControlDescription = "Explorer/browser (back/forward/home/refresh)";
+    public string ActionNotification = "Send notification";
+    public string ActionNotificationDescription = "Send a notification with a custom title and message";
+    public string ActionMuteMicrophone = "Mute microphone";
+    public string ActionMuteMicrophoneDescription = "Mute the default microphone";
+    public string ActionPowerOption = "Power option";
+    public string ActionPowerOptionDescription = "Turn off your computer based on the power option";
+    public string ActionWindowSwitch = "Switch window";
+    public string ActionWindowSwitchDescription = "Switch to a window based on its title";
     public string Path = "Path";
     public string Arguments = "Arguments";
     public string ChooseAFileOrDragAndDrop = "Choose a file or drag and drop it here";
@@ -53,4 +61,9 @@ public class PluginStrings
     public string MethodShow = "Show";
     public string MethodHide = "Hide";
     public string MethodStop = "Stop";
+    public string Message = "Message";
+    public string Title = "Title";
+    public string Pattern = "Pattern";
+    public string MatchMode = "Match mode";
+    public string CaseSensitive = "Case sensitive";
 }

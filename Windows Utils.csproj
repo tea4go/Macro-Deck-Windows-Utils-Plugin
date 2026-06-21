@@ -40,7 +40,8 @@
 
   <ItemGroup>
     <Reference Include="Macro Deck 2">
-      <HintPath>C:\Program Files\Macro Deck\Macro Deck 2.dll</HintPath>
+      <HintPath Condition="Exists('C:\Program Files\Macro Deck\Macro Deck 2.dll')">C:\Program Files\Macro Deck\Macro Deck 2.dll</HintPath>
+      <HintPath Condition="!Exists('C:\Program Files\Macro Deck\Macro Deck 2.dll')">libs\Macro Deck 2.dll</HintPath>
       <Private>false</Private>
       <EmbedInteropTypes>false</EmbedInteropTypes>
     </Reference>
@@ -65,7 +66,7 @@
     <Folder Include="GUI\CustomControls\" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(CI)' != 'true'">
     <Exec Command="taskkill /IM &quot;Macro Deck 2.exe&quot; /F || copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;C:\Users\Administrator\AppData\Roaming\Macro Deck\plugins\SuchByte.WindowsUtils\$(TargetName).dll&quot; || start /b &quot;C:\Program Files\Macro Deck\Macro Deck 2.exe&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" />
   </Target>
 

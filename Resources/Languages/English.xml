@@ -46,4 +46,17 @@
 	<ActionWriteTextDescription>Write the configured text onto a selected text input</ActionWriteTextDescription>
 	<AddVariable>Add variable</AddVariable>
 	<TypeTextHere>Type text here</TypeTextHere>
+	<ActionNotification>Send notification</ActionNotification>
+	<ActionNotificationDescription>Send a notification with a custom title and message</ActionNotificationDescription>
+	<ActionMuteMicrophone>Mute microphone</ActionMuteMicrophone>
+	<ActionMuteMicrophoneDescription>Mute the default microphone</ActionMuteMicrophoneDescription>
+	<ActionPowerOption>Power option</ActionPowerOption>
+	<ActionPowerOptionDescription>Turn off your computer based on the power option</ActionPowerOptionDescription>
+	<ActionWindowSwitch>Switch window</ActionWindowSwitch>
+	<ActionWindowSwitchDescription>Switch to a window based on its title</ActionWindowSwitchDescription>
+	<Message>Message</Message>
+	<Title>Title</Title>
+	<Pattern>Pattern</Pattern>
+	<MatchMode>Match mode</MatchMode>
+	<CaseSensitive>Case sensitive</CaseSensitive>
 </PluginStrings>

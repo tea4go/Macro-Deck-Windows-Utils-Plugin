@@ -43,6 +43,10 @@ public class Main : MacroDeckPlugin
             //new WindowsOpenWebsiteAction(), // TODO
             new HotkeyAction(),
             //new MultiHotkeyAction(),
+            new NotificationAction(),
+            new MuteMicrophoneAction(),
+            new PowerOptionAction(),
+            new WindowSwitchAction(),
         };
 
         this.TickTimer = new System.Timers.Timer()
