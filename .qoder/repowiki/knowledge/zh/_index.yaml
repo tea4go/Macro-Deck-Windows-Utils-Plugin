@@ -3,113 +3,19 @@ schema_version: 1
 locale: zh-CN
 branch: master
 nodes_managed: true
-exported_at: "2026-06-21T16:25:42Z"
+exported_at: "2026-06-22T02:31:45Z"
 modules:
     "":
-        dir_name: Macro Deck Windows 系统自动化插件
+        dir_name: Macro Deck Windows 系统自动化插件_2
         title: Macro Deck Windows 系统自动化插件
         scope:
-            - Actions/
-            - GUI/
-            - Language/
-            - Models/
-            - Properties/
-            - Resources/
-            - Services/
-            - Utils/
-            - ViewModels/
-            - Views/
-            - .github/
-            - .gitattributes
-            - .gitignore
-            - ExtensionManifest.json
-            - Main.cs
-            - README.md
+            - '**'
+        source_files:
+            - .qoder/repowiki/knowledge/zh/Windows Forms 原生 UI 风格/frontend_style.md
+            - GUI/CommandSelector.Designer.cs
+            - GUI/HotkeyConfigurator.Designer.cs
+            - Views/StartApplicationActionConfigView.Designer.cs
             - Windows Utils.csproj
-            - Windows Utils.sln
-            - autorun.bat
-            - .github\workflows\build.yml
-            - .vscode\settings.json
-            - Actions\CommandlineAction.cs
-            - Actions\DecreaseVolumeAction.cs
-            - Actions\HotkeyAction.cs
-            - Actions\IncreaseVolumeAction.cs
-            - Actions\MultiHotkeyAction.cs
-            - Actions\MuteMicrophoneAction.cs
-            - Actions\MuteVolume.cs
-            - Actions\NotificationAction.cs
-            - Actions\OpenFileAction.cs
-            - Actions\OpenFolderAction.cs
-            - Actions\PowerOptionAction.cs
-            - Actions\StartApplicationAction.cs
-            - Actions\WindowSwitchAction.cs
-            - Actions\WindowsExplorerControlAction.cs
-            - Actions\WriteTextAction.cs
-            - ExtensionIcon.png
-            - GUI\CommandSelector.Designer.cs
-            - GUI\CommandSelector.cs
-            - GUI\CommandSelector.resx
-            - GUI\ExplorerControlConfigurator.Designer.cs
-            - GUI\ExplorerControlConfigurator.cs
-            - GUI\ExplorerControlConfigurator.resx
-            - GUI\FileFolderSelector.Designer.cs
-            - GUI\FileFolderSelector.cs
-            - GUI\FileFolderSelector.resx
-            - GUI\HotkeyConfigurator.Designer.cs
-            - GUI\HotkeyConfigurator.cs
-            - GUI\HotkeyConfigurator.resx
-            - GUI\IconPackSelector.Designer.cs
-            - GUI\IconPackSelector.cs
-            - GUI\IconPackSelector.resx
-            - GUI\NotificationConfigurator.Designer.cs
-            - GUI\NotificationConfigurator.cs
-            - GUI\NotificationConfigurator.resx
-            - GUI\PowerOptionSelector.Designer.cs
-            - GUI\PowerOptionSelector.cs
-            - GUI\PowerOptionSelector.resx
-            - GUI\TextSelector.Designer.cs
-            - GUI\TextSelector.cs
-            - GUI\TextSelector.resx
-            - GUI\WindowSwitchConfigurator.Designer.cs
-            - GUI\WindowSwitchConfigurator.cs
-            - GUI\WindowSwitchConfigurator.resx
-            - LICENSE
-            - Language\PluginLanguageManager.cs
-            - Language\PluginStrings.cs
-            - Language\README.md
-            - Models\ComboboxItem.cs
-            - Models\IMultiHotkeyAction.cs
-            - Models\ISerializableConfiguration.cs
-            - Models\IconImportModel.cs
-            - Models\MultiHotkeyActionConfigModel.cs
-            - Models\MultiHotkeyDelayActionModel.cs
-            - Models\MultiHotkeyKeyActionModel.cs
-            - Models\StartApplicationActionConfigModel.cs
-            - Models\UWPPackageModel.cs
-            - Properties\Resources.Designer.cs
-            - Properties\Resources.resx
-            - Properties\launchSettings.json
-            - Resources\Languages\Chinese.xml
-            - Resources\Languages\English.xml
-            - Resources\Languages\README.md
-            - Resources\Windows-Utils.png
-            - Services\ApplicationLauncher.cs
-            - Utils\FileIconImport.cs
-            - Utils\ImageResize.cs
-            - Utils\ShellIcon.cs
-            - Utils\WindowActivator.cs
-            - Utils\WindowsShortcut.cs
-            - ViewModels\ISerializableConfigViewModel.cs
-            - ViewModels\MultiHotkeyActionConfigViewModel.cs
-            - ViewModels\StartApplicationActionConfigViewModel.cs
-            - Views\MultiHotkeyActionConfigView.Designer.cs
-            - Views\MultiHotkeyActionConfigView.cs
-            - Views\MultiHotkeyActionConfigView.resx
-            - Views\StartApplicationActionConfigView.Designer.cs
-            - Views\StartApplicationActionConfigView.cs
-            - Views\StartApplicationActionConfigView.resx
-            - libs\Macro Deck 2.dll
-        source_files: []
         children: []
         depends_on: []
         related_to: []
@@ -125,7 +31,8 @@ modules:
             - Windows Utils.sln
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: dependency_management
     configuration_system:
         dir_name: 基于 JSON 序列化的动作配置系统
         title: 基于 JSON 序列化的动作配置系统
@@ -140,7 +47,9 @@ modules:
             - Actions/HotkeyAction.cs
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: frontend_style
+            - path: logging_system
     dependency_management:
         dir_name: .NET 依赖管理与插件引用策略
         title: .NET 依赖管理与插件引用策略
@@ -152,7 +61,8 @@ modules:
             - ExtensionManifest.json
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: build_system
     error_handling:
         dir_name: 错误处理机制
         title: 错误处理机制
@@ -165,7 +75,8 @@ modules:
             - Main.cs
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: logging_system
     frontend_style:
         dir_name: Windows Forms 原生 UI 风格
         title: Windows Forms 原生 UI 风格
@@ -178,7 +89,8 @@ modules:
             - GUI/CommandSelector.cs
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: configuration_system
     logging_system:
         dir_name: Macro Deck 插件日志系统
         title: Macro Deck 插件日志系统
@@ -190,4 +102,6 @@ modules:
             - Main.cs
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: configuration_system
+            - path: error_handling

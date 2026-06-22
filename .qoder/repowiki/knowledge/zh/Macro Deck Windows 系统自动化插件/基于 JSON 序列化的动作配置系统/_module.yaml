@@ -5,10 +5,12 @@ scope: []
 source_files:
     - Models/ISerializableConfiguration.cs
     - ViewModels/ISerializableConfigViewModel.cs
-    - Models/MultiHotkeyActionConfigModel.cs
     - Models/StartApplicationActionConfigModel.cs
-    - Actions/MultiHotkeyAction.cs
-    - Actions/StartApplicationAction.cs
+    - ViewModels/StartApplicationActionConfigViewModel.cs
     - GUI/HotkeyConfigurator.cs
+    - Actions/StartApplicationAction.cs
+    - Actions/HotkeyAction.cs
 depends_on: []
-related_to: []
+related_to:
+    - path: frontend_style
+    - path: logging_system

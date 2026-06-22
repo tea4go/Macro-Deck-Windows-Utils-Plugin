@@ -3,11 +3,11 @@ module_path: error_handling
 title: 错误处理机制
 scope: []
 source_files:
-    - .qoder/repowiki/knowledge/zh/错误处理机制/error_handling.md
     - Actions/CommandlineAction.cs
     - Actions/NotificationAction.cs
     - Actions/PowerOptionAction.cs
     - Services/ApplicationLauncher.cs
-    - Utils/WindowActivator.cs
+    - Main.cs
 depends_on: []
-related_to: []
+related_to:
+    - path: logging_system

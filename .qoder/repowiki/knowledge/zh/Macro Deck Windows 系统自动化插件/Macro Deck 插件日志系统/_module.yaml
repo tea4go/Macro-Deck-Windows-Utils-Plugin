@@ -3,10 +3,11 @@ module_path: logging_system
 title: Macro Deck 插件日志系统
 scope: []
 source_files:
-    - .qoder/repowiki/knowledge/zh/Macro Deck 插件日志系统/logging_system.md
     - Actions/NotificationAction.cs
-    - Actions/PowerOptionAction.cs
-    - Services/ApplicationLauncher.cs
     - ViewModels/MultiHotkeyActionConfigViewModel.cs
+    - Services/ApplicationLauncher.cs
+    - Main.cs
 depends_on: []
-related_to: []
+related_to:
+    - path: configuration_system
+    - path: error_handling

@@ -7,5 +7,7 @@ source_files:
     - Windows Utils.csproj
     - ExtensionManifest.json
     - autorun.bat
+    - Windows Utils.sln
 depends_on: []
-related_to: []
+related_to:
+    - path: dependency_management

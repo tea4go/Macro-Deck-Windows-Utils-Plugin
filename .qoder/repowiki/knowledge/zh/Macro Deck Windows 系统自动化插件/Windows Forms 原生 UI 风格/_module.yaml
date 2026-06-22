@@ -9,4 +9,5 @@ source_files:
     - Views/StartApplicationActionConfigView.Designer.cs
     - GUI/CommandSelector.cs
 depends_on: []
-related_to: []
+related_to:
+    - path: configuration_system

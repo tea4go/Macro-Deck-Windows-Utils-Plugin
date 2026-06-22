@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: frontend_style
+title: Windows Forms 原生 UI 风格与深色主题适配
+scope: []
+source_files:
+    - .qoder/repowiki/knowledge/zh/Windows Forms 原生 UI 风格/frontend_style.md
+    - GUI/HotkeyConfigurator.Designer.cs
+    - Views/StartApplicationActionConfigView.Designer.cs
+    - Windows Utils.csproj
+depends_on: []
+related_to: []
