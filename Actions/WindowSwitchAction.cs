@@ -21,6 +21,7 @@ public class WindowSwitchAction : PluginAction
 
     public override void Trigger(string clientId, ActionButton actionButton)
     {
+        MacroDeckLogger.Info(Main.Instance, $"WindowSwitchAction triggered. hasConfiguration={!string.IsNullOrWhiteSpace(this.Configuration)}");
         if (!string.IsNullOrWhiteSpace(this.Configuration))
         {
             try
@@ -29,12 +30,14 @@ public class WindowSwitchAction : PluginAction
                 string pattern = configurationObject["pattern"].ToString();
                 MatchMode matchMode = Enum.Parse<MatchMode>(configurationObject["matchMode"].ToString());
                 bool caseSensitive = configurationObject["caseSensitive"].ToObject<bool>();
+                MacroDeckLogger.Info(Main.Instance, $"WindowSwitchAction parsed configuration. pattern='{pattern}', matchMode={matchMode}, caseSensitive={caseSensitive}");
 
-                ActivateWindowByTitle(pattern, matchMode, caseSensitive);
+                bool activated = ActivateWindowByTitle(pattern, matchMode, caseSensitive);
+                MacroDeckLogger.Info(Main.Instance, $"WindowSwitchAction completed. activated={activated}");
             }
             catch (Exception e)
             {
-                MacroDeckLogger.Error(Main.Instance, e.Message);
+                MacroDeckLogger.Error(Main.Instance, $"WindowSwitchAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}");
             }
         }
     }

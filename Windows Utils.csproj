@@ -9,9 +9,9 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Macro Deck</Authors>
     <Company>Macro Deck</Company>
-    <AssemblyVersion>1.6.0.0</AssemblyVersion>
-    <FileVersion>1.6.0.0</FileVersion>
-    <Version>1.6.0</Version>
+    <AssemblyVersion>1.6.1.0</AssemblyVersion>
+    <FileVersion>1.6.1.0</FileVersion>
+    <Version>1.6.1</Version>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>

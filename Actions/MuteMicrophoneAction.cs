@@ -1,5 +1,6 @@
 ﻿using SuchByte.MacroDeck.ActionButton;
 using SuchByte.MacroDeck.Plugins;
+using SuchByte.MacroDeck.Logging;
 using SuchByte.WindowsUtils.Language;
 using System.Runtime.InteropServices;
 using System;
@@ -26,9 +27,14 @@ public class MuteMicrophoneAction : PluginAction
     {
         try
         {
+            MacroDeckLogger.Info(Main.Instance, "MuteMicrophoneAction triggered");
             IntPtr h = GetForegroundWindow();
-            SendMessageW(h, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_MICROPHONE_VOLUME_MUTE);
+            IntPtr result = SendMessageW(h, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_MICROPHONE_VOLUME_MUTE);
+            MacroDeckLogger.Info(Main.Instance, $"MuteMicrophoneAction completed. foregroundWindow={h}, result={result}");
         }
-        catch { }
+        catch (Exception e)
+        {
+            MacroDeckLogger.Error(Main.Instance, $"MuteMicrophoneAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}");
+        }
     }
 }

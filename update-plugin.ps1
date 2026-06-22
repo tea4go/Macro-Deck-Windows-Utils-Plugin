@@ -8,14 +8,18 @@
     Restart Macro Deck after updating.
 .PARAMETER SkipBackup
     Do not create a backup before overwriting files.
+.PARAMETER Force
+    Reinstall the latest release even when the installed version is already current.
 .EXAMPLE
     powershell -ExecutionPolicy Bypass -File .\update-plugin.ps1
     powershell -ExecutionPolicy Bypass -File .\update-plugin.ps1 -AutoRestart
+    powershell -ExecutionPolicy Bypass -File .\update-plugin.ps1 -Force
 #>
 
 param(
     [switch]$AutoRestart,
-    [switch]$SkipBackup
+    [switch]$SkipBackup,
+    [switch]$Force
 )
 
 $ErrorActionPreference = "Stop"
@@ -79,8 +83,8 @@ $LatestTag = $LatestRelease.tag_name
 $LatestVersion = $LatestTag -replace '^v', ''
 Write-Host "Latest version: $LatestTag"
 
-if ($CurrentVersion -eq $LatestVersion) {
-    Write-Ok "Already up to date."
+if (($CurrentVersion -eq $LatestVersion) -and (-not $Force)) {
+    Write-Ok "Already up to date. Use -Force to reinstall the latest release."
     exit 0
 }
 
@@ -148,6 +152,9 @@ try {
         $ExtractedPluginDir = $TempExtract
     }
 
+    # Replace the plugin directory instead of only overwriting files.
+    # This removes stale files such as old .deps.json files from previous releases.
+    Get-ChildItem -Path $PluginDir -Force | Remove-Item -Recurse -Force
     Copy-Item -Path (Join-Path $ExtractedPluginDir "*") -Destination $PluginDir -Recurse -Force
 
     Remove-Item -Path $TempZip -Force -ErrorAction SilentlyContinue

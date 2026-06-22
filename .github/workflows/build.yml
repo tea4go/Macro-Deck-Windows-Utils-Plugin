@@ -27,22 +27,26 @@ jobs:
       - name: Restore
         run: dotnet restore "Windows Utils.sln"
 
-      - name: Build
-        run: dotnet build "Windows Utils.sln" -c Release --no-restore
+      - name: Publish
+        run: dotnet publish "Windows Utils.csproj" -c Release --no-restore -o publish
 
-      - name: Locate built DLL
-        id: dll
+      - name: Validate publish output
+        id: publish
         shell: pwsh
         run: |
-          $dll = Get-ChildItem -Path bin -Recurse -Filter "Windows Utils.dll" | Select-Object -First 1
-          if (-not $dll) { Write-Error "Windows Utils.dll not found"; exit 1 }
-          "path=$($dll.FullName)" >> $env:GITHUB_OUTPUT
+          $dll = Get-Item "publish/Windows Utils.dll" -ErrorAction SilentlyContinue
+          $deps = Get-Item "publish/Windows Utils.deps.json" -ErrorAction SilentlyContinue
+          if (-not $dll) { Write-Error "Windows Utils.dll not found in publish output"; exit 1 }
+          if (-not $deps) { Write-Error "Windows Utils.deps.json not found in publish output"; exit 1 }
+          "dll=$($dll.FullName)" >> $env:GITHUB_OUTPUT
+          "deps=$($deps.FullName)" >> $env:GITHUB_OUTPUT
+          Get-ChildItem publish | Select-Object Name, Length
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: WindowsUtils-plugin
-          path: ${{ steps.dll.outputs.path }}
+          path: publish/**
           if-no-files-found: error
 
       - name: Package release zip
@@ -50,17 +54,20 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path release/SuchByte.WindowsUtils | Out-Null
-          Copy-Item "${{ steps.dll.outputs.path }}" release/SuchByte.WindowsUtils/
-          Copy-Item ExtensionManifest.json release/SuchByte.WindowsUtils/
-          Copy-Item update-plugin.ps1 release/
-          Compress-Archive -Path release/SuchByte.WindowsUtils/* -DestinationPath "Windows-Utils-${{ github.ref_name }}.zip" -Force
+          Copy-Item publish/* release/SuchByte.WindowsUtils/ -Recurse -Force
+          Copy-Item ExtensionManifest.json release/SuchByte.WindowsUtils/ -Force
+          Copy-Item ExtensionIcon.png release/SuchByte.WindowsUtils/ -Force
+          Copy-Item LICENSE release/SuchByte.WindowsUtils/ -Force
+          Copy-Item README.md release/SuchByte.WindowsUtils/ -Force
+          Copy-Item update-plugin.ps1 release/ -Force
+          Compress-Archive -Path release/* -DestinationPath "Windows-Utils-${{ github.ref_name }}.zip" -Force
 
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            ${{ steps.dll.outputs.path }}
+            ${{ steps.publish.outputs.dll }}
             Windows-Utils-${{ github.ref_name }}.zip
             update-plugin.ps1
           generate_release_notes: true

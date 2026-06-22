@@ -1,7 +1,9 @@
-﻿using SuchByte.MacroDeck.Plugins;
+﻿using SuchByte.MacroDeck.Logging;
+using SuchByte.MacroDeck.Plugins;
 using SuchByte.WindowsUtils.Actions;
 using SuchByte.WindowsUtils.Language;
 using System.Collections.Generic;
+using System.Linq;
 using WindowsInput;
 
 namespace SuchByte.WindowsUtils;
@@ -48,6 +50,7 @@ public class Main : MacroDeckPlugin
             new PowerOptionAction(),
             new WindowSwitchAction(),
         };
+        MacroDeckLogger.Info(this, $"Windows Utils plugin enabled. Actions={string.Join(", ", this.Actions.Select(action => action.Name))}");
 
         this.TickTimer = new System.Timers.Timer()
         {
