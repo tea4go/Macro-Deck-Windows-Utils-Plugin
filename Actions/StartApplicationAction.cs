@@ -21,31 +21,46 @@ public class StartApplicationAction : PluginAction
 
     public override void Trigger(string clientId, ActionButton actionButton)
     {
-        var configModel = StartApplicationActionConfigModel.Deserialize(this.Configuration);
-        if (configModel == null) return;
-
-        switch (configModel.StartMethod)
+        try
         {
-            // 启动进程
-            case StartMethod.Start:
-                if (!ApplicationLauncher.IsRunning(configModel.Path))
-                {
-                    ApplicationLauncher.StartApplication(configModel.Path, configModel.Arguments, configModel.RunAsAdmin);
-                }
-                else
-                {
+            var configModel = StartApplicationActionConfigModel.Deserialize(this.Configuration);
+            if (configModel == null)
+            {
+                MacroDeckLogger.Warning(Main.Instance, "StartApplicationAction triggered but configuration is null");
+                return;
+            }
+
+            MacroDeckLogger.Info(Main.Instance, $"StartApplicationAction triggered. method={configModel.StartMethod}, path='{configModel.Path}'");
+
+            switch (configModel.StartMethod)
+            {
+                // 启动进程
+                case StartMethod.Start:
+                    if (!ApplicationLauncher.IsRunning(configModel.Path))
+                    {
+                        ApplicationLauncher.StartApplication(configModel.Path, configModel.Arguments, configModel.RunAsAdmin);
+                    }
+                    else
+                    {
+                        ApplicationLauncher.BringToForeground(configModel.Path);
+                    }
+                    break;
+                case StartMethod.Stop:
+                    ApplicationLauncher.KillApplication(configModel.Path);
+                    break;
+                case StartMethod.Show:
                     ApplicationLauncher.BringToForeground(configModel.Path);
-                }
-                break;
-            case StartMethod.Stop:
-                ApplicationLauncher.KillApplication(configModel.Path);
-                break;
-            case StartMethod.Show:
-                ApplicationLauncher.BringToForeground(configModel.Path);
-                break;
-            case StartMethod.Hide:
-                ApplicationLauncher.BringToBackground(configModel.Path);
-                break;
+                    break;
+                case StartMethod.Hide:
+                    ApplicationLauncher.BringToBackground(configModel.Path);
+                    break;
+            }
+
+            MacroDeckLogger.Info(Main.Instance, $"StartApplicationAction completed. method={configModel.StartMethod}");
+        }
+        catch (System.Exception ex)
+        {
+            MacroDeckLogger.Error(Main.Instance, $"StartApplicationAction failed: {ex.Message}{System.Environment.NewLine}{ex.StackTrace}");
         }
     }
 

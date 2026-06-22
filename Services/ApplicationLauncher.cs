@@ -131,8 +131,10 @@ public class ApplicationLauncher
         path = WindowsShortcut.GetShortcutTarget(path);
 
         // 查找文件所在进程
+        // 注意:GetProcessFileName 对无法访问的系统进程会返回 null,
+        // 必须用 string.Equals 做 null 安全比较,否则 null.Equals 会抛 NullReferenceException
         return Process.GetProcesses().ToArray().Where(
-            p => GetProcessFileName(p.Id).Equals(path, StringComparison.OrdinalIgnoreCase)
+            p => string.Equals(GetProcessFileName(p.Id), path, StringComparison.OrdinalIgnoreCase)
         ).OrderByDescending(p => p.Id).FirstOrDefault();
     }
 
