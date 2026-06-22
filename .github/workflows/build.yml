@@ -3,9 +3,13 @@ name: Build
 on:
   push:
     branches: [ master ]
+    tags: [ 'v*' ]
   pull_request:
     branches: [ master ]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -26,9 +30,35 @@ jobs:
       - name: Build
         run: dotnet build "Windows Utils.sln" -c Release --no-restore
 
+      - name: Locate built DLL
+        id: dll
+        shell: pwsh
+        run: |
+          $dll = Get-ChildItem -Path bin -Recurse -Filter "Windows Utils.dll" | Select-Object -First 1
+          if (-not $dll) { Write-Error "Windows Utils.dll not found"; exit 1 }
+          "path=$($dll.FullName)" >> $env:GITHUB_OUTPUT
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: WindowsUtils-plugin
-          path: bin/**/Windows Utils.dll
+          path: ${{ steps.dll.outputs.path }}
           if-no-files-found: error
+
+      - name: Package release zip
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path release/SuchByte.WindowsUtils | Out-Null
+          Copy-Item "${{ steps.dll.outputs.path }}" release/SuchByte.WindowsUtils/
+          Copy-Item ExtensionManifest.json release/SuchByte.WindowsUtils/
+          Compress-Archive -Path release/SuchByte.WindowsUtils/* -DestinationPath "Windows-Utils-${{ github.ref_name }}.zip" -Force
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ steps.dll.outputs.path }}
+            Windows-Utils-${{ github.ref_name }}.zip
+          generate_release_notes: true

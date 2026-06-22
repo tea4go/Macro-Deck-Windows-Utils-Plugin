@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: logging_system
+title: Macro Deck 插件日志系统
+scope: []
+source_files:
+    - Actions/NotificationAction.cs
+    - ViewModels/MultiHotkeyActionConfigViewModel.cs
+    - Services/ApplicationLauncher.cs
+    - Main.cs
+depends_on: []
+related_to: []

@@ -1,0 +1,14 @@
+schema_version: 1
+module_path: configuration_system
+title: 基于 JSON 序列化的动作配置系统
+scope: []
+source_files:
+    - Models/ISerializableConfiguration.cs
+    - ViewModels/ISerializableConfigViewModel.cs
+    - Models/StartApplicationActionConfigModel.cs
+    - ViewModels/StartApplicationActionConfigViewModel.cs
+    - GUI/HotkeyConfigurator.cs
+    - Actions/StartApplicationAction.cs
+    - Actions/HotkeyAction.cs
+depends_on: []
+related_to: []

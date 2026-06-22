@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: build_system
+title: Macro Deck Windows 插件构建与发布流程
+scope: []
+source_files:
+    - .github/workflows/build.yml
+    - Windows Utils.csproj
+    - ExtensionManifest.json
+    - autorun.bat
+    - Windows Utils.sln
+depends_on: []
+related_to: []

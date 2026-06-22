@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: dependency_management
+title: .NET 依赖管理与插件引用策略
+scope: []
+source_files:
+    - Windows Utils.csproj
+    - libs/Macro Deck 2.dll
+    - .github/workflows/build.yml
+    - ExtensionManifest.json
+depends_on: []
+related_to: []

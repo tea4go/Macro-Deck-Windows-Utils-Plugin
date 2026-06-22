@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: frontend_style
+title: Windows Forms 原生 UI 风格
+scope: []
+source_files:
+    - Windows Utils.csproj
+    - GUI/CommandSelector.Designer.cs
+    - GUI/HotkeyConfigurator.Designer.cs
+    - Views/StartApplicationActionConfigView.Designer.cs
+    - GUI/CommandSelector.cs
+depends_on: []
+related_to: []
