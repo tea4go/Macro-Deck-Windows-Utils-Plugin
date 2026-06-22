@@ -3,11 +3,10 @@ module_path: configuration_system
 title: 基于 JSON 序列化的动作配置系统
 scope: []
 source_files:
+    - .qoder/repowiki/knowledge/zh/基于 JSON 序列化的动作配置系统/configuration_system.md
     - Models/ISerializableConfiguration.cs
     - ViewModels/ISerializableConfigViewModel.cs
-    - Models/MultiHotkeyActionConfigModel.cs
     - Models/StartApplicationActionConfigModel.cs
-    - Actions/MultiHotkeyAction.cs
     - Actions/StartApplicationAction.cs
     - GUI/HotkeyConfigurator.cs
 depends_on: []

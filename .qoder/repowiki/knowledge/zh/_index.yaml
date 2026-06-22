@@ -3,7 +3,7 @@ schema_version: 1
 locale: zh-CN
 branch: master
 nodes_managed: true
-exported_at: "2026-06-22T02:31:45Z"
+exported_at: "2026-06-22T03:07:00Z"
 modules:
     "":
         dir_name: Macro Deck Windows 系统自动化插件_2
@@ -48,6 +48,7 @@ modules:
         children: []
         depends_on: []
         related_to:
+            - path: error_handling
             - path: frontend_style
             - path: logging_system
     dependency_management:
@@ -76,6 +77,7 @@ modules:
         children: []
         depends_on: []
         related_to:
+            - path: configuration_system
             - path: logging_system
     frontend_style:
         dir_name: Windows Forms 原生 UI 风格

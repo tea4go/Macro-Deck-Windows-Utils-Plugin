@@ -10,4 +10,5 @@ source_files:
     - Main.cs
 depends_on: []
 related_to:
+    - path: configuration_system
     - path: logging_system
