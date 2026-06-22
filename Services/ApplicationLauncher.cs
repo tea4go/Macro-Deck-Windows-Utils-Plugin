@@ -33,7 +33,7 @@ public class ApplicationLauncher
     [return: MarshalAs(UnmanagedType.Bool)]
     static extern bool CloseHandle(IntPtr hObject);
 
-    private const int SW_MINIMIZE = 0;
+    private const int SW_MINIMIZE = 6;   // 6=SW_MINIMIZE(最小化到任务栏,可逆);0 是 SW_HIDE,会彻底隐藏窗口
     private const int SW_RESTORE = 9;
 
     public static bool IsRunning(string path)
