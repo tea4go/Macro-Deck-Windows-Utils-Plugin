@@ -52,6 +52,7 @@ jobs:
           New-Item -ItemType Directory -Force -Path release/SuchByte.WindowsUtils | Out-Null
           Copy-Item "${{ steps.dll.outputs.path }}" release/SuchByte.WindowsUtils/
           Copy-Item ExtensionManifest.json release/SuchByte.WindowsUtils/
+          Copy-Item update-plugin.ps1 release/
           Compress-Archive -Path release/SuchByte.WindowsUtils/* -DestinationPath "Windows-Utils-${{ github.ref_name }}.zip" -Force
 
       - name: Create GitHub Release
@@ -61,4 +62,5 @@ jobs:
           files: |
             ${{ steps.dll.outputs.path }}
             Windows-Utils-${{ github.ref_name }}.zip
+            update-plugin.ps1
           generate_release_notes: true
