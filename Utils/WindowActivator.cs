@@ -170,6 +170,39 @@ public static class WindowActivator
         }
     }
 
+    /// <summary>
+    /// Finds the main (taskbar-appearing) window of a process by its id and brings it to the
+    /// foreground, restoring it if minimized. Useful when Process.MainWindowHandle returns 0
+    /// because the window is currently minimized.
+    /// </summary>
+    /// <param name="processId">The target process id.</param>
+    /// <returns>True if a matching window was found and activated, otherwise false.</returns>
+    public static bool ActivateWindowByProcessId(int processId)
+    {
+        bool activated = false;
+
+        NativeMethods.EnumWindows((hWnd, lParam) =>
+        {
+            NativeMethods.GetWindowThreadProcessId(hWnd, out uint windowPid);
+
+            if (windowPid != processId)
+            {
+                return true;
+            }
+
+            if (!IsWindowAppearingInTaskbar(hWnd))
+            {
+                return true;
+            }
+
+            ForceActivateWindow(hWnd);
+            activated = true;
+            return false;
+        }, IntPtr.Zero);
+
+        return activated;
+    }
+
     public static void ForceActivateWindow(IntPtr hWnd)
     {
         if (hWnd == IntPtr.Zero) return;

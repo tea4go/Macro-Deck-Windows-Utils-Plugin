@@ -112,6 +112,15 @@ public class ApplicationLauncher
         }
 
         IntPtr handle = p.MainWindowHandle;
+
+        // 窗口被最小化时,Process.MainWindowHandle 会返回 0,
+        // 此时按进程 ID 枚举窗口并恢复(WindowActivator 内部会处理 IsIconic 还原)。
+        if (handle == IntPtr.Zero)
+        {
+            WindowActivator.ActivateWindowByProcessId(p.Id);
+            return;
+        }
+
         if (SetForegroundWindow(handle))
         {
             if (!IsIconic(handle))
