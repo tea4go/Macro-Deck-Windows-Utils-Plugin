@@ -1,21 +1,24 @@
 param(
     [switch]$Build,
     [switch]$Run,
-    [string]$Configuration = "Release"
+    [string]$Configuration = "Release",
+    [string]$PluginDir = (Join-Path $env:APPDATA "Macro Deck\plugins\SuchByte.WindowsUtils"),
+    [string]$MacroDeckExe = "C:\Program Files\Macro Deck\Macro Deck 2.exe"
 )
 
 if (-not $Build -and -not $Run) {
-    Write-Host "用法: .\run_win.ps1 [-Build] [-Run] [-Configuration <Release|Debug>]"
+    Write-Host "用法: .\run_win.ps1 [-Build] [-Run] [-Configuration <Release|Debug>] [-PluginDir <目录>] [-MacroDeckExe <路径>]"
     Write-Host ""
     Write-Host "  -Build           编译并发布插件到 publish/"
     Write-Host "  -Run             停止 Macro Deck，替换安装插件，并重新启动"
     Write-Host "  -Configuration   构建配置（默认: Release）"
+    Write-Host "  -PluginDir       插件安装目录（默认: %APPDATA%\Macro Deck\plugins\SuchByte.WindowsUtils）"
+    Write-Host "                   从源码运行 Macro Deck 时，指向其 publish\Data\plugins\SuchByte.WindowsUtils"
+    Write-Host "  -MacroDeckExe    Macro Deck 可执行文件路径（默认: C:\Program Files\Macro Deck\Macro Deck 2.exe）"
     exit 0
 }
 
 $MacroDeckProcessName = "Macro Deck 2"
-$MacroDeckExe = "C:\Program Files\Macro Deck\Macro Deck 2.exe"
-$PluginDir = Join-Path $env:APPDATA "Macro Deck\plugins\SuchByte.WindowsUtils"
 $Output = "publish"
 
 if ($Build) {
@@ -46,8 +49,8 @@ if ($Run) {
     }
 
     if (-not (Test-Path $PluginDir)) {
-        Write-Error "插件目录不存在：$PluginDir（请先安装插件）"
-        exit 1
+        Write-Host "插件目录不存在，正在创建：$PluginDir"
+        New-Item -ItemType Directory -Path $PluginDir -Force | Out-Null
     }
 
     # 停止 Macro Deck
