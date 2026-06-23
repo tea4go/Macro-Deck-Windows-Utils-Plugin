@@ -6,6 +6,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace SuchByte.WindowsUtils.Utils;
+/// <summary>
+/// 窗口激活工具类，提供通过标题模式匹配或进程 ID 查找并将窗口带到前台的功能
+/// </summary>
 public static class WindowActivator
 {
     /// <summary>
@@ -36,6 +39,7 @@ public static class WindowActivator
     }
 
     // This class holds the state needed during the window enumeration.
+    /// <summary>窗口枚举过程中传递的上下文参数，包括匹配模式、大小写模式及激活结枚</summary>
     private class EnumWindowParams
     {
         public string Pattern { get; set; }
@@ -126,10 +130,14 @@ public static class WindowActivator
         var style = (WindowStyles)NativeMethods.GetWindowLongPtr(hWnd, (int)GetWindowLongFlags.GWL_STYLE);
         var exStyle = (WindowStylesEx)NativeMethods.GetWindowLongPtr(hWnd, (int)GetWindowLongFlags.GWL_EXSTYLE);
 
+        // 窗口必须可见才可能出现在任务栏
         if (!style.HasFlag(WindowStyles.WS_VISIBLE)) return false;
+        // 工具窗口（如浮动工具栏）不显示在任务栏
         if (exStyle.HasFlag(WindowStylesEx.WS_EX_TOOLWINDOW)) return false;
+        // UWP/DWM 重定向位图窗口不显示在任务栏
         if (exStyle.HasFlag(WindowStylesEx.WS_EX_NOREDIRECTIONBITMAP)) return false;
 
+        // 拥有者窗口（子窗口）不应出现在任务栏，除非它显式设置了 WS_EX_APPWINDOW
         IntPtr hOwnerWnd = NativeMethods.GetWindow(hWnd, GetWindowCmd.GW_OWNER);
         if (hOwnerWnd != IntPtr.Zero && (!exStyle.HasFlag(WindowStylesEx.WS_EX_APPWINDOW) || NativeMethods.IsIconic(hOwnerWnd)))
         {
@@ -147,11 +155,13 @@ public static class WindowActivator
             return false;
         }
 
+        // 正则模式直接使用预编译的正则对象进行匹配
         if (param.MatchMode == MatchMode.Regex)
         {
             return param.PatternRegex.IsMatch(text);
         }
 
+        // 其他模式根据大小写敏感性选择比较类型
         var comparisonType = param.CaseSensitive
             ? StringComparison.Ordinal
             : StringComparison.OrdinalIgnoreCase;
@@ -203,10 +213,15 @@ public static class WindowActivator
         return activated;
     }
 
+    /// <summary>
+    /// 强制激活指定窗口到前台，内部采用“线程输入附加”策略绕过 Windows 的前台要求限制
+    /// </summary>
+    /// <param name="hWnd">要激活的窗口句柄</param>
     public static void ForceActivateWindow(IntPtr hWnd)
     {
         if (hWnd == IntPtr.Zero) return;
 
+        // 如果窗口被最小化则先还原
         if (NativeMethods.IsIconic(hWnd))
         {
             NativeMethods.ShowWindowAsync(hWnd, ShowWindowCommands.Restore);
@@ -215,11 +230,13 @@ public static class WindowActivator
         IntPtr foregroundHwnd = NativeMethods.GetForegroundWindow();
         if (foregroundHwnd == hWnd) return;
 
+        // 获取当前前台窗口和目标窗口的线程 ID
         uint foregroundThreadId = NativeMethods.GetWindowThreadProcessId(foregroundHwnd, out _);
         uint thisThreadId = NativeMethods.GetCurrentThreadId();
 
         bool doAttach = (foregroundThreadId != thisThreadId);
 
+        // 将当前线程输入附加到前台窗口线程，绕过 Windows 防止其他程序强制剪切前台的限制
         if (doAttach)
         {
             NativeMethods.AttachThreadInput(thisThreadId, foregroundThreadId, true);
@@ -228,6 +245,7 @@ public static class WindowActivator
         try
         {
             NativeMethods.SetForegroundWindow(hWnd);
+            // 使用组合标志同时设置位置不变、尺寸不变、显示窗口、异步操作
             NativeMethods.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, 0, 0, SetWindowPosFlags.SWP_NOMOVE | SetWindowPosFlags.SWP_NOSIZE | SetWindowPosFlags.SWP_SHOWWINDOW | SetWindowPosFlags.SWP_ASYNCWINDOWPOS);
             NativeMethods.BringWindowToTop(hWnd);
             NativeMethods.ShowWindowAsync(hWnd, ShowWindowCommands.Show);
@@ -235,6 +253,7 @@ public static class WindowActivator
         }
         finally
         {
+            // 返况时断开线程输入附加
             if (doAttach)
             {
                 NativeMethods.AttachThreadInput(thisThreadId, foregroundThreadId, false);
@@ -242,6 +261,11 @@ public static class WindowActivator
         }
     }
 
+    /// <summary>
+    /// 获取窗口标题文本
+    /// </summary>
+    /// <param name="hWnd">窗口句柄</param>
+    /// <returns>窗口标题字符串，无标题则返回空字符串</returns>
     private static string GetWindowText(IntPtr hWnd)
     {
         int length = NativeMethods.GetWindowTextLength(hWnd);

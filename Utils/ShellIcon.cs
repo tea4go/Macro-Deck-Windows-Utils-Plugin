@@ -15,26 +15,40 @@ namespace SuchByte.WindowsUtils.Utils;
 /// <summary>
 /// Modified version of Mauricio DIAZ ORLICH's "ShellIcon.cs" to get a 256*256 jumbo icon out of a file
 /// </summary>
-/// 
+///
 
+/// <summary>
+/// Shell32 辅助类，定义图标列表尺寸常量及封装 Shell32.dll 的 P/Invoke 方法
+/// </summary>
 public static class Shell32
 {
+    /// <summary>大图标（通常为 32x32）</summary>
     public const int SHIL_LARGE = 0x0;
+    /// <summary>小图标（通常为 16x16）</summary>
     public const int SHIL_SMALL = 0x1;
+    /// <summary>特大图标（通常为 48x48）</summary>
     public const int SHIL_EXTRALARGE = 0x2;
+    /// <summary>系统小图标（与系统小图标尺寸一致）</summary>
     public const int SHIL_SYSSMALL = 0x3;
+    /// <summary>Jumbo 图标（通常为 256x256）</summary>
     public const int SHIL_JUMBO = 0x4;
+    /// <summary>最大的图标列表类型索引</summary>
     public const int SHIL_LAST = 0x4;
 
+    /// <summary>展示透明背景的图标绘制标志</summary>
     public const int ILD_TRANSPARENT = 0x00000001;
+    /// <summary>仅绘制图标图像的标志</summary>
     public const int ILD_IMAGE = 0x00000020;
 
+    /// <summary>获取系统图标列表（Shell32.dll 未导出的内部 API，通过序号 #727 调用）</summary>
     [DllImport("shell32.dll", EntryPoint = "#727")]
     public extern static int SHGetImageList(int iImageList, ref Guid riid, ref IImageList ppv);
 
+    /// <summary>获取对象的项 ID 列表（PIDL）</summary>
     [DllImport("shell32.dll")]
     public static extern uint SHGetIDListFromObject([MarshalAs(UnmanagedType.IUnknown)] object iUnknown, out IntPtr ppidl);
 
+    /// <summary>获取文件的 Shell 信息（图标、显示名等）</summary>
     [DllImport("Shell32.dll")]
     public static extern IntPtr SHGetFileInfo(
         string pszPath,
@@ -45,6 +59,9 @@ public static class Shell32
     );
 }
 
+/// <summary>
+/// Shell 图标工具类，封装从 Windows Shell 获取文件图标的功能，支持获取 256x256 Jumbo 大图标
+/// </summary>
 public static class ShellIcon
 {
     const string IID_IImageList = "46EB5926-582E-4017-9FDF-E8998DAA0950";
@@ -310,9 +327,15 @@ public static class ShellIcon
 
 
 
+    /// <summary>
+    /// 获取指定文件在系统图标列表中的索引号
+    /// </summary>
+    /// <param name="pszFile">文件路径</param>
+    /// <returns>系统图标列表中的图标索引</returns>
     public static int GetIconIndex(string pszFile)
     {
         SHFILEINFO sfi = new SHFILEINFO();
+        // 使用 SHGetFileInfo 获取文件对应的系统图标索引
         Shell32.SHGetFileInfo(pszFile
             , 0
             , ref sfi
@@ -322,13 +345,20 @@ public static class ShellIcon
     }
 
     // 256*256
+    /// <summary>
+    /// 根据图标索引从 Jumbo 图标列表中获取 256x256 大图标句柄
+    /// </summary>
+    /// <param name="iImage">图标在系统图标列表中的索引</param>
+    /// <returns>图标句柄（hIcon），调用方负责释放资源</returns>
     public static IntPtr GetJumboIcon(int iImage)
     {
         IImageList spiml = null;
         Guid guil = new Guid(IID_IImageList);
 
+        // 获取 SHIL_JUMBO (256x256) 级别的系统图标列表
         Shell32.SHGetImageList(Shell32.SHIL_JUMBO, ref guil, ref spiml);
         IntPtr hIcon = IntPtr.Zero;
+        // 从图标列表中获取具体图标句柄
         spiml.GetIcon(iImage, Shell32.ILD_TRANSPARENT | Shell32.ILD_IMAGE, ref hIcon);
 
         return hIcon;
