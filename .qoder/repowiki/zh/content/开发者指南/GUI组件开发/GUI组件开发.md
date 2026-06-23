@@ -14,11 +14,16 @@
 - [GUI/ExplorerControlConfigurator.cs](file://GUI/ExplorerControlConfigurator.cs)
 - [GUI/PowerOptionSelector.cs](file://GUI/PowerOptionSelector.cs)
 - [GUI/TextSelector.cs](file://GUI/TextSelector.cs)
+- [GUI/FileFolderSelector.cs](file://GUI/FileFolderSelector.cs)
+- [GUI/CommandSelector.cs](file://GUI/CommandSelector.cs)
+- [GUI/HotkeyConfigurator.cs](file://GUI/HotkeyConfigurator.cs)
 - [Actions/WindowsExplorerControlAction.cs](file://Actions/WindowsExplorerControlAction.cs)
 - [Actions/HotkeyAction.cs](file://Actions/HotkeyAction.cs)
 - [Actions/MultiHotkeyAction.cs](file://Actions/MultiHotkeyAction.cs)
 - [Actions/IncreaseVolumeAction.cs](file://Actions/IncreaseVolumeAction.cs)
 - [Actions/DecreaseVolumeAction.cs](file://Actions/DecreaseVolumeAction.cs)
+- [Actions/CommandlineAction.cs](file://Actions/CommandlineAction.cs)
+- [Actions/PowerOptionAction.cs](file://Actions/PowerOptionAction.cs)
 </cite>
 
 ## 目录
@@ -36,8 +41,10 @@
 ## 简介
 本文件面向GUI组件开发者，围绕ActionConfigControl基类与自定义配置控件的开发流程展开，系统阐述MVVM模式在GUI中的应用（ViewModels设计与绑定机制）、配置视图的创建、数据绑定与状态管理，并提供数据验证、用户交互与响应式设计的最佳实践。同时给出基于仓库中现有控件的实际开发示例与常见问题解决方案。
 
+**更新** 新增CommandSelector、HotkeyConfigurator、PowerOptionSelector等GUI组件的详细分析，增强FileFolderSelector和TextSelector功能说明。
+
 ## 项目结构
-该插件采用“插件入口 + 动作(Action) + 配置控件(GUI) + 视图模型(ViewModels) + 数据模型(Models)”的分层组织方式，目标框架为 .NET 10，启用Windows Forms以适配Macro Deck 2的GUI环境。
+该插件采用"插件入口 + 动作(Action) + 配置控件(GUI) + 视图模型(ViewModels) + 数据模型(Models)"的分层组织方式，目标框架为 .NET 10，启用Windows Forms以适配Macro Deck 2的GUI环境。
 
 ```mermaid
 graph TB
@@ -49,11 +56,11 @@ E --> F["Models/*<br/>ISerializableConfiguration接口与配置模型"]
 A --> G["Windows Utils.csproj<br/>项目配置与引用"]
 ```
 
-图表来源
+**图表来源**
 - [Main.cs:28-58](file://Main.cs#L28-L58)
 - [Windows Utils.csproj:1-74](file://Windows Utils.csproj#L1-L74)
 
-章节来源
+**章节来源**
 - [Main.cs:14-58](file://Main.cs#L14-L58)
 - [Windows Utils.csproj:1-74](file://Windows Utils.csproj#L1-L74)
 - [README.md:1-40](file://README.md#L1-L40)
@@ -62,10 +69,10 @@ A --> G["Windows Utils.csproj<br/>项目配置与引用"]
 - ActionConfigControl基类：所有配置控件均继承自该基类，负责承载配置UI、处理保存逻辑（OnActionSave）以及与PluginAction的配置数据交换。
 - ViewModel层：通过ISerializableConfigViewModel接口统一配置设置(SetConfig)与保存(SaveConfig)流程；具体ViewModel持有配置模型并负责日志记录与异常处理。
 - Model层：ISerializableConfiguration接口提供序列化/反序列化能力；具体配置模型封装业务配置项。
-- Views：部分复杂配置采用“视图+ViewModel”的MVVM组合，简化UI与业务逻辑分离。
+- Views：部分复杂配置采用"视图+ViewModel"的MVVM组合，简化UI与业务逻辑分离。
 - Actions：动作类负责触发执行逻辑，并通过GetActionConfigControl返回对应的配置控件。
 
-章节来源
+**章节来源**
 - [Views/MultiHotkeyActionConfigView.cs:8-27](file://Views/MultiHotkeyActionConfigView.cs#L8-L27)
 - [ViewModels/ISerializableConfigViewModel.cs:5-12](file://ViewModels/ISerializableConfigViewModel.cs#L5-L12)
 - [ViewModels/MultiHotkeyActionConfigViewModel.cs:9-56](file://ViewModels/MultiHotkeyActionConfigViewModel.cs#L9-L56)
@@ -100,7 +107,7 @@ C2 --> |"读写配置属性"| D2
 D2 --> |"序列化/反序列化"| A1
 ```
 
-图表来源
+**图表来源**
 - [Actions/WindowsExplorerControlAction.cs:22-25](file://Actions/WindowsExplorerControlAction.cs#L22-L25)
 - [Views/MultiHotkeyActionConfigView.cs:12-26](file://Views/MultiHotkeyActionConfigView.cs#L12-L26)
 - [ViewModels/MultiHotkeyActionConfigViewModel.cs:30-54](file://ViewModels/MultiHotkeyActionConfigViewModel.cs#L30-L54)
@@ -109,7 +116,7 @@ D2 --> |"序列化/反序列化"| A1
 ## 详细组件分析
 
 ### 组件一：多热键配置视图（MVVM）
-该组件采用“视图+ViewModel”的MVVM模式，视图负责UI呈现，ViewModel负责配置读取、设置与保存。
+该组件采用"视图+ViewModel"的MVVM模式，视图负责UI呈现，ViewModel负责配置读取、设置与保存。
 
 ```mermaid
 classDiagram
@@ -136,7 +143,7 @@ MultiHotkeyActionConfigView --> MultiHotkeyActionConfigViewModel : "持有并调
 MultiHotkeyActionConfigViewModel --> MultiHotkeyActionConfigModel : "读写配置"
 ```
 
-图表来源
+**图表来源**
 - [Views/MultiHotkeyActionConfigView.cs:8-27](file://Views/MultiHotkeyActionConfigView.cs#L8-L27)
 - [ViewModels/MultiHotkeyActionConfigViewModel.cs:9-56](file://ViewModels/MultiHotkeyActionConfigViewModel.cs#L9-L56)
 - [Models/MultiHotkeyActionConfigModel.cs:6-22](file://Models/MultiHotkeyActionConfigModel.cs#L6-L22)
@@ -147,7 +154,7 @@ participant U as "用户"
 participant V as "MultiHotkeyActionConfigView"
 participant VM as "MultiHotkeyActionConfigViewModel"
 participant A as "PluginAction"
-U->>V : 点击“保存”
+U->>V : 点击"保存"
 V->>VM : 调用 SaveConfig()
 VM->>VM : SetConfig()
 VM->>A : 写入 Configuration/ConfigurationSummary
@@ -155,11 +162,11 @@ VM-->>V : 返回 true/false
 V-->>U : 显示结果
 ```
 
-图表来源
+**图表来源**
 - [Views/MultiHotkeyActionConfigView.cs:23-26](file://Views/MultiHotkeyActionConfigView.cs#L23-L26)
 - [ViewModels/MultiHotkeyActionConfigViewModel.cs:36-54](file://ViewModels/MultiHotkeyActionConfigViewModel.cs#L36-L54)
 
-章节来源
+**章节来源**
 - [Views/MultiHotkeyActionConfigView.cs:8-27](file://Views/MultiHotkeyActionConfigView.cs#L8-L27)
 - [Views/MultiHotkeyActionConfigView.Designer.cs:30-40](file://Views/MultiHotkeyActionConfigView.Designer.cs#L30-L40)
 - [ViewModels/MultiHotkeyActionConfigViewModel.cs:9-56](file://ViewModels/MultiHotkeyActionConfigViewModel.cs#L9-L56)
@@ -174,17 +181,17 @@ participant U as "用户"
 participant C as "ExplorerControlConfigurator"
 participant A as "PluginAction"
 U->>C : 选择操作(后退/前进/主页/刷新)
-U->>C : 点击“保存”
+U->>C : 点击"保存"
 C->>C : 校验输入
 C->>A : 写入 Configuration/ConfigurationSummary
 C-->>U : 返回 true/false
 ```
 
-图表来源
+**图表来源**
 - [GUI/ExplorerControlConfigurator.cs:29-51](file://GUI/ExplorerControlConfigurator.cs#L29-L51)
 - [Actions/WindowsExplorerControlAction.cs:22-25](file://Actions/WindowsExplorerControlAction.cs#L22-L25)
 
-章节来源
+**章节来源**
 - [GUI/ExplorerControlConfigurator.cs:9-82](file://GUI/ExplorerControlConfigurator.cs#L9-L82)
 - [Actions/WindowsExplorerControlAction.cs:12-38](file://Actions/WindowsExplorerControlAction.cs#L12-L38)
 
@@ -205,10 +212,10 @@ Build --> Persist["写入 PluginAction.Configuration/Summary"]
 Persist --> Done(["完成"])
 ```
 
-图表来源
+**图表来源**
 - [GUI/PowerOptionSelector.cs:15-66](file://GUI/PowerOptionSelector.cs#L15-L66)
 
-章节来源
+**章节来源**
 - [GUI/PowerOptionSelector.cs:9-75](file://GUI/PowerOptionSelector.cs#L9-L75)
 
 ### 组件四：文本输入选择器（变量插入）
@@ -219,23 +226,110 @@ sequenceDiagram
 participant U as "用户"
 participant TS as "TextSelector"
 participant A as "WriteTextAction"
-U->>TS : 输入文本/点击“插入变量”
+U->>TS : 输入文本/点击"插入变量"
 TS->>TS : 动态生成变量菜单
 U->>TS : 选择变量并插入
-U->>TS : 点击“保存”
+U->>TS : 点击"保存"
 TS->>TS : 校验非空
 TS->>A : 写入 Configuration/ConfigurationSummary
 TS-->>U : 返回 true/false
 ```
 
-图表来源
+**图表来源**
 - [GUI/TextSelector.cs:25-41](file://GUI/TextSelector.cs#L25-L41)
 - [GUI/TextSelector.cs:53-76](file://GUI/TextSelector.cs#L53-L76)
 
-章节来源
+**章节来源**
 - [GUI/TextSelector.cs:11-77](file://GUI/TextSelector.cs#L11-L77)
 
-### 组件五：动作触发与配置联动
+### 组件五：命令行执行器（增强功能）
+新增的CommandSelector组件提供完整的命令行执行配置界面，支持工作目录、输出变量保存等功能。
+
+```mermaid
+flowchart TD
+Start(["加载控件"]) --> Init["初始化界面与语言资源"]
+Init --> VarType["初始化变量类型下拉框"]
+VarType --> Drag["注册工作目录拖放事件"]
+Drag --> LoadCfg["LoadConfig: 解析已有配置"]
+LoadCfg --> Wait["等待用户输入"]
+Wait --> Save["点击保存"]
+Save --> ValidateCmd{"命令是否为空?"}
+ValidateCmd --> |是| Fail["返回 false"]
+ValidateCmd --> |否| ValidateDir{"工作目录是否为空?"}
+ValidateDir --> |是| Build["构建JSON配置对象"]
+ValidateDir --> |否| CheckDir["校验路径是否为目录"]
+CheckDir --> DirValid{"路径有效?"}
+DirValid --> |否| Fail
+DirValid --> |是| Build
+Build --> Persist["写入 PluginAction.Configuration/Summary"]
+Persist --> Done(["完成"])
+```
+
+**图表来源**
+- [GUI/CommandSelector.cs:20-54](file://GUI/CommandSelector.cs#L20-L54)
+- [GUI/CommandSelector.cs:60-99](file://GUI/CommandSelector.cs#L60-L99)
+
+**章节来源**
+- [GUI/CommandSelector.cs:15-188](file://GUI/CommandSelector.cs#L15-L188)
+- [Actions/CommandlineAction.cs:17-84](file://Actions/CommandlineAction.cs#L17-L84)
+
+### 组件六：热键配置器（修饰键组合）
+HotkeyConfigurator提供完整的热键配置界面，支持多种修饰键组合和主键选择。
+
+```mermaid
+sequenceDiagram
+participant U as "用户"
+participant HK as "HotkeyConfigurator"
+participant A as "HotkeyAction"
+U->>HK : 选择修饰键组合
+U->>HK : 选择主键
+U->>HK : 点击"保存"
+HK->>HK : 序列化修饰键状态
+HK->>HK : 构建配置摘要
+HK->>A : 写入 Configuration/ConfigurationSummary
+HK-->>U : 返回 true
+```
+
+**图表来源**
+- [GUI/HotkeyConfigurator.cs:35-67](file://GUI/HotkeyConfigurator.cs#L35-L67)
+- [Actions/HotkeyAction.cs:42-131](file://Actions/HotkeyAction.cs#L42-L131)
+
+**章节来源**
+- [GUI/HotkeyConfigurator.cs:15-117](file://GUI/HotkeyConfigurator.cs#L15-L117)
+- [Actions/HotkeyAction.cs:19-133](file://Actions/HotkeyAction.cs#L19-L133)
+
+### 组件七：文件/文件夹选择器（增强拖放功能）
+FileFolderSelector支持拖放操作和路径类型验证，提供更友好的用户交互体验。
+
+```mermaid
+flowchart TD
+Start(["加载控件"]) --> Init["初始化界面与拖放支持"]
+Init --> Drag["注册拖放事件"]
+Drag --> LoadCfg["LoadConfig: 加载已有配置"]
+LoadCfg --> Wait["等待用户操作"]
+Wait --> Drop["拖放文件/文件夹"]
+Drop --> Browse["点击浏览按钮"]
+Browse --> Validate["校验路径类型"]
+Validate --> TypeCheck{"类型匹配?"}
+TypeCheck --> |否| Error["显示错误提示"]
+TypeCheck --> |是| ImportIcon{"是否为文件?"}
+ImportIcon --> |是| AskIcon["询问是否导入图标"]
+AskIcon --> |是| Import["导入文件图标"]
+AskIcon --> |否| Build["构建JSON配置对象"]
+Import --> Build
+Build --> Persist["写入 PluginAction.Configuration/Summary"]
+Persist --> Done(["完成"])
+Error --> Wait
+```
+
+**图表来源**
+- [GUI/FileFolderSelector.cs:26-56](file://GUI/FileFolderSelector.cs#L26-L56)
+- [GUI/FileFolderSelector.cs:86-141](file://GUI/FileFolderSelector.cs#L86-L141)
+
+**章节来源**
+- [GUI/FileFolderSelector.cs:17-224](file://GUI/FileFolderSelector.cs#L17-L224)
+
+### 组件八：动作触发与配置联动
 动作类通过GetActionConfigControl返回配置控件，并在Trigger中读取配置执行相应操作。
 
 ```mermaid
@@ -252,21 +346,21 @@ SYS-->>ACT : 完成
 ACT-->>AB : 结束
 ```
 
-图表来源
+**图表来源**
 - [Actions/HotkeyAction.cs:24-38](file://Actions/HotkeyAction.cs#L24-L38)
 - [Actions/IncreaseVolumeAction.cs:14-17](file://Actions/IncreaseVolumeAction.cs#L14-L17)
 - [Actions/DecreaseVolumeAction.cs:14-17](file://Actions/DecreaseVolumeAction.cs#L14-L17)
 - [Actions/MultiHotkeyAction.cs:23-48](file://Actions/MultiHotkeyAction.cs#L23-L48)
 
-章节来源
+**章节来源**
 - [Actions/HotkeyAction.cs:15-38](file://Actions/HotkeyAction.cs#L15-L38)
 - [Actions/IncreaseVolumeAction.cs:8-18](file://Actions/IncreaseVolumeAction.cs#L8-L18)
 - [Actions/DecreaseVolumeAction.cs:8-18](file://Actions/DecreaseVolumeAction.cs#L8-L18)
 - [Actions/MultiHotkeyAction.cs:11-56](file://Actions/MultiHotkeyAction.cs#L11-L56)
 
 ## 依赖关系分析
-- 插件入口Main.cs注册所有动作，形成“动作集合”。
-- 动作类通过GetActionConfigControl返回对应的配置控件，建立“动作-配置控件”映射。
+- 插件入口Main.cs注册所有动作，形成"动作集合"。
+- 动作类通过GetActionConfigControl返回对应的配置控件，建立"动作-配置控件"映射。
 - MVVM视图通过ViewModel访问Model，ViewModel依赖ISerializableConfiguration接口实现序列化/反序列化。
 - GUI控件直接或间接依赖语言资源管理器进行本地化文本显示。
 
@@ -281,14 +375,14 @@ GUIs --> LANG["语言资源管理器"]
 VIEWS --> LANG
 ```
 
-图表来源
+**图表来源**
 - [Main.cs:31-50](file://Main.cs#L31-L50)
 - [Actions/WindowsExplorerControlAction.cs:22-25](file://Actions/WindowsExplorerControlAction.cs#L22-L25)
 - [Views/MultiHotkeyActionConfigView.cs:12-16](file://Views/MultiHotkeyActionConfigView.cs#L12-L16)
 - [ViewModels/MultiHotkeyActionConfigViewModel.cs:30-34](file://ViewModels/MultiHotkeyActionConfigViewModel.cs#L30-L34)
 - [Models/MultiHotkeyActionConfigModel.cs:17-20](file://Models/MultiHotkeyActionConfigModel.cs#L17-L20)
 
-章节来源
+**章节来源**
 - [Main.cs:28-58](file://Main.cs#L28-L58)
 - [Windows Utils.csproj:42-47](file://Windows Utils.csproj#L42-L47)
 
@@ -297,10 +391,12 @@ VIEWS --> LANG
 - 序列化开销：配置模型使用JSON序列化，建议保持配置字段精简，避免频繁大对象序列化。
 - UI更新：ViewModel在保存时仅更新必要的摘要信息，减少不必要的UI刷新。
 - 计时器：插件主类启动定时器用于周期性任务，需合理设置间隔，避免占用过多CPU。
+- 文件操作优化：命令行执行器支持将输出保存到变量，减少重复执行成本。
 
-章节来源
+**章节来源**
 - [Actions/MultiHotkeyAction.cs:31-47](file://Actions/MultiHotkeyAction.cs#L31-L47)
 - [Main.cs:52-57](file://Main.cs#L52-L57)
+- [Actions/CommandlineAction.cs:34-74](file://Actions/CommandlineAction.cs#L34-L74)
 
 ## 故障排查指南
 - 保存失败
@@ -318,15 +414,27 @@ VIEWS --> LANG
   - 原因：未正确调用LoadConfig或未更新控件绑定。
   - 处理：在控件构造函数中调用LoadConfig；确保ViewModel.SetConfig更新摘要。
   - 参考路径：[GUI/ExplorerControlConfigurator.cs:14-27](file://GUI/ExplorerControlConfigurator.cs#L14-L27)、[ViewModels/MultiHotkeyActionConfigViewModel.cs:50-54](file://ViewModels/MultiHotkeyActionConfigViewModel.cs#L50-L54)
+- 路径验证错误
+  - 现象：文件/文件夹选择器提示路径类型不匹配。
+  - 原因：用户选择的路径类型与预期不符。
+  - 处理：确保选择正确的文件或文件夹类型，或调整选择器类型。
+  - 参考路径：[GUI/FileFolderSelector.cs:112-132](file://GUI/FileFolderSelector.cs#L112-L132)
+- 命令行执行失败
+  - 现象：命令无法执行或输出为空。
+  - 原因：命令无效、工作目录不存在或权限不足。
+  - 处理：检查命令语法、确认工作目录存在且可访问。
+  - 参考路径：[Actions/CommandlineAction.cs:36-74](file://Actions/CommandlineAction.cs#L36-L74)
 
-章节来源
+**章节来源**
 - [GUI/PowerOptionSelector.cs:35-66](file://GUI/PowerOptionSelector.cs#L35-L66)
 - [GUI/TextSelector.cs:25-41](file://GUI/TextSelector.cs#L25-L41)
 - [ViewModels/MultiHotkeyActionConfigViewModel.cs:36-54](file://ViewModels/MultiHotkeyActionConfigViewModel.cs#L36-L54)
 - [GUI/ExplorerControlConfigurator.cs:54-78](file://GUI/ExplorerControlConfigurator.cs#L54-L78)
+- [GUI/FileFolderSelector.cs:112-132](file://GUI/FileFolderSelector.cs#L112-L132)
+- [Actions/CommandlineAction.cs:36-74](file://Actions/CommandlineAction.cs#L36-L74)
 
 ## 结论
-本项目通过ActionConfigControl基类统一了配置控件的生命周期与保存机制，结合MVVM模式实现了清晰的职责分离。ViewModel层承担配置读取、设置与保存，Model层提供可序列化的配置结构，GUI层专注于用户交互与本地化。遵循本文的最佳实践与排障建议，可高效开发稳定可靠的GUI组件。
+本项目通过ActionConfigControl基类统一了配置控件的生命周期与保存机制，结合MVVM模式实现了清晰的职责分离。新增的CommandSelector、HotkeyConfigurator、PowerOptionSelector等组件丰富了GUI组件库，增强了文件/文件夹选择器和文本选择器的功能。ViewModel层承担配置读取、设置与保存，Model层提供可序列化的配置结构，GUI层专注于用户交互与本地化。遵循本文的最佳实践与排障建议，可高效开发稳定可靠的GUI组件。
 
 ## 附录：最佳实践与示例
 
@@ -334,22 +442,28 @@ VIEWS --> LANG
 - 数据验证
   - 在OnActionSave中进行必填字段与格式校验，失败时返回false并提示用户。
   - 对于枚举/列表等离散值，先解析再赋值，避免类型不匹配。
+  - 路径验证应包含存在性检查和类型检查。
 - 用户交互
   - 使用占位符文本提升输入体验；提供上下文菜单快速插入变量。
   - 控件初始化时调用LoadConfig，确保默认值正确显示。
+  - 支持拖放操作提升用户体验。
 - 响应式设计
   - 尽量使用异步执行长耗时操作，避免阻塞UI。
   - 在ViewModel中集中处理配置摘要生成，减少UI层负担。
+  - 合理使用消息框进行用户确认。
 - 状态管理
   - 对于需要同步按钮状态的动作，在执行前切换状态并在完成后恢复。
   - 使用Try/Catch包裹配置保存逻辑，记录错误日志便于排障。
+  - 提供详细的错误提示和回退机制。
 
-### 开发流程示例（以“文本输入选择器”为例）
+### 开发流程示例（以"命令行执行器"为例）
 - 步骤1：创建控件类，继承ActionConfigControl，构造函数接收PluginAction并初始化UI与语言资源。
-- 步骤2：实现OnActionSave：校验输入、构建JSON配置对象、写入PluginAction.Configuration与ConfigurationSummary。
+- 步骤2：实现OnActionSave：校验命令和工作目录、构建JSON配置对象、写入PluginAction.Configuration与ConfigurationSummary。
 - 步骤3：实现LoadConfig：解析已有配置并回填到控件。
 - 步骤4：在动作类的GetActionConfigControl中返回该控件实例。
+- 步骤5：在动作类中实现Trigger方法，解析配置并执行相应操作。
 
-章节来源
-- [GUI/TextSelector.cs:14-51](file://GUI/TextSelector.cs#L14-L51)
+**章节来源**
+- [GUI/CommandSelector.cs:15-188](file://GUI/CommandSelector.cs#L15-L188)
+- [Actions/CommandlineAction.cs:17-84](file://Actions/CommandlineAction.cs#L17-L84)
 - [Actions/WindowsExplorerControlAction.cs:22-25](file://Actions/WindowsExplorerControlAction.cs#L22-L25)
