@@ -80,7 +80,7 @@ partial class TextSelector
         // variablesContextMenu - 变量右键菜单
         //
         this.variablesContextMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));  // 深色背景
-        this.variablesContextMenu.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.variablesContextMenu.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.variablesContextMenu.Name = "variablesContextMenu";
         this.variablesContextMenu.ShowImageMargin = false;  // 不显示图片边距
         this.variablesContextMenu.Size = new System.Drawing.Size(36, 4);
