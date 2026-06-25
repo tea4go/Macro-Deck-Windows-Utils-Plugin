@@ -132,7 +132,7 @@ partial class HotkeyConfigurator
         //
         this.lblDetails.ActiveLinkColor = System.Drawing.Color.Silver;
         this.lblDetails.AutoSize = true;
-        this.lblDetails.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.lblDetails.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblDetails.LinkColor = System.Drawing.Color.Silver;
         this.lblDetails.Location = new System.Drawing.Point(666, 126);
         this.lblDetails.Name = "lblDetails";

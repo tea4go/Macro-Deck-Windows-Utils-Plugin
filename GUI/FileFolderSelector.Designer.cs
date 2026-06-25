@@ -57,7 +57,7 @@ partial class FileFolderSelector
         //
         // lblPath
         //
-        this.lblPath.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.lblPath.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblPath.Location = new System.Drawing.Point(3, 121);
         this.lblPath.Name = "lblPath";
         this.lblPath.Size = new System.Drawing.Size(83, 29);
@@ -69,7 +69,7 @@ partial class FileFolderSelector
         //
         this.path.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.path.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.path.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.path.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.path.Icon = null;
         this.path.Location = new System.Drawing.Point(92, 121);
         this.path.Multiline = false;
@@ -86,7 +86,7 @@ partial class FileFolderSelector
         //
         // lblChoose
         //
-        this.lblChoose.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.lblChoose.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblChoose.Location = new System.Drawing.Point(3, 184);
         this.lblChoose.Name = "lblChoose";
         this.lblChoose.Size = new System.Drawing.Size(709, 64);

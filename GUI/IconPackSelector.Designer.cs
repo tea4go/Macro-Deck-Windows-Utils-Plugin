@@ -40,7 +40,7 @@ partial class IconPackSelector
         this.iconPacks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.iconPacks.Cursor = System.Windows.Forms.Cursors.Hand;
         this.iconPacks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        this.iconPacks.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.iconPacks.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.iconPacks.Icon = null;
         this.iconPacks.Location = new System.Drawing.Point(9, 20);
         this.iconPacks.Name = "iconPacks";

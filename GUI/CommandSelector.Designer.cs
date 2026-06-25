@@ -45,7 +45,7 @@ partial class CommandSelector
         //
         this.workingDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.workingDirectory.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.workingDirectory.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+        this.workingDirectory.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
         this.workingDirectory.Icon = null;
         this.workingDirectory.Location = new System.Drawing.Point(183, 144);
         this.workingDirectory.Multiline = false;
@@ -62,7 +62,7 @@ partial class CommandSelector
         //
         // lblWorkingDirectory
         //
-        this.lblWorkingDirectory.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.lblWorkingDirectory.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblWorkingDirectory.Location = new System.Drawing.Point(3, 144);
         this.lblWorkingDirectory.Name = "lblWorkingDirectory";
         this.lblWorkingDirectory.Size = new System.Drawing.Size(174, 29);
@@ -73,7 +73,7 @@ partial class CommandSelector
         //
         // lblCommand
         //
-        this.lblCommand.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.lblCommand.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblCommand.Location = new System.Drawing.Point(3, 63);
         this.lblCommand.Name = "lblCommand";
         this.lblCommand.Size = new System.Drawing.Size(174, 75);
@@ -85,7 +85,7 @@ partial class CommandSelector
         //
         this.command.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.command.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.command.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.command.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.command.Icon = null;
         this.command.Location = new System.Drawing.Point(183, 63);
         this.command.Multiline = true;
@@ -122,12 +122,12 @@ partial class CommandSelector
         //
         // checkSaveVariable
         //
-        this.checkSaveVariable.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+        this.checkSaveVariable.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.checkSaveVariable.Location = new System.Drawing.Point(3, 180);
         this.checkSaveVariable.Name = "checkSaveVariable";
         this.checkSaveVariable.Size = new System.Drawing.Size(174, 49);
         this.checkSaveVariable.TabIndex = 10;
-        this.checkSaveVariable.AutoSize = true;      
+        this.checkSaveVariable.AutoSize = true;
         this.checkSaveVariable.Text = "Save output to variable";
         this.checkSaveVariable.TextAlign = System.Drawing.ContentAlignment.TopLeft;
         this.checkSaveVariable.UseVisualStyleBackColor = true;
@@ -137,7 +137,7 @@ partial class CommandSelector
         //
         this.variableName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.variableName.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.variableName.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+        this.variableName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
         this.variableName.Icon = null;
         this.variableName.Location = new System.Drawing.Point(183, 179);
         this.variableName.Multiline = false;
