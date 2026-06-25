@@ -7,14 +7,14 @@ namespace SuchByte.WindowsUtils.GUI;
 partial class ExplorerControlConfigurator
 {
     /// <summary>
-    /// Erforderliche Designervariable.
+    /// 必需的窗体设计器变量。
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
     /// <summary>
-    /// Verwendete Ressourcen bereinigen.
+    /// 释放正在使用的资源。
     /// </summary>
-    /// <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
+    /// <param name="disposing">如果应释放托管资源，则为 true；否则为 false。</param>
     protected override void Dispose(bool disposing)
     {
         if (disposing && (components != null))
@@ -24,36 +24,36 @@ partial class ExplorerControlConfigurator
         base.Dispose(disposing);
     }
 
-    #region Vom Komponenten-Designer generierter Code
+    #region 组件设计器生成的代码
 
     /// <summary>
-    /// Erforderliche Methode für die Designerunterstützung.
-    /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+    /// 设计器支持所需的方法 - 不要使用代码编辑器修改此方法的内容。
     /// </summary>
     private void InitializeComponent()
     {
+        // 创建资源管理器窗口控制动作的配置界面控件
         this.lblAction = new System.Windows.Forms.Label();
         this.radioBack = new SuchByte.MacroDeck.GUI.CustomControls.TabRadioButton();
         this.radioForward = new SuchByte.MacroDeck.GUI.CustomControls.TabRadioButton();
         this.radioHome = new SuchByte.MacroDeck.GUI.CustomControls.TabRadioButton();
         this.radioRefresh = new SuchByte.MacroDeck.GUI.CustomControls.TabRadioButton();
-        this.SuspendLayout();
+        this.SuspendLayout();  // 挂起布局，批量设置属性以提高性能
         //
-        // lblAction
+        // lblAction - 操作类型标签
         //
         this.lblAction.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.lblAction.ForeColor = System.Drawing.Color.White;
+        this.lblAction.ForeColor = System.Drawing.Color.White;  // 白色前景文字，适配深色主题
         this.lblAction.Location = new System.Drawing.Point(185, 85);
         this.lblAction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
         this.lblAction.Name = "lblAction";
         this.lblAction.Size = new System.Drawing.Size(344, 23);
         this.lblAction.TabIndex = 5;
         this.lblAction.Text = "Action";
-        this.lblAction.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        this.lblAction.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;  // 居中显示
         //
-        // radioBack
+        // radioBack - "后退"单选按钮（默认选中）
         //
-        this.radioBack.Checked = true;
+        this.radioBack.Checked = true;  // 默认选中后退操作
         this.radioBack.Cursor = System.Windows.Forms.Cursors.Hand;
         this.radioBack.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.radioBack.Location = new System.Drawing.Point(102, 124);
@@ -64,7 +64,7 @@ partial class ExplorerControlConfigurator
         this.radioBack.Text = "Back";
         this.radioBack.UseVisualStyleBackColor = true;
         //
-        // radioForward
+        // radioForward - "前进"单选按钮
         //
         this.radioForward.Cursor = System.Windows.Forms.Cursors.Hand;
         this.radioForward.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -75,7 +75,7 @@ partial class ExplorerControlConfigurator
         this.radioForward.Text = "Forward";
         this.radioForward.UseVisualStyleBackColor = true;
         //
-        // radioHome
+        // radioHome - "主页"单选按钮
         //
         this.radioHome.Cursor = System.Windows.Forms.Cursors.Hand;
         this.radioHome.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -86,7 +86,7 @@ partial class ExplorerControlConfigurator
         this.radioHome.Text = "Home";
         this.radioHome.UseVisualStyleBackColor = true;
         //
-        // radioRefresh
+        // radioRefresh - "刷新"单选按钮
         //
         this.radioRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
         this.radioRefresh.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -97,7 +97,7 @@ partial class ExplorerControlConfigurator
         this.radioRefresh.Text = "Refresh";
         this.radioRefresh.UseVisualStyleBackColor = true;
         //
-        // ExplorerControlConfigurator
+        // ExplorerControlConfigurator - 资源管理器控制配置器主控件
         //
         this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,14 +107,15 @@ partial class ExplorerControlConfigurator
         this.Controls.Add(this.radioBack);
         this.Controls.Add(this.lblAction);
         this.Name = "ExplorerControlConfigurator";
-        this.ResumeLayout(false);
+        this.ResumeLayout(false);  // 恢复布局，应用所有属性设置
 
     }
 
     #endregion
-    private System.Windows.Forms.Label lblAction;
-    private TabRadioButton radioBack;
-    private TabRadioButton radioForward;
-    private TabRadioButton radioHome;
-    private TabRadioButton radioRefresh;
+    // 字段声明：资源管理器控制配置器的所有UI控件
+    private System.Windows.Forms.Label lblAction;  // 操作类型标签
+    private TabRadioButton radioBack;  // "后退"单选按钮
+    private TabRadioButton radioForward;  // "前进"单选按钮
+    private TabRadioButton radioHome;  // "主页"单选按钮
+    private TabRadioButton radioRefresh;  // "刷新"单选按钮
 }

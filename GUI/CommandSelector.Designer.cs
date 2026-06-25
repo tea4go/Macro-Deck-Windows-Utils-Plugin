@@ -6,14 +6,14 @@ namespace SuchByte.WindowsUtils.GUI;
 partial class CommandSelector
 {
     /// <summary>
-    /// Erforderliche Designervariable.
+    /// 必需的窗体设计器变量。
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
     /// <summary>
-    /// Verwendete Ressourcen bereinigen.
+    /// 释放正在使用的资源。
     /// </summary>
-    /// <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
+    /// <param name="disposing">如果应释放托管资源，则为 true；否则为 false。</param>
     protected override void Dispose(bool disposing)
     {
         if (disposing && (components != null))
@@ -23,14 +23,14 @@ partial class CommandSelector
         base.Dispose(disposing);
     }
 
-    #region Vom Komponenten-Designer generierter Code
+    #region 组件设计器生成的代码
 
     /// <summary>
-    /// Erforderliche Methode für die Designerunterstützung.
-    /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+    /// 设计器支持所需的方法 - 不要使用代码编辑器修改此方法的内容。
     /// </summary>
     private void InitializeComponent()
     {
+        // 创建命令行执行动作的配置界面控件
         this.workingDirectory = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
         this.lblWorkingDirectory = new System.Windows.Forms.Label();
         this.lblCommand = new System.Windows.Forms.Label();
@@ -39,9 +39,9 @@ partial class CommandSelector
         this.checkSaveVariable = new System.Windows.Forms.CheckBox();
         this.variableName = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
         this.variableType = new SuchByte.MacroDeck.GUI.CustomControls.RoundedComboBox();
-        this.SuspendLayout();
+        this.SuspendLayout();  // 挂起布局，批量设置属性以提高性能
         //
-        // workingDirectory
+        // workingDirectory - 工作目录输入框
         //
         this.workingDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.workingDirectory.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -60,7 +60,7 @@ partial class CommandSelector
         this.workingDirectory.TabIndex = 8;
         this.workingDirectory.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         //
-        // lblWorkingDirectory
+        // lblWorkingDirectory - 工作目录标签
         //
         this.lblWorkingDirectory.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblWorkingDirectory.Location = new System.Drawing.Point(3, 144);
@@ -71,7 +71,7 @@ partial class CommandSelector
         this.lblWorkingDirectory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         this.lblWorkingDirectory.Click += new System.EventHandler(this.lblWorkingDirectory_Click);
         //
-        // lblCommand
+        // lblCommand - 命令行标签
         //
         this.lblCommand.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.lblCommand.Location = new System.Drawing.Point(3, 63);
@@ -81,14 +81,14 @@ partial class CommandSelector
         this.lblCommand.Text = "Command:";
         this.lblCommand.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         //
-        // command
+        // command - 命令行输入框（支持多行）
         //
         this.command.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.command.Cursor = System.Windows.Forms.Cursors.Hand;
         this.command.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.command.Icon = null;
         this.command.Location = new System.Drawing.Point(183, 63);
-        this.command.Multiline = true;
+        this.command.Multiline = true;  // 支持多行输入
         this.command.Name = "command";
         this.command.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
         this.command.PasswordChar = false;
@@ -100,15 +100,15 @@ partial class CommandSelector
         this.command.TabIndex = 5;
         this.command.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         //
-        // btnBrowse
+        // btnBrowse - 浏览按钮
         //
         this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
-        this.btnBrowse.BorderRadius = 8;
+        this.btnBrowse.BorderRadius = 8;  // 圆角边框
         this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
         this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
         this.btnBrowse.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.btnBrowse.ForeColor = System.Drawing.Color.White;
-        this.btnBrowse.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(184)))));
+        this.btnBrowse.ForeColor = System.Drawing.Color.White;  // 白色前景文字
+        this.btnBrowse.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(184)))));  // 悬停时的颜色
         this.btnBrowse.Icon = null;
         this.btnBrowse.Location = new System.Drawing.Point(658, 144);
         this.btnBrowse.Name = "btnBrowse";
@@ -120,20 +120,20 @@ partial class CommandSelector
         this.btnBrowse.UseVisualStyleBackColor = true;
         this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
         //
-        // checkSaveVariable
+        // checkSaveVariable - 保存到变量的复选框
         //
         this.checkSaveVariable.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.checkSaveVariable.Location = new System.Drawing.Point(3, 180);
         this.checkSaveVariable.Name = "checkSaveVariable";
         this.checkSaveVariable.Size = new System.Drawing.Size(174, 49);
         this.checkSaveVariable.TabIndex = 10;
-        this.checkSaveVariable.AutoSize = true;
+        this.checkSaveVariable.AutoSize = true;  // 自动调整大小
         this.checkSaveVariable.Text = "Save output to variable";
         this.checkSaveVariable.TextAlign = System.Drawing.ContentAlignment.TopLeft;
         this.checkSaveVariable.UseVisualStyleBackColor = true;
-        this.checkSaveVariable.CheckedChanged += new System.EventHandler(this.CheckSaveVariable_CheckedChanged);
+        this.checkSaveVariable.CheckedChanged += new System.EventHandler(this.CheckSaveVariable_CheckedChanged);  // 勾选状态变更事件
         //
-        // variableName
+        // variableName - 变量名输入框（默认隐藏）
         //
         this.variableName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.variableName.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -151,25 +151,25 @@ partial class CommandSelector
         this.variableName.Size = new System.Drawing.Size(386, 29);
         this.variableName.TabIndex = 11;
         this.variableName.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-        this.variableName.Visible = false;
+        this.variableName.Visible = false;  // 初始隐藏，勾选复选框后显示
         //
-        // variableType
+        // variableType - 变量类型下拉框（默认隐藏）
         //
         this.variableType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
         this.variableType.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.variableType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        this.variableType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;  // 只允许选择，不允许输入
         this.variableType.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
         this.variableType.Icon = null;
         this.variableType.Location = new System.Drawing.Point(575, 180);
         this.variableType.Name = "variableType";
         this.variableType.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
-        this.variableType.SelectedIndex = -1;
+        this.variableType.SelectedIndex = -1;  // 无默认选中项
         this.variableType.SelectedItem = null;
         this.variableType.Size = new System.Drawing.Size(121, 28);
         this.variableType.TabIndex = 12;
-        this.variableType.Visible = false;
+        this.variableType.Visible = false;  // 初始隐藏，勾选复选框后显示
         //
-        // CommandSelector
+        // CommandSelector - 命令行选择器主控件
         //
         this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -182,18 +182,19 @@ partial class CommandSelector
         this.Controls.Add(this.lblCommand);
         this.Controls.Add(this.command);
         this.Name = "CommandSelector";
-        this.ResumeLayout(false);
+        this.ResumeLayout(false);  // 恢复布局，应用所有属性设置
 
     }
 
     #endregion
 
-    private MacroDeck.GUI.CustomControls.RoundedTextBox workingDirectory;
-    private System.Windows.Forms.Label lblWorkingDirectory;
-    private System.Windows.Forms.Label lblCommand;
-    private MacroDeck.GUI.CustomControls.RoundedTextBox command;
-    private MacroDeck.GUI.CustomControls.ButtonPrimary btnBrowse;
-    private System.Windows.Forms.CheckBox checkSaveVariable;
-    private MacroDeck.GUI.CustomControls.RoundedTextBox variableName;
-    private RoundedComboBox variableType;
+    // 字段声明：命令行选择器的所有UI控件
+    private MacroDeck.GUI.CustomControls.RoundedTextBox workingDirectory;  // 工作目录输入框
+    private System.Windows.Forms.Label lblWorkingDirectory;  // 工作目录标签
+    private System.Windows.Forms.Label lblCommand;  // 命令行标签
+    private MacroDeck.GUI.CustomControls.RoundedTextBox command;  // 命令行输入框
+    private MacroDeck.GUI.CustomControls.ButtonPrimary btnBrowse;  // 浏览按钮
+    private System.Windows.Forms.CheckBox checkSaveVariable;  // 保存到变量复选框
+    private MacroDeck.GUI.CustomControls.RoundedTextBox variableName;  // 变量名输入框
+    private RoundedComboBox variableType;  // 变量类型下拉选择框
 }
