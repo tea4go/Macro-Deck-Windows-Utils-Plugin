@@ -2,11 +2,11 @@
 .SYNOPSIS
     Macro Deck Windows Utils 插件的自动化端到端测试。
 .DESCRIPTION
-    可选更新插件到最新版本，重启 Macro Deck，以已配对客户端身份连接
+    重启 Macro Deck 以重新加载已部署的插件，以已配对客户端身份连接
     Macro Deck WebSocket 服务器，模拟按下 EditPlus 按钮，然后通过 Macro Deck
     日志和 EditPlus 进程双重验证测试结果。
-.PARAMETER SkipUpdate
-    跳过插件更新步骤，仅重启 Macro Deck 并使用磁盘上已有的插件 DLL 进行测试。
+.DESCRIPTION
+    插件的构建与部署由 run_win.ps1 负责（-Build -Run）。本脚本仅负责测试。
 .PARAMETER ClientId
     用于 WebSocket 握手的已配对 Macro Deck 客户端 ID。必须已存在于
     devices.json 中（Blocked=false），以避免授权弹窗。
@@ -21,12 +21,10 @@
 .PARAMETER ExpectProcess
     按下按钮时期望启动的进程名称（默认 editplus）。
 .EXAMPLE
-    powershell -ExecutionPolicy Bypass -File .\test-editplus.ps1 -SkipUpdate
     powershell -ExecutionPolicy Bypass -File .\test-editplus.ps1
 #>
 
 param(
-    [switch]$SkipUpdate,
     [string]$ClientId = "lvgoejr",
     [int]$Row = 0,
     [int]$Column = 1,
@@ -37,6 +35,33 @@ param(
 
 $ErrorActionPreference = "Stop"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+
+# ---- 无参数时显示帮助 -----------------------------------------------
+if ($PSBoundParameters.Count -eq 0) {
+    Write-Host @"
+用法: .\test-editplus.ps1 [-ClientId <ID>] [-Row <行>] [-Column <列>]
+                        [-ServerHost <主机>] [-Port <端口>] [-ExpectProcess <进程名>]
+
+参数说明:
+  -ClientId       已配对的 Macro Deck 客户端 ID（默认: lvgoejr）
+  -Row            EditPlus 按钮所在的行号（默认: 0）
+  -Column         EditPlus 按钮所在的列号（默认: 1）
+  -ServerHost     Macro Deck 主机地址（默认: localhost）
+  -Port           Macro Deck WebSocket 端口（默认: 8191）
+  -ExpectProcess  按下按钮时期望启动的进程名称（默认: editplus）
+
+前置条件:
+  1. 先通过 run_win.ps1 -Build -Run 构建并部署最新插件
+  2. 确保 Macro Deck 已安装于 C:\Program Files\Macro Deck\
+  3. 确保 -ClientId 已存在于 devices.json 中（Blocked=false）
+
+示例:
+  .\test-editplus.ps1
+  .\test-editplus.ps1 -Row 1 -Column 2
+  .\test-editplus.ps1 -ExpectProcess notepad -ClientId abc123
+"@
+    exit 0
+}
 
 $MacroDeckProcessName = "Macro Deck 2"
 $MacroDeckExe = "C:\Program Files\Macro Deck\Macro Deck 2.exe"
@@ -70,32 +95,19 @@ Write-Host "日志文件: $logPath (基线偏移 $logBaseline 字节)"
 $pidBaseline = @(Get-Process -Name $ExpectProcess -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Id)
 Write-Host "EditPlus 基线 PID: $([string]::Join(',', $pidBaseline))"
 
-# ---- 1. 更新或重启 --------------------------------------------------
-if (-not $SkipUpdate) {
-    Write-Step "正在更新插件到最新版本并重启 Macro Deck..."
-    $updater = Join-Path $ScriptDir "update-plugin.ps1"
-    if (-not (Test-Path $updater)) {
-        Write-Fail "未找到 update-plugin.ps1，请确保与本脚本在同一目录: $updater"
-        exit 1
-    }
-    & powershell -NoProfile -ExecutionPolicy Bypass -File $updater -Force -AutoRestart
-    if ($LASTEXITCODE -ne 0) {
-        Write-Fail "update-plugin.ps1 退出，返回码 $LASTEXITCODE"
-        exit 1
-    }
+# ---- 1. 重启 Macro Deck 以重新加载插件 -----------------------------
+# 插件的构建与部署由 run_win.ps1 负责（-Build -Run），本脚本不再重复下载安装。
+Write-Step "正在重启 Macro Deck 以重新加载磁盘上的插件..."
+$proc = Get-Process -Name $MacroDeckProcessName -ErrorAction SilentlyContinue
+if ($proc) {
+    $proc | Stop-Process -Force
+    Start-Sleep -Seconds 2
+}
+if (Test-Path $MacroDeckExe) {
+    Start-Process -FilePath $MacroDeckExe
 } else {
-    Write-Step "跳过更新，正在重启 Macro Deck 以重新加载磁盘上的插件..."
-    $proc = Get-Process -Name $MacroDeckProcessName -ErrorAction SilentlyContinue
-    if ($proc) {
-        $proc | Stop-Process -Force
-        Start-Sleep -Seconds 2
-    }
-    if (Test-Path $MacroDeckExe) {
-        Start-Process -FilePath $MacroDeckExe
-    } else {
-        Write-Fail "未找到 Macro Deck 可执行文件: $MacroDeckExe"
-        exit 1
-    }
+    Write-Fail "未找到 Macro Deck 可执行文件: $MacroDeckExe"
+    exit 1
 }
 
 # ---- 2. 等待 WebSocket 端口 --------------------------------------------
