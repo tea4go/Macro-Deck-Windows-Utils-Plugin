@@ -1,27 +1,25 @@
 <#
 .SYNOPSIS
-    Automated end-to-end test for the Macro Deck Windows Utils plugin.
+    Macro Deck Windows Utils 插件的自动化端到端测试。
 .DESCRIPTION
-    Optionally updates the plugin to the latest release, restarts Macro Deck,
-    connects to the Macro Deck WebSocket server as a paired client, simulates
-    pressing the EditPlus button, then verifies the result through both the
-    Macro Deck log and the EditPlus process.
+    可选更新插件到最新版本，重启 Macro Deck，以已配对客户端身份连接
+    Macro Deck WebSocket 服务器，模拟按下 EditPlus 按钮，然后通过 Macro Deck
+    日志和 EditPlus 进程双重验证测试结果。
 .PARAMETER SkipUpdate
-    Skip the plugin update. Only restart Macro Deck and run the test against
-    the plugin DLL currently on disk.
+    跳过插件更新步骤，仅重启 Macro Deck 并使用磁盘上已有的插件 DLL 进行测试。
 .PARAMETER ClientId
-    Paired Macro Deck client id used for the WebSocket handshake. Must already
-    exist in devices.json (Blocked=false) to avoid an approval prompt.
+    用于 WebSocket 握手的已配对 Macro Deck 客户端 ID。必须已存在于
+    devices.json 中（Blocked=false），以避免授权弹窗。
 .PARAMETER Row
-    Button row of the EditPlus button (default 0).
+    EditPlus 按钮所在的行号（默认 0）。
 .PARAMETER Column
-    Button column of the EditPlus button (default 1).
+    EditPlus 按钮所在的列号（默认 1）。
 .PARAMETER ServerHost
-    Macro Deck host (default localhost).
+    Macro Deck 主机地址（默认 localhost）。
 .PARAMETER Port
-    Macro Deck WebSocket/HTTP port (default 8191).
+    Macro Deck WebSocket/HTTP 端口（默认 8191）。
 .PARAMETER ExpectProcess
-    Process name expected to start when the button is pressed (default editplus).
+    按下按钮时期望启动的进程名称（默认 editplus）。
 .EXAMPLE
     powershell -ExecutionPolicy Bypass -File .\test-editplus.ps1 -SkipUpdate
     powershell -ExecutionPolicy Bypass -File .\test-editplus.ps1
@@ -47,46 +45,46 @@ $PluginDir = Join-Path $env:APPDATA "Macro Deck\plugins\$PluginId"
 $LogDir = Join-Path $env:APPDATA "Macro Deck\logs"
 $ButtonPos = "{0}_{1}" -f $Row, $Column
 
-# ---- result tracking -------------------------------------------------------
+# ---- 结果跟踪 -------------------------------------------------------
 $script:Results = [ordered]@{}
 function Set-Result($Name, $Passed, $Detail) {
     $script:Results[$Name] = [pscustomobject]@{ Passed = [bool]$Passed; Detail = $Detail }
 }
 
-function Write-Step($Message) { Write-Host "[INFO] $Message" -ForegroundColor Cyan }
-function Write-Ok($Message)   { Write-Host "[ OK ] $Message" -ForegroundColor Green }
-function Write-Warn($Message) { Write-Host "[WARN] $Message" -ForegroundColor Yellow }
-function Write-Fail($Message) { Write-Host "[FAIL] $Message" -ForegroundColor Red }
+function Write-Step($Message) { Write-Host "[信息] $Message" -ForegroundColor Cyan }
+function Write-Ok($Message)   { Write-Host "[通过] $Message" -ForegroundColor Green }
+function Write-Warn($Message) { Write-Host "[警告] $Message" -ForegroundColor Yellow }
+function Write-Fail($Message) { Write-Host "[失败] $Message" -ForegroundColor Red }
 
-Write-Host "=== Macro Deck Windows Utils - EditPlus Auto Test ===" -ForegroundColor Cyan
-Write-Host "Target button: row=$Row column=$Column (Message='$ButtonPos'), client='$ClientId'"
+Write-Host "=== Macro Deck Windows Utils - EditPlus 自动化测试 ===" -ForegroundColor Cyan
+Write-Host "目标按钮: 行=$Row 列=$Column (消息='$ButtonPos'), 客户端='$ClientId'"
 
-# ---- 0. baselines (BEFORE restart, so the plugin Enable() log line counts as new) ----
+# ---- 0. 基线记录（在重启前记录，这样插件的 Enable() 日志行会被视为新增内容） ----
 $today = Get-Date -Format "yyyyMMdd"
 $logPath = Join-Path $LogDir "log$today.txt"
 $logBaseline = 0
 if (Test-Path $logPath) {
     $logBaseline = (Get-Item $logPath).Length
 }
-Write-Host "Log file: $logPath (baseline offset $logBaseline bytes)"
+Write-Host "日志文件: $logPath (基线偏移 $logBaseline 字节)"
 $pidBaseline = @(Get-Process -Name $ExpectProcess -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Id)
-Write-Host "EditPlus baseline PIDs: $([string]::Join(',', $pidBaseline))"
+Write-Host "EditPlus 基线 PID: $([string]::Join(',', $pidBaseline))"
 
-# ---- 1. update or restart --------------------------------------------------
+# ---- 1. 更新或重启 --------------------------------------------------
 if (-not $SkipUpdate) {
-    Write-Step "Updating plugin to latest release and restarting Macro Deck..."
+    Write-Step "正在更新插件到最新版本并重启 Macro Deck..."
     $updater = Join-Path $ScriptDir "update-plugin.ps1"
     if (-not (Test-Path $updater)) {
-        Write-Fail "update-plugin.ps1 not found next to this script: $updater"
+        Write-Fail "未找到 update-plugin.ps1，请确保与本脚本在同一目录: $updater"
         exit 1
     }
     & powershell -NoProfile -ExecutionPolicy Bypass -File $updater -Force -AutoRestart
     if ($LASTEXITCODE -ne 0) {
-        Write-Fail "update-plugin.ps1 exited with code $LASTEXITCODE"
+        Write-Fail "update-plugin.ps1 退出，返回码 $LASTEXITCODE"
         exit 1
     }
 } else {
-    Write-Step "Skip update. Restarting Macro Deck to reload plugin from disk..."
+    Write-Step "跳过更新，正在重启 Macro Deck 以重新加载磁盘上的插件..."
     $proc = Get-Process -Name $MacroDeckProcessName -ErrorAction SilentlyContinue
     if ($proc) {
         $proc | Stop-Process -Force
@@ -95,13 +93,13 @@ if (-not $SkipUpdate) {
     if (Test-Path $MacroDeckExe) {
         Start-Process -FilePath $MacroDeckExe
     } else {
-        Write-Fail "Macro Deck executable not found: $MacroDeckExe"
+        Write-Fail "未找到 Macro Deck 可执行文件: $MacroDeckExe"
         exit 1
     }
 }
 
-# ---- 2. wait for WebSocket port --------------------------------------------
-Write-Step "Waiting for Macro Deck port $Port to accept connections..."
+# ---- 2. 等待 WebSocket 端口 --------------------------------------------
+Write-Step "正在等待 Macro Deck 端口 $Port 接受连接..."
 $portReady = $false
 $deadline = (Get-Date).AddSeconds(40)
 while ((Get-Date) -lt $deadline) {
@@ -119,21 +117,21 @@ while ((Get-Date) -lt $deadline) {
     Start-Sleep -Milliseconds 800
 }
 if ($portReady) {
-    Write-Ok "Port $Port is ready."
+    Write-Ok "端口 $Port 已就绪。"
 } else {
-    Write-Fail "Port $Port did not become ready in time."
+    Write-Fail "端口 $Port 未在规定时间内就绪。"
 }
 Set-Result "PortReady" $portReady "tcp ${ServerHost}:$Port"
 if (-not $portReady) {
-    # cannot continue without server
+    # 无法在无服务器的情况下继续
     Write-Host ""
-    Write-Host "=== RESULT: FAIL (server not reachable) ===" -ForegroundColor Red
+    Write-Host "=== 测试结果: 失败（服务器不可达） ===" -ForegroundColor Red
     exit 1
 }
-# give the plugin Enable() a moment to run after the port opens
+# 端口打开后，给插件的 Enable() 留一些执行时间
 Start-Sleep -Seconds 3
 
-# ---- 5. WebSocket trigger --------------------------------------------------
+# ---- 5. WebSocket 触发 --------------------------------------------------
 function Invoke-WebSocketTrigger($Uri) {
     $ws = New-Object System.Net.WebSockets.ClientWebSocket
     $cts = New-Object System.Threading.CancellationTokenSource
@@ -162,12 +160,12 @@ function Invoke-WebSocketTrigger($Uri) {
             return $sb.ToString()
         }
 
-        # handshake
+        # 握手
         Send-Json ([ordered]@{ Method = "CONNECTED"; "Client-Id" = $ClientId; API = "20"; "Device-Type" = "Web" })
         Send-Json ([ordered]@{ Method = "GET_BUTTONS" })
         $handshake = Receive-Text
 
-        # press + release (EditPlus action is bound to ActionsRelease)
+        # 按下 + 释放（EditPlus 动作绑定到 ActionsRelease）
         Send-Json ([ordered]@{ Method = "BUTTON_PRESS"; Message = $ButtonPos })
         Start-Sleep -Milliseconds 150
         Send-Json ([ordered]@{ Method = "BUTTON_RELEASE"; Message = $ButtonPos })
@@ -186,33 +184,33 @@ function Invoke-WebSocketTrigger($Uri) {
     }
 }
 
-Write-Step "Connecting WebSocket and pressing EditPlus button ($ButtonPos)..."
+Write-Step "正在连接 WebSocket 并按下 EditPlus 按钮 ($ButtonPos)..."
 $handshakeOk = $false
 $handshakeText = $null
 $wsErr = $null
 foreach ($uri in @("ws://${ServerHost}:${Port}", "ws://${ServerHost}:${Port}/ws")) {
     try {
-        Write-Host "  trying $uri"
+        Write-Host "  尝试连接 $uri"
         $handshakeText = Invoke-WebSocketTrigger $uri
         $handshakeOk = $true
-        Write-Ok "WebSocket session completed via $uri"
+        Write-Ok "WebSocket 会话已通过 $uri 完成"
         break
     } catch {
         $wsErr = $_.Exception.Message
-        Write-Warn "  failed: $wsErr"
+        Write-Warn "  连接失败: $wsErr"
     }
 }
-Set-Result "WebSocketHandshake" $handshakeOk $(if ($handshakeOk) { "connected & messages sent" } else { $wsErr })
+Set-Result "WebSocketHandshake" $handshakeOk $(if ($handshakeOk) { "已连接并发送消息" } else { $wsErr })
 
 if ($handshakeText) {
     $preview = $handshakeText
     if ($preview.Length -gt 600) { $preview = $preview.Substring(0, 600) + "..." }
-    Write-Host "GET_BUTTONS response preview:" -ForegroundColor Gray
+    Write-Host "GET_BUTTONS 响应预览:" -ForegroundColor Gray
     Write-Host $preview -ForegroundColor DarkGray
 }
 
-# ---- 6. verify: log + process ----------------------------------------------
-Write-Step "Verifying via log and EditPlus process..."
+# ---- 6. 验证：日志 + 进程 ----------------------------------------------
+Write-Step "正在通过日志和 EditPlus 进程进行验证..."
 
 $pluginLoaded = $false
 $pluginError = $false
@@ -221,7 +219,7 @@ $newLog = ""
 
 $verifyDeadline = (Get-Date).AddSeconds(12)
 while ((Get-Date) -lt $verifyDeadline) {
-    # read new log content
+    # 读取新增日志内容
     if (Test-Path $logPath) {
         try {
             $fs = [System.IO.File]::Open($logPath, 'Open', 'Read', 'ReadWrite')
@@ -238,7 +236,7 @@ while ((Get-Date) -lt $verifyDeadline) {
     if ($newLog -match "Windows Utils plugin enabled\. Actions=") { $pluginLoaded = $true }
     if ($newLog -match "\[Windows Utils\].*(ERR|Error)") { $pluginError = $true }
 
-    # check for a new EditPlus process
+    # 检查是否有新的 EditPlus 进程
     $nowPids = @(Get-Process -Name $ExpectProcess -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Id)
     $newPids = $nowPids | Where-Object { $pidBaseline -notcontains $_ }
     if ($newPids.Count -gt 0) { $editplusStarted = $true }
@@ -247,25 +245,25 @@ while ((Get-Date) -lt $verifyDeadline) {
     Start-Sleep -Milliseconds 700
 }
 
-if ($pluginLoaded) { Write-Ok "Plugin loaded (found 'Windows Utils plugin enabled' in log)." }
-else { Write-Fail "Plugin load line not found in new log output." }
-Set-Result "PluginLoaded" $pluginLoaded "log marker"
+if ($pluginLoaded) { Write-Ok "插件已加载（在日志中发现 'Windows Utils plugin enabled'）。" }
+else { Write-Fail "未在新日志中发现插件加载行。" }
+Set-Result "PluginLoaded" $pluginLoaded "日志标记"
 
-if (-not $pluginError) { Write-Ok "No plugin error lines in this run." }
-else { Write-Fail "Plugin error lines detected in log." }
-Set-Result "NoPluginError" (-not $pluginError) "log [Windows Utils] ERR scan"
+if (-not $pluginError) { Write-Ok "本轮测试未发现插件错误行。" }
+else { Write-Fail "日志中检测到插件错误行。" }
+Set-Result "NoPluginError" (-not $pluginError) "日志 [Windows Utils] 错误扫描"
 
-if ($editplusStarted) { Write-Ok "EditPlus process started." }
-else { Write-Fail "No new EditPlus process detected." }
-Set-Result "EditPlusStarted" $editplusStarted "process '$ExpectProcess'"
+if ($editplusStarted) { Write-Ok "EditPlus 进程已启动。" }
+else { Write-Fail "未检测到新的 EditPlus 进程。" }
+Set-Result "EditPlusStarted" $editplusStarted "进程 '$ExpectProcess'"
 
-# ---- 7. summary ------------------------------------------------------------
+# ---- 7. 测试总结 ------------------------------------------------------------
 Write-Host ""
-Write-Host "=== Test Summary ===" -ForegroundColor Cyan
+Write-Host "=== 测试总结 ===" -ForegroundColor Cyan
 $allPass = $true
 foreach ($key in $script:Results.Keys) {
     $r = $script:Results[$key]
-    $tag = if ($r.Passed) { "PASS" } else { "FAIL"; }
+    $tag = if ($r.Passed) { "通过" } else { "失败"; }
     $color = if ($r.Passed) { "Green" } else { "Red" }
     if (-not $r.Passed) { $allPass = $false }
     Write-Host ("  {0,-20} {1}  {2}" -f $key, $tag, $r.Detail) -ForegroundColor $color
@@ -273,9 +271,9 @@ foreach ($key in $script:Results.Keys) {
 
 Write-Host ""
 if ($allPass) {
-    Write-Host "=== RESULT: PASS ===" -ForegroundColor Green
+    Write-Host "=== 测试结果: 全部通过 ===" -ForegroundColor Green
     exit 0
 } else {
-    Write-Host "=== RESULT: FAIL ===" -ForegroundColor Red
+    Write-Host "=== 测试结果: 存在失败项 ===" -ForegroundColor Red
     exit 1
 }
