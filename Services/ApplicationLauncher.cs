@@ -86,21 +86,21 @@ public class ApplicationLauncher
     {
         if (string.IsNullOrWhiteSpace(path))
         {
-            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！");
+            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！", Array.Empty<object>());
             return;
         }
 
         // 获取文件的进程
         var p = GetProcessByPath(path);
         if (p == null) {
-            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})");
+            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})", Array.Empty<object>());
             return;
         }
 
         // 匹配进程名称并全部终止（处理同一应用多个进程实例的情况）
         Process.GetProcessesByName(p.ProcessName).ToList().ForEach(p =>
         {
-            MacroDeckLogger.Trace(Main.Instance, $"Killing Process ({p.Id}-{p.ProcessName}");
+            MacroDeckLogger.Debug(Main.Instance, $"Killing Process ({p.Id}-{p.ProcessName}");
             p.Kill();
         });
     }
@@ -113,13 +113,13 @@ public class ApplicationLauncher
     {
         if (string.IsNullOrWhiteSpace(path))
         {
-            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！");
+            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！", Array.Empty<object>());
             return;
         }
 
         var p = GetProcessByPath(path);
         if (p == null) {
-            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})");
+            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})", Array.Empty<object>());
             return;
         }
 
@@ -136,13 +136,13 @@ public class ApplicationLauncher
     {
         if (string.IsNullOrWhiteSpace(path))
         {
-            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！");
+            MacroDeckLogger.Warning(Main.Instance, $"文件路径不能为空！", Array.Empty<object>());
             return;
         }
 
         var p = GetProcessByPath(path);
         if (p == null) {
-            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})");
+            MacroDeckLogger.Warning(Main.Instance, $"当前进程不存在({path})", Array.Empty<object>());
             return;
         }
 

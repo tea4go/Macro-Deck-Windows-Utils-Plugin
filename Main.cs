@@ -70,7 +70,7 @@ public class Main : MacroDeckPlugin
             new PowerOptionAction(),
             new WindowSwitchAction(),
         };
-        MacroDeckLogger.Info(this, $"Windows Utils plugin enabled. Actions={string.Join(", ", this.Actions.Select(action => action.Name))}");
+        MacroDeckLogger.Information(this, $"Windows Utils plugin enabled. Actions={string.Join(", ", this.Actions.Select(action => action.Name))}");
 
         // 初始化全局节拍定时器，每 2000ms 触发一次
         // 用于驱动需要定期轮询的功能（如 StartApplicationAction 的按键状态同步）

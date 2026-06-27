@@ -76,7 +76,6 @@ partial class PowerOptionSelector
     #endregion
 
     // 字段声明：电源选项选择器的所有UI控件
-    private MacroDeck.GUI.CustomControls.RoundedComboBox roundedComboBox1;
     private MacroDeck.GUI.CustomControls.RoundedComboBox powerOption;  // 电源选项下拉选择框
     private System.Windows.Forms.Label lblPowerOption;  // 电源选项标签
 }

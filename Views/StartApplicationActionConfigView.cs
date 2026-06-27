@@ -155,7 +155,7 @@ public partial class StartApplicationActionConfigView : ActionConfigControl
                 }
                 catch (Exception ex)
                 {
-                    MacroDeckLogger.Error(Main.Instance, $"Failed to import the file icon: {ex.Message + Environment.NewLine + ex.StackTrace}");
+                    MacroDeckLogger.Error(Main.Instance, $"Failed to import the file icon: {ex.Message + Environment.NewLine + ex.StackTrace}", Array.Empty<object>());
                 }
             }
         }

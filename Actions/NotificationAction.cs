@@ -31,7 +31,7 @@ public class NotificationAction : PluginAction
     /// </summary>
     public override void Trigger(string clientId, ActionButton actionButton)
     {
-        MacroDeckLogger.Info(Main.Instance, $"NotificationAction triggered. hasConfiguration={!string.IsNullOrWhiteSpace(this.Configuration)}");
+        MacroDeckLogger.Information(Main.Instance, $"NotificationAction triggered. hasConfiguration={!string.IsNullOrWhiteSpace(this.Configuration)}");
         if (!string.IsNullOrWhiteSpace(this.Configuration))
         {
             try
@@ -39,17 +39,17 @@ public class NotificationAction : PluginAction
                 JObject configurationObject = JObject.Parse(this.Configuration);
                 var title = configurationObject["title"].ToString();
                 var message = configurationObject["message"].ToString();
-                MacroDeckLogger.Info(Main.Instance, $"NotificationAction parsed configuration. title='{title}', messageLength={message?.Length ?? 0}");
+                MacroDeckLogger.Information(Main.Instance, $"NotificationAction parsed configuration. title='{title}', messageLength={message?.Length ?? 0}");
 
                 // 变通方案：先发送通知，立刻再将其从通知列表中移除，
                 // 这样可以绕过 Macro Deck 内部对同一插件的通知数量限制
                 string notifId = NotificationManager.Notify(Main.Instance, title, message, true);
                 NotificationManager.RemoveNotification(notifId);
-                MacroDeckLogger.Info(Main.Instance, $"NotificationAction completed. notificationId={notifId}");
+                MacroDeckLogger.Information(Main.Instance, $"NotificationAction completed. notificationId={notifId}");
             }
             catch (Exception e)
             {
-                MacroDeckLogger.Error(Main.Instance, $"NotificationAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}");
+                MacroDeckLogger.Error(Main.Instance, $"NotificationAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}", Array.Empty<object>());
             }
         }
     }

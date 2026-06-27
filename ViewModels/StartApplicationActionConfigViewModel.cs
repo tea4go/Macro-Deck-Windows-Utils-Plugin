@@ -72,11 +72,11 @@ internal class StartApplicationActionConfigViewModel : ISerializableConfigViewMo
         try
         {
             SetConfig();
-            MacroDeckLogger.Info(PluginInstance.Main, $"{GetType().Name}: config saved");
+            MacroDeckLogger.Information(PluginInstance.Main, $"{GetType().Name}: config saved");
         }
         catch (Exception ex)
         {
-            MacroDeckLogger.Error(PluginInstance.Main, $"{GetType().Name}: Error while saving config: { ex.Message + Environment.NewLine + ex.StackTrace }");
+            MacroDeckLogger.Error(PluginInstance.Main, $"{GetType().Name}: Error while saving config: { ex.Message + Environment.NewLine + ex.StackTrace }", Array.Empty<object>());
         }
         return true;
     }

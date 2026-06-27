@@ -31,45 +31,45 @@ public class PowerOptionAction : PluginAction
     /// </summary>
     public override void Trigger(string clientId, ActionButton actionButton)
     {
-        MacroDeckLogger.Info(Main.Instance, $"PowerOptionAction triggered. hasConfiguration={!string.IsNullOrWhiteSpace(this.Configuration)}");
+        MacroDeckLogger.Information(Main.Instance, $"PowerOptionAction triggered. hasConfiguration={!string.IsNullOrWhiteSpace(this.Configuration)}");
         if (!string.IsNullOrWhiteSpace(this.Configuration))
         {
             try
             {
                 JObject configurationObject = JObject.Parse(this.Configuration);
                 PowerOptions powerOption = Enum.Parse<PowerOptions>(configurationObject["powerOption"].ToString());
-                MacroDeckLogger.Info(Main.Instance, $"PowerOptionAction parsed configuration. powerOption={powerOption}");
+                MacroDeckLogger.Information(Main.Instance, $"PowerOptionAction parsed configuration. powerOption={powerOption}");
 
                 switch (powerOption)
                 {
                     case PowerOptions.Sleep:
-                        MacroDeckLogger.Info(Main.Instance, "PowerOptionAction executing Sleep");
+                        MacroDeckLogger.Information(Main.Instance, "PowerOptionAction executing Sleep");
                         // Suspend=睡眠，forceFlag=true 表示强制进入电源管理状态
                         Application.SetSuspendState(PowerState.Suspend, true, true);
                         return;
                     case PowerOptions.Hibernate:
-                        MacroDeckLogger.Info(Main.Instance, "PowerOptionAction executing Hibernate");
+                        MacroDeckLogger.Information(Main.Instance, "PowerOptionAction executing Hibernate");
                         // Hibernate=休眠，将内存保存到磁盘并断电
                         Application.SetSuspendState(PowerState.Hibernate, true, true);
                         return;
                     case PowerOptions.Shutdown:
-                        MacroDeckLogger.Info(Main.Instance, "PowerOptionAction executing Shutdown");
+                        MacroDeckLogger.Information(Main.Instance, "PowerOptionAction executing Shutdown");
                         // /s=关机 /t 0=延迟 0 秒立即执行
                         Process.Start("shutdown", "/s /t 0");
                         return;
                     case PowerOptions.Restart:
-                        MacroDeckLogger.Info(Main.Instance, "PowerOptionAction executing Restart");
+                        MacroDeckLogger.Information(Main.Instance, "PowerOptionAction executing Restart");
                         // /r=重启 /t 0=延迟 0 秒立即执行
                         Process.Start("shutdown", "/r /t 0");
                         return;
                     default:
-                        MacroDeckLogger.Error(Main.Instance, $"Invalid power option specified: {powerOption}");
+                        MacroDeckLogger.Error(Main.Instance, $"Invalid power option specified: {powerOption}", Array.Empty<object>());
                         return;
                 }
             }
             catch (Exception e)
             {
-                MacroDeckLogger.Error(Main.Instance, $"PowerOptionAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}");
+                MacroDeckLogger.Error(Main.Instance, $"PowerOptionAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}", Array.Empty<object>());
             }
         }
     }

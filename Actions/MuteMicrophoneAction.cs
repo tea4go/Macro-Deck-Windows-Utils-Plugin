@@ -40,16 +40,16 @@ public class MuteMicrophoneAction : PluginAction
     {
         try
         {
-            MacroDeckLogger.Info(Main.Instance, "MuteMicrophoneAction triggered");
+            MacroDeckLogger.Information(Main.Instance, "MuteMicrophoneAction triggered");
             // 获取当前前景窗口句柄，麦克风命令需要发送到活跃窗口
             IntPtr h = GetForegroundWindow();
             // 发送麦克风静音命令：lParam 的高字包含 APPCOMMAND 值
             IntPtr result = SendMessageW(h, WM_APPCOMMAND, IntPtr.Zero, (IntPtr)APPCOMMAND_MICROPHONE_VOLUME_MUTE);
-            MacroDeckLogger.Info(Main.Instance, $"MuteMicrophoneAction completed. foregroundWindow={h}, result={result}");
+            MacroDeckLogger.Information(Main.Instance, $"MuteMicrophoneAction completed. foregroundWindow={h}, result={result}");
         }
         catch (Exception e)
         {
-            MacroDeckLogger.Error(Main.Instance, $"MuteMicrophoneAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}");
+            MacroDeckLogger.Error(Main.Instance, $"MuteMicrophoneAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}", Array.Empty<object>());
         }
     }
 }

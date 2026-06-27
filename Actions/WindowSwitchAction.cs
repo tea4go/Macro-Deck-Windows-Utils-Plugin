@@ -31,7 +31,7 @@ public class WindowSwitchAction : PluginAction
     /// </summary>
     public override void Trigger(string clientId, ActionButton actionButton)
     {
-        MacroDeckLogger.Info(Main.Instance, $"WindowSwitchAction triggered. hasConfiguration={!string.IsNullOrWhiteSpace(this.Configuration)}");
+        MacroDeckLogger.Information(Main.Instance, $"WindowSwitchAction triggered. hasConfiguration={!string.IsNullOrWhiteSpace(this.Configuration)}");
         if (!string.IsNullOrWhiteSpace(this.Configuration))
         {
             try
@@ -41,14 +41,14 @@ public class WindowSwitchAction : PluginAction
                 // 解析匹配模式枚举（Partial/Full/StartsWith/EndsWith/Regex）
                 MatchMode matchMode = Enum.Parse<MatchMode>(configurationObject["matchMode"].ToString());
                 bool caseSensitive = configurationObject["caseSensitive"].ToObject<bool>();
-                MacroDeckLogger.Info(Main.Instance, $"WindowSwitchAction parsed configuration. pattern='{pattern}', matchMode={matchMode}, caseSensitive={caseSensitive}");
+                MacroDeckLogger.Information(Main.Instance, $"WindowSwitchAction parsed configuration. pattern='{pattern}', matchMode={matchMode}, caseSensitive={caseSensitive}");
 
                 bool activated = ActivateWindowByTitle(pattern, matchMode, caseSensitive);
-                MacroDeckLogger.Info(Main.Instance, $"WindowSwitchAction completed. activated={activated}");
+                MacroDeckLogger.Information(Main.Instance, $"WindowSwitchAction completed. activated={activated}");
             }
             catch (Exception e)
             {
-                MacroDeckLogger.Error(Main.Instance, $"WindowSwitchAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}");
+                MacroDeckLogger.Error(Main.Instance, $"WindowSwitchAction failed: {e.Message}{Environment.NewLine}{e.StackTrace}", Array.Empty<object>());
             }
         }
     }

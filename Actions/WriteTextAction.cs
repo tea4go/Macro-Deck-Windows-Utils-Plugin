@@ -53,7 +53,7 @@ public class WriteTextAction : PluginAction
             }
             catch (Exception ex)
             {
-                MacroDeckLogger.Warning(PluginInstance.Main, typeof(WriteTextAction) + ": " + ex.Message);
+                MacroDeckLogger.Warning(PluginInstance.Main, typeof(WriteTextAction) + ": " + ex.Message, Array.Empty<object>());
             }
         }
     }

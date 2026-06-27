@@ -6,6 +6,7 @@ using SuchByte.WindowsUtils.GUI;
 using SuchByte.WindowsUtils.Language;
 using SuchByte.WindowsUtils.Models;
 using SuchByte.WindowsUtils.Services;
+using System;
 using System.Threading.Tasks;
 using SuchByte.MacroDeck.Logging;
 
@@ -39,11 +40,11 @@ public class StartApplicationAction : PluginAction
             var configModel = StartApplicationActionConfigModel.Deserialize(this.Configuration);
             if (configModel == null)
             {
-                MacroDeckLogger.Warning(Main.Instance, "StartApplicationAction triggered but configuration is null");
+                MacroDeckLogger.Warning(Main.Instance, "StartApplicationAction triggered but configuration is null", Array.Empty<object>());
                 return;
             }
 
-            MacroDeckLogger.Info(Main.Instance, $"StartApplicationAction triggered. method={configModel.StartMethod}, path='{configModel.Path}'");
+            MacroDeckLogger.Information(Main.Instance, $"StartApplicationAction triggered. method={configModel.StartMethod}, path='{configModel.Path}'");
 
             switch (configModel.StartMethod)
             {
@@ -70,11 +71,11 @@ public class StartApplicationAction : PluginAction
                     break;
             }
 
-            MacroDeckLogger.Info(Main.Instance, $"StartApplicationAction completed. method={configModel.StartMethod}");
+            MacroDeckLogger.Information(Main.Instance, $"StartApplicationAction completed. method={configModel.StartMethod}");
         }
         catch (System.Exception ex)
         {
-            MacroDeckLogger.Error(Main.Instance, $"StartApplicationAction failed: {ex.Message}{System.Environment.NewLine}{ex.StackTrace}");
+            MacroDeckLogger.Error(Main.Instance, $"StartApplicationAction failed: {ex.Message}{System.Environment.NewLine}{ex.StackTrace}", Array.Empty<object>());
         }
     }
 
