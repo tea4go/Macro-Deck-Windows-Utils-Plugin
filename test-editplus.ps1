@@ -34,10 +34,11 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$ScriptDir = if ($MyInvocation.MyCommand.Path) { Split-Path -Parent $MyInvocation.MyCommand.Path } else { Get-Location }
 
 # ---- 无参数时显示帮助 -----------------------------------------------
-if ($PSBoundParameters.Count -eq 0) {
+# 使用正则 \s- 检测命令行开关，避免文件名中的连字符（如 test-editplus）误触发
+if ($PSBoundParameters.Count -eq 0 -and $MyInvocation.Line -notmatch '\s-') {
     Write-Host @"
 用法: .\test-editplus.ps1 [-ClientId <ID>] [-Row <行>] [-Column <列>]
                         [-ServerHost <主机>] [-Port <端口>] [-ExpectProcess <进程名>]

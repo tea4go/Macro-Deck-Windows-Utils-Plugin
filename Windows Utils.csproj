@@ -37,14 +37,45 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <!--
+    Designer 专用依赖：
+    Macro Deck 2.dll 内嵌了 Sentry 的 source generator 代码（Sentry.Generated.BuildPropertyInitializer），
+    在 Macro Deck 2.dll 加载时通过 <Module>.cctor 立即触发对 Sentry.dll 的真实加载。
+
+    实现：
+      1. PackageReference + IncludeAssets="none" — 让 NuGet 把 Sentry 6.6.0 还原到全局缓存，但不暴露资产给项目；
+      2. <Reference> 指向缓存中的 Sentry.dll — 与 Macro Deck 2.dll 同样以 type:"reference" 形式进 deps.json，
+         Designer Server 会按 bin/Debug 物理位置加载，绕开 NuGet 路径解析。
+      3. Private 按配置控制：Debug 复制到 bin（供 Designer），Release/publish 不复制（运行时主程序提供）。
+  -->
+  <ItemGroup>
+    <PackageReference Include="Sentry" Version="6.6.0" IncludeAssets="none" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(NuGetPackageRoot)sentry\6.6.0\lib\net10.0\Sentry.dll')">
+    <Reference Include="Sentry">
+      <HintPath>$(NuGetPackageRoot)sentry\6.6.0\lib\net10.0\Sentry.dll</HintPath>
+      <Private Condition="'$(Configuration)' == 'Debug'">true</Private>
+      <Private Condition="'$(Configuration)' != 'Debug'">false</Private>
+    </Reference>
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="Macro Deck 2">
       <HintPath Condition="Exists('C:\Program Files\Macro Deck\Macro Deck 2.dll')">C:\Program Files\Macro Deck\Macro Deck 2.dll</HintPath>
       <HintPath Condition="!Exists('C:\Program Files\Macro Deck\Macro Deck 2.dll')">libs\Macro Deck 2.dll</HintPath>
-      <Private>false</Private>
+      <!-- Debug 下复制到 bin 供 WinForms Designer Server 反射加载基类；Release/publish 保持干净 -->
+      <Private Condition="'$(Configuration)' == 'Debug'">true</Private>
+      <Private Condition="'$(Configuration)' != 'Debug'">false</Private>
       <EmbedInteropTypes>false</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
+
+  <!--
+    Macro Deck 安装目录探测（HintPath + Designer fallback 都会用到）。
+  -->
+  <PropertyGroup>
+    <MacroDeckInstallDir Condition="Exists('C:\Program Files\Macro Deck\Macro Deck 2.dll')">C:\Program Files\Macro Deck\</MacroDeckInstallDir>
+  </PropertyGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -61,12 +92,14 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <!--
+    GUI\CustomControls 是指向 Macro Deck 主程序源码的符号链接，仅供 Designer 解析控件类型使用。
+    其下的 .cs / .resx 等文件已由 Macro Deck 2.dll 提供，不应被本插件项目重新编译或嵌入。
+  -->
   <ItemGroup>
-    <Folder Include="GUI\CustomControls\" />
+    <Compile Remove="GUI\CustomControls\**\*.cs" />
+    <EmbeddedResource Remove="GUI\CustomControls\**\*.resx" />
+    <None Remove="GUI\CustomControls\**\*" />
   </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(CI)' != 'true'">
-    <Exec Command="taskkill /IM &quot;Macro Deck 2.exe&quot; /F || copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;C:\Users\Administrator\AppData\Roaming\Macro Deck\plugins\SuchByte.WindowsUtils\$(TargetName).dll&quot; || start /b &quot;C:\Program Files\Macro Deck\Macro Deck 2.exe&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" />
-  </Target>
 
 </Project>
