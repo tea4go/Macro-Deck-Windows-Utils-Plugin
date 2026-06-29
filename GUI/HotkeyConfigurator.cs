@@ -98,19 +98,4 @@ public partial class HotkeyConfigurator : ActionConfigControl
         }
     }
 
-    /// <summary>
-    /// VirtualKeyCode 参考链接点击：在浏览器中打开 H.InputSimulator 的 VirtualKeyCode 源代码页面佛为参考
-    /// </summary>
-    private void LblDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-    {
-        var p = new Process
-        {
-            StartInfo = new ProcessStartInfo("https://github.com/HavenDV/H.InputSimulator/blob/master/src/libs/H.InputSimulator/Native/VirtualKeyCode.cs")
-            {
-                UseShellExecute = true
-            }
-        };
-        p.Start();
-    }
-
 }

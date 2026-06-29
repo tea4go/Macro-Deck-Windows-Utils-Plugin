@@ -34,43 +34,46 @@ partial class PowerOptionSelector
     /// </summary>
     private void InitializeComponent()
     {
-        // 创建电源选项选择器的配置界面控件
         powerOption = new RoundedComboBox();
         lblPowerOption = new System.Windows.Forms.Label();
-        SuspendLayout();  // 挂起布局，批量设置属性以提高性能
-        //
-        // powerOption - 电源选项下拉选择框
-        //
-        powerOption.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);  // 深色背景
+        SuspendLayout();
+        // 
+        // powerOption
+        // 
+        powerOption.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         powerOption.Cursor = System.Windows.Forms.Cursors.Hand;
-        powerOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;  // 只允许从列表中选择
+        powerOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         powerOption.Font = new System.Drawing.Font("Tahoma", 9.75F);
         powerOption.Icon = null;
-        powerOption.Location = new System.Drawing.Point(183, 63);
+        powerOption.Location = new System.Drawing.Point(274, 97);
+        powerOption.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
         powerOption.Name = "powerOption";
-        powerOption.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
-        powerOption.SelectedIndex = -1;  // 无默认选中项
+        powerOption.Padding = new System.Windows.Forms.Padding(12, 3, 12, 3);
+        powerOption.SelectedIndex = -1;
         powerOption.SelectedItem = null;
-        powerOption.Size = new System.Drawing.Size(250, 28);
+        powerOption.Size = new System.Drawing.Size(375, 38);
         powerOption.TabIndex = 12;
-        //
-        // lblPowerOption - 电源选项标签
-        //
+        // 
+        // lblPowerOption
+        // 
         lblPowerOption.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        lblPowerOption.Location = new System.Drawing.Point(0, 63);
+        lblPowerOption.Location = new System.Drawing.Point(0, 94);
+        lblPowerOption.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
         lblPowerOption.Name = "lblPowerOption";
-        lblPowerOption.Size = new System.Drawing.Size(174, 29);
+        lblPowerOption.Size = new System.Drawing.Size(261, 44);
         lblPowerOption.TabIndex = 8;
         lblPowerOption.Text = "Power option:";
-        lblPowerOption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;  // 左对齐居中显示
-        //
-        // PowerOptionSelector - 电源选项选择器主控件
-        //
-        AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+        lblPowerOption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // PowerOptionSelector
+        // 
+        AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
         Controls.Add(lblPowerOption);
         Controls.Add(powerOption);
+        Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
         Name = "PowerOptionSelector";
-        ResumeLayout(false);  // 恢复布局，应用所有属性设置
+        Size = new System.Drawing.Size(1286, 636);
+        ResumeLayout(false);
     }
 
     #endregion

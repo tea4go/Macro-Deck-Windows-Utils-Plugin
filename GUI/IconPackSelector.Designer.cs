@@ -36,6 +36,7 @@ partial class IconPackSelector
         // 
         // iconPacks
         // 
+        iconPacks.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         iconPacks.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         iconPacks.Cursor = System.Windows.Forms.Cursors.Hand;
         iconPacks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -47,11 +48,12 @@ partial class IconPackSelector
         iconPacks.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
         iconPacks.SelectedIndex = -1;
         iconPacks.SelectedItem = null;
-        iconPacks.Size = new System.Drawing.Size(333, 35);
+        iconPacks.Size = new System.Drawing.Size(333, 51);
         iconPacks.TabIndex = 2;
         // 
         // btnOk
         // 
+        btnOk.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
         btnOk.BorderRadius = 8;
         btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
         btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -73,7 +75,7 @@ partial class IconPackSelector
         // 
         // IconPackSelector
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+        AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(363, 136);
         Controls.Add(btnOk);

@@ -44,61 +44,63 @@ partial class WindowSwitchConfigurator
         // lblPattern
         // 
         lblPattern.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        lblPattern.Location = new System.Drawing.Point(0, 79);
-        lblPattern.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+        lblPattern.Location = new System.Drawing.Point(0, 95);
+        lblPattern.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
         lblPattern.Name = "lblPattern";
-        lblPattern.Size = new System.Drawing.Size(218, 36);
+        lblPattern.Size = new System.Drawing.Size(262, 43);
         lblPattern.TabIndex = 9;
         lblPattern.Text = "Pattern:";
         lblPattern.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         // 
         // pattern
         // 
+        pattern.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         pattern.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         pattern.Cursor = System.Windows.Forms.Cursors.Hand;
         pattern.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic);
         pattern.Icon = null;
-        pattern.Location = new System.Drawing.Point(229, 79);
-        pattern.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+        pattern.Location = new System.Drawing.Point(275, 95);
+        pattern.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
         pattern.MaxCharacters = 32767;
         pattern.Multiline = false;
         pattern.Name = "pattern";
-        pattern.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
+        pattern.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
         pattern.PasswordChar = false;
         pattern.PlaceHolderColor = System.Drawing.Color.Gray;
         pattern.PlaceHolderText = "Pattern";
         pattern.ReadOnly = false;
         pattern.ScrollBars = System.Windows.Forms.ScrollBars.None;
         pattern.SelectionStart = 0;
-        pattern.Size = new System.Drawing.Size(586, 36);
+        pattern.Size = new System.Drawing.Size(703, 43);
         pattern.TabIndex = 10;
         pattern.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         // 
         // lblMatchMode
         // 
         lblMatchMode.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        lblMatchMode.Location = new System.Drawing.Point(0, 135);
-        lblMatchMode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+        lblMatchMode.Location = new System.Drawing.Point(0, 162);
+        lblMatchMode.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
         lblMatchMode.Name = "lblMatchMode";
-        lblMatchMode.Size = new System.Drawing.Size(218, 36);
+        lblMatchMode.Size = new System.Drawing.Size(262, 43);
         lblMatchMode.TabIndex = 11;
         lblMatchMode.Text = "Match mode:";
         lblMatchMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         // 
         // matchMode
         // 
+        matchMode.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         matchMode.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         matchMode.Cursor = System.Windows.Forms.Cursors.Hand;
         matchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         matchMode.Font = new System.Drawing.Font("Tahoma", 9.75F);
         matchMode.Icon = null;
-        matchMode.Location = new System.Drawing.Point(229, 135);
-        matchMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+        matchMode.Location = new System.Drawing.Point(275, 162);
+        matchMode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
         matchMode.Name = "matchMode";
-        matchMode.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
+        matchMode.Padding = new System.Windows.Forms.Padding(12, 2, 12, 2);
         matchMode.SelectedIndex = -1;
         matchMode.SelectedItem = null;
-        matchMode.Size = new System.Drawing.Size(586, 31);
+        matchMode.Size = new System.Drawing.Size(703, 36);
         matchMode.TabIndex = 13;
         // 
         // caseSensitive
@@ -107,25 +109,25 @@ partial class WindowSwitchConfigurator
         caseSensitive.Checked = true;
         caseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
         caseSensitive.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        caseSensitive.Location = new System.Drawing.Point(0, 193);
-        caseSensitive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+        caseSensitive.Location = new System.Drawing.Point(0, 232);
+        caseSensitive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
         caseSensitive.Name = "caseSensitive";
-        caseSensitive.Size = new System.Drawing.Size(147, 27);
+        caseSensitive.Size = new System.Drawing.Size(179, 32);
         caseSensitive.TabIndex = 15;
         caseSensitive.Text = "Case sensitive";
         caseSensitive.UseVisualStyleBackColor = true;
         // 
         // WindowSwitchConfigurator
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+        AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
         Controls.Add(caseSensitive);
         Controls.Add(matchMode);
         Controls.Add(lblMatchMode);
         Controls.Add(pattern);
         Controls.Add(lblPattern);
-        Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+        Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
         Name = "WindowSwitchConfigurator";
-        Size = new System.Drawing.Size(1071, 530);
+        Size = new System.Drawing.Size(999, 636);
         ResumeLayout(false);
         PerformLayout();
     }

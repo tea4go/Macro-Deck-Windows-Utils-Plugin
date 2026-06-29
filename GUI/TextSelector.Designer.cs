@@ -38,11 +38,12 @@ partial class TextSelector
         // 
         // textBox
         // 
+        textBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         textBox.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         textBox.Cursor = System.Windows.Forms.Cursors.Hand;
         textBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Italic);
         textBox.Icon = null;
-        textBox.Location = new System.Drawing.Point(19, 56);
+        textBox.Location = new System.Drawing.Point(19, 15);
         textBox.MaxCharacters = 32767;
         textBox.Multiline = true;
         textBox.Name = "textBox";
@@ -59,6 +60,7 @@ partial class TextSelector
         // 
         // btnAddVariable
         // 
+        btnAddVariable.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
         btnAddVariable.BorderRadius = 8;
         btnAddVariable.Cursor = System.Windows.Forms.Cursors.Hand;
         btnAddVariable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -66,7 +68,7 @@ partial class TextSelector
         btnAddVariable.ForeColor = System.Drawing.Color.White;
         btnAddVariable.HoverColor = System.Drawing.Color.FromArgb(0, 89, 184);
         btnAddVariable.Icon = null;
-        btnAddVariable.Location = new System.Drawing.Point(478, 185);
+        btnAddVariable.Location = new System.Drawing.Point(476, 156);
         btnAddVariable.Name = "btnAddVariable";
         btnAddVariable.Progress = 0;
         btnAddVariable.ProgressColor = System.Drawing.Color.FromArgb(0, 46, 94);
@@ -89,11 +91,12 @@ partial class TextSelector
         // 
         // TextSelector
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
+        AutoScaleDimensions = new System.Drawing.SizeF(16F, 35F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         Controls.Add(btnAddVariable);
         Controls.Add(textBox);
         Name = "TextSelector";
+        Size = new System.Drawing.Size(709, 216);
         ResumeLayout(false);
 
     }

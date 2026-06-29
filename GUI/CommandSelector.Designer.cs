@@ -42,6 +42,7 @@ partial class CommandSelector
         // 
         // workingDirectory
         // 
+        workingDirectory.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         workingDirectory.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         workingDirectory.Cursor = System.Windows.Forms.Cursors.Hand;
         workingDirectory.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Italic);
@@ -57,7 +58,7 @@ partial class CommandSelector
         workingDirectory.ReadOnly = false;
         workingDirectory.ScrollBars = System.Windows.Forms.ScrollBars.None;
         workingDirectory.SelectionStart = 0;
-        workingDirectory.Size = new System.Drawing.Size(469, 38);
+        workingDirectory.Size = new System.Drawing.Size(716, 44);
         workingDirectory.TabIndex = 8;
         workingDirectory.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         // 
@@ -84,6 +85,7 @@ partial class CommandSelector
         // 
         // command
         // 
+        command.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         command.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         command.Cursor = System.Windows.Forms.Cursors.Hand;
         command.Font = new System.Drawing.Font("微软雅黑", 12F);
@@ -99,12 +101,13 @@ partial class CommandSelector
         command.ReadOnly = false;
         command.ScrollBars = System.Windows.Forms.ScrollBars.None;
         command.SelectionStart = 0;
-        command.Size = new System.Drawing.Size(513, 75);
+        command.Size = new System.Drawing.Size(760, 75);
         command.TabIndex = 5;
         command.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         // 
         // btnBrowse
         // 
+        btnBrowse.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
         btnBrowse.BorderRadius = 8;
         btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
         btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -112,7 +115,7 @@ partial class CommandSelector
         btnBrowse.ForeColor = System.Drawing.Color.White;
         btnBrowse.HoverColor = System.Drawing.Color.FromArgb(0, 89, 184);
         btnBrowse.Icon = null;
-        btnBrowse.Location = new System.Drawing.Point(742, 144);
+        btnBrowse.Location = new System.Drawing.Point(989, 144);
         btnBrowse.Name = "btnBrowse";
         btnBrowse.Progress = 0;
         btnBrowse.ProgressColor = System.Drawing.Color.FromArgb(0, 46, 94);
@@ -130,7 +133,7 @@ partial class CommandSelector
         checkSaveVariable.Font = new System.Drawing.Font("微软雅黑", 12F);
         checkSaveVariable.Location = new System.Drawing.Point(8, 214);
         checkSaveVariable.Name = "checkSaveVariable";
-        checkSaveVariable.Size = new System.Drawing.Size(256, 31);
+        checkSaveVariable.Size = new System.Drawing.Size(306, 35);
         checkSaveVariable.TabIndex = 10;
         checkSaveVariable.Text = "Save output to variable";
         checkSaveVariable.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -139,6 +142,7 @@ partial class CommandSelector
         // 
         // variableName
         // 
+        variableName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         variableName.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         variableName.Cursor = System.Windows.Forms.Cursors.Hand;
         variableName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Italic);
@@ -154,30 +158,32 @@ partial class CommandSelector
         variableName.ReadOnly = false;
         variableName.ScrollBars = System.Windows.Forms.ScrollBars.None;
         variableName.SelectionStart = 0;
-        variableName.Size = new System.Drawing.Size(386, 38);
+        variableName.Size = new System.Drawing.Size(633, 42);
         variableName.TabIndex = 11;
         variableName.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         variableName.Visible = false;
         // 
         // variableType
         // 
+        variableType.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
         variableType.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         variableType.Cursor = System.Windows.Forms.Cursors.Hand;
         variableType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         variableType.Font = new System.Drawing.Font("微软雅黑", 9.75F);
         variableType.Icon = null;
-        variableType.Location = new System.Drawing.Point(659, 214);
-        variableType.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+        variableType.Location = new System.Drawing.Point(906, 214);
+        variableType.Margin = new System.Windows.Forms.Padding(0);
         variableType.Name = "variableType";
+        variableType.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
         variableType.SelectedIndex = -1;
         variableType.SelectedItem = null;
-        variableType.Size = new System.Drawing.Size(121, 33);
+        variableType.Size = new System.Drawing.Size(121, 39);
         variableType.TabIndex = 12;
         variableType.Visible = false;
         // 
         // CommandSelector
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
+        AutoScaleDimensions = new System.Drawing.SizeF(16F, 35F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         Controls.Add(variableType);
         Controls.Add(variableName);
@@ -188,6 +194,7 @@ partial class CommandSelector
         Controls.Add(lblCommand);
         Controls.Add(command);
         Name = "CommandSelector";
+        Size = new System.Drawing.Size(1055, 424);
         ResumeLayout(false);
         PerformLayout();
 

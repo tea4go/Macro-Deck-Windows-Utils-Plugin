@@ -31,161 +31,173 @@ partial class StartApplicationActionConfigView
     /// </summary>
     private void InitializeComponent()
     {
-        this.path = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
-        this.lblPath = new System.Windows.Forms.Label();
-        this.btnBrowse = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
-        this.lblArguments = new System.Windows.Forms.Label();
-        this.arguments = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
-        this.checkRunAsAdmin = new System.Windows.Forms.CheckBox();
-        this.label1 = new System.Windows.Forms.Label();
-        this.method = new SuchByte.MacroDeck.GUI.CustomControls.RoundedComboBox();
-        this.checkSyncButtonState = new System.Windows.Forms.CheckBox();
-        this.SuspendLayout();
-        //
+        path = new RoundedTextBox();
+        lblPath = new System.Windows.Forms.Label();
+        btnBrowse = new ButtonPrimary();
+        lblArguments = new System.Windows.Forms.Label();
+        arguments = new RoundedTextBox();
+        checkRunAsAdmin = new System.Windows.Forms.CheckBox();
+        label1 = new System.Windows.Forms.Label();
+        method = new RoundedComboBox();
+        checkSyncButtonState = new System.Windows.Forms.CheckBox();
+        SuspendLayout();
+        // 
         // path
-        //
-        this.path.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-        this.path.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.path.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.path.Icon = null;
-        this.path.Location = new System.Drawing.Point(216, 145);
-        this.path.MaxCharacters = 32767;
-        this.path.Multiline = false;
-        this.path.Name = "path";
-        this.path.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
-        this.path.PasswordChar = false;
-        this.path.PlaceHolderColor = System.Drawing.Color.Gray;
-        this.path.PlaceHolderText = "";
-        this.path.ReadOnly = false;
-        this.path.ScrollBars = System.Windows.Forms.ScrollBars.None;
-        this.path.SelectionStart = 0;
-        this.path.Size = new System.Drawing.Size(486, 29);
-        this.path.TabIndex = 1;
-        this.path.TabStop = false;
-        this.path.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-        //
+        // 
+        path.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+        path.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
+        path.Cursor = System.Windows.Forms.Cursors.Hand;
+        path.Font = new System.Drawing.Font("微软雅黑", 14F);
+        path.Icon = null;
+        path.Location = new System.Drawing.Point(201, 19);
+        path.MaxCharacters = 32767;
+        path.Multiline = false;
+        path.Name = "path";
+        path.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
+        path.PasswordChar = false;
+        path.PlaceHolderColor = System.Drawing.Color.Gray;
+        path.PlaceHolderText = "";
+        path.ReadOnly = false;
+        path.ScrollBars = System.Windows.Forms.ScrollBars.None;
+        path.SelectionStart = 0;
+        path.Size = new System.Drawing.Size(396, 47);
+        path.TabIndex = 1;
+        path.TabStop = false;
+        path.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+        // 
         // lblPath
-        //
-        this.lblPath.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.lblPath.Location = new System.Drawing.Point(97, 145);
-        this.lblPath.Name = "lblPath";
-        this.lblPath.Size = new System.Drawing.Size(83, 29);
-        this.lblPath.TabIndex = 1;
-        this.lblPath.Text = "Path:";
-        this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        //
+        // 
+        lblPath.AutoSize = true;
+        lblPath.Font = new System.Drawing.Font("微软雅黑", 14F);
+        lblPath.Location = new System.Drawing.Point(20, 28);
+        lblPath.Name = "lblPath";
+        lblPath.Size = new System.Drawing.Size(81, 36);
+        lblPath.TabIndex = 1;
+        lblPath.Text = "Path:";
+        lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
         // btnBrowse
-        //
-        this.btnBrowse.BorderRadius = 8;
-        this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnBrowse.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.btnBrowse.ForeColor = System.Drawing.Color.White;
-        this.btnBrowse.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(184)))));
-        this.btnBrowse.Icon = null;
-        this.btnBrowse.Location = new System.Drawing.Point(708, 145);
-        this.btnBrowse.Name = "btnBrowse";
-        this.btnBrowse.Progress = 0;
-        this.btnBrowse.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(46)))), ((int)(((byte)(94)))));
-        this.btnBrowse.Size = new System.Drawing.Size(38, 29);
-        this.btnBrowse.TabIndex = 2;
-        this.btnBrowse.Text = "...";
-        this.btnBrowse.UseVisualStyleBackColor = true;
-        this.btnBrowse.UseWindowsAccentColor = true;
-        this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
-        //
+        // 
+        btnBrowse.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        btnBrowse.BorderRadius = 8;
+        btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
+        btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        btnBrowse.Font = new System.Drawing.Font("微软雅黑", 14F);
+        btnBrowse.ForeColor = System.Drawing.Color.White;
+        btnBrowse.HoverColor = System.Drawing.Color.FromArgb(0, 89, 184);
+        btnBrowse.Icon = null;
+        btnBrowse.Location = new System.Drawing.Point(603, 19);
+        btnBrowse.Name = "btnBrowse";
+        btnBrowse.Progress = 0;
+        btnBrowse.ProgressColor = System.Drawing.Color.FromArgb(0, 46, 94);
+        btnBrowse.Size = new System.Drawing.Size(49, 47);
+        btnBrowse.TabIndex = 2;
+        btnBrowse.Text = "...";
+        btnBrowse.UseVisualStyleBackColor = true;
+        btnBrowse.UseWindowsAccentColor = true;
+        btnBrowse.WriteProgress = true;
+        btnBrowse.Click += BtnBrowse_Click;
+        // 
         // lblArguments
-        //
-        this.lblArguments.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.lblArguments.Location = new System.Drawing.Point(97, 180);
-        this.lblArguments.Name = "lblArguments";
-        this.lblArguments.Size = new System.Drawing.Size(113, 29);
-        this.lblArguments.TabIndex = 3;
-        this.lblArguments.Text = "Arguments:";
-        this.lblArguments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        //
+        // 
+        lblArguments.AutoSize = true;
+        lblArguments.Font = new System.Drawing.Font("微软雅黑", 14F);
+        lblArguments.Location = new System.Drawing.Point(20, 81);
+        lblArguments.Name = "lblArguments";
+        lblArguments.Size = new System.Drawing.Size(170, 36);
+        lblArguments.TabIndex = 3;
+        lblArguments.Text = "Arguments:";
+        lblArguments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
         // arguments
-        //
-        this.arguments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-        this.arguments.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.arguments.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.arguments.Icon = null;
-        this.arguments.Location = new System.Drawing.Point(216, 180);
-        this.arguments.MaxCharacters = 32767;
-        this.arguments.Multiline = false;
-        this.arguments.Name = "arguments";
-        this.arguments.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
-        this.arguments.PasswordChar = false;
-        this.arguments.PlaceHolderColor = System.Drawing.Color.Gray;
-        this.arguments.PlaceHolderText = "";
-        this.arguments.ReadOnly = false;
-        this.arguments.ScrollBars = System.Windows.Forms.ScrollBars.None;
-        this.arguments.SelectionStart = 0;
-        this.arguments.Size = new System.Drawing.Size(486, 29);
-        this.arguments.TabIndex = 4;
-        this.arguments.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-        //
+        // 
+        arguments.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+        arguments.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
+        arguments.Cursor = System.Windows.Forms.Cursors.Hand;
+        arguments.Font = new System.Drawing.Font("微软雅黑", 14F);
+        arguments.Icon = null;
+        arguments.Location = new System.Drawing.Point(201, 81);
+        arguments.MaxCharacters = 32767;
+        arguments.Multiline = false;
+        arguments.Name = "arguments";
+        arguments.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
+        arguments.PasswordChar = false;
+        arguments.PlaceHolderColor = System.Drawing.Color.Gray;
+        arguments.PlaceHolderText = "";
+        arguments.ReadOnly = false;
+        arguments.ScrollBars = System.Windows.Forms.ScrollBars.None;
+        arguments.SelectionStart = 0;
+        arguments.Size = new System.Drawing.Size(451, 47);
+        arguments.TabIndex = 4;
+        arguments.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+        // 
         // checkRunAsAdmin
-        //
-        this.checkRunAsAdmin.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkRunAsAdmin.Location = new System.Drawing.Point(497, 215);
-        this.checkRunAsAdmin.Name = "checkRunAsAdmin";
-        this.checkRunAsAdmin.Size = new System.Drawing.Size(249, 29);
-        this.checkRunAsAdmin.TabIndex = 8;
-        this.checkRunAsAdmin.Text = "以管理员权限运行";
-        this.checkRunAsAdmin.UseVisualStyleBackColor = true;
-        //
+        // 
+        checkRunAsAdmin.AutoSize = true;
+        checkRunAsAdmin.Font = new System.Drawing.Font("微软雅黑", 14F);
+        checkRunAsAdmin.Location = new System.Drawing.Point(292, 224);
+        checkRunAsAdmin.Name = "checkRunAsAdmin";
+        checkRunAsAdmin.Size = new System.Drawing.Size(265, 40);
+        checkRunAsAdmin.TabIndex = 8;
+        checkRunAsAdmin.Text = "以管理员权限运行";
+        checkRunAsAdmin.UseVisualStyleBackColor = true;
+        // 
         // label1
-        //
-        this.label1.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.label1.Location = new System.Drawing.Point(97, 215);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(113, 29);
-        this.label1.TabIndex = 9;
-        this.label1.Text = "模式";
-        this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        //
+        // 
+        label1.AutoSize = true;
+        label1.Font = new System.Drawing.Font("微软雅黑", 14F);
+        label1.Location = new System.Drawing.Point(20, 155);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(71, 36);
+        label1.TabIndex = 9;
+        label1.Text = "模式";
+        label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
         // method
-        //
-        this.method.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-        this.method.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.method.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        this.method.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.method.Icon = null;
-        this.method.Location = new System.Drawing.Point(216, 214);
-        this.method.Name = "method";
-        this.method.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
-        this.method.SelectedIndex = -1;
-        this.method.SelectedItem = null;
-        this.method.Size = new System.Drawing.Size(159, 28);
-        this.method.TabIndex = 10;
-        //
+        // 
+        method.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+        method.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
+        method.Cursor = System.Windows.Forms.Cursors.Hand;
+        method.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        method.Font = new System.Drawing.Font("微软雅黑", 14F);
+        method.Icon = null;
+        method.Location = new System.Drawing.Point(201, 145);
+        method.Name = "method";
+        method.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
+        method.SelectedIndex = -1;
+        method.SelectedItem = null;
+        method.Size = new System.Drawing.Size(451, 48);
+        method.TabIndex = 10;
+        // 
         // checkSyncButtonState
-        //
-        this.checkSyncButtonState.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkSyncButtonState.Location = new System.Drawing.Point(97, 250);
-        this.checkSyncButtonState.Name = "checkSyncButtonState";
-        this.checkSyncButtonState.Size = new System.Drawing.Size(249, 29);
-        this.checkSyncButtonState.TabIndex = 11;
-        this.checkSyncButtonState.Text = "同步按钮状态";
-        this.checkSyncButtonState.UseVisualStyleBackColor = true;
-        //
+        // 
+        checkSyncButtonState.AutoSize = true;
+        checkSyncButtonState.Font = new System.Drawing.Font("微软雅黑", 14F);
+        checkSyncButtonState.Location = new System.Drawing.Point(20, 224);
+        checkSyncButtonState.Name = "checkSyncButtonState";
+        checkSyncButtonState.Size = new System.Drawing.Size(209, 40);
+        checkSyncButtonState.TabIndex = 11;
+        checkSyncButtonState.Text = "同步按钮状态";
+        checkSyncButtonState.UseVisualStyleBackColor = true;
+        // 
         // StartApplicationActionConfigView
-        //
-        this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.Controls.Add(this.lblPath);
-        this.Controls.Add(this.path);
-        this.Controls.Add(this.btnBrowse);
-        this.Controls.Add(this.checkSyncButtonState);
-        this.Controls.Add(this.lblArguments);
-        this.Controls.Add(this.method);
-        this.Controls.Add(this.arguments);
-        this.Controls.Add(this.label1);
-        this.Controls.Add(this.checkRunAsAdmin);
-        this.Name = "StartApplicationActionConfigView";
-        this.Load += new System.EventHandler(this.StartApplicationActionConfigView_Load);
-        this.ResumeLayout(false);
+        // 
+        AutoScaleDimensions = new System.Drawing.SizeF(16F, 35F);
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        Controls.Add(lblPath);
+        Controls.Add(path);
+        Controls.Add(btnBrowse);
+        Controls.Add(checkSyncButtonState);
+        Controls.Add(lblArguments);
+        Controls.Add(method);
+        Controls.Add(arguments);
+        Controls.Add(label1);
+        Controls.Add(checkRunAsAdmin);
+        Name = "StartApplicationActionConfigView";
+        Size = new System.Drawing.Size(682, 310);
+        Load += StartApplicationActionConfigView_Load;
+        ResumeLayout(false);
+        PerformLayout();
 
     }
 

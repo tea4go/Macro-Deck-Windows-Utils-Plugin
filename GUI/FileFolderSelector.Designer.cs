@@ -36,6 +36,7 @@ partial class FileFolderSelector
         // 
         // btnBrowse
         // 
+        btnBrowse.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
         btnBrowse.BorderRadius = 8;
         btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
         btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -67,6 +68,7 @@ partial class FileFolderSelector
         // 
         // path
         // 
+        path.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         path.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         path.Cursor = System.Windows.Forms.Cursors.Hand;
         path.Font = new System.Drawing.Font("微软雅黑", 12F);
@@ -82,29 +84,31 @@ partial class FileFolderSelector
         path.ReadOnly = false;
         path.ScrollBars = System.Windows.Forms.ScrollBars.None;
         path.SelectionStart = 0;
-        path.Size = new System.Drawing.Size(486, 38);
+        path.Size = new System.Drawing.Size(486, 42);
         path.TabIndex = 3;
         path.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         // 
         // lblChoose
         // 
+        lblChoose.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         lblChoose.Font = new System.Drawing.Font("微软雅黑", 12F);
         lblChoose.Location = new System.Drawing.Point(3, 184);
         lblChoose.Name = "lblChoose";
-        lblChoose.Size = new System.Drawing.Size(709, 64);
+        lblChoose.Size = new System.Drawing.Size(631, 64);
         lblChoose.TabIndex = 6;
         lblChoose.Text = "Choose a file or drag and drop it here";
         lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         // 
         // FileFolderSelector
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
+        AutoScaleDimensions = new System.Drawing.SizeF(16F, 35F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         Controls.Add(lblChoose);
         Controls.Add(btnBrowse);
         Controls.Add(lblPath);
         Controls.Add(path);
         Name = "FileFolderSelector";
+        Size = new System.Drawing.Size(653, 424);
         ResumeLayout(false);
 
     }

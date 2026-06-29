@@ -36,8 +36,6 @@ partial class HotkeyConfigurator
         key = new RoundedComboBox();
         label1 = new System.Windows.Forms.Label();
         label2 = new System.Windows.Forms.Label();
-        label3 = new System.Windows.Forms.Label();
-        lblDetails = new System.Windows.Forms.LinkLabel();
         checkLCtrl = new System.Windows.Forms.CheckBox();
         checkRCtrl = new System.Windows.Forms.CheckBox();
         checkLShift = new System.Windows.Forms.CheckBox();
@@ -53,9 +51,9 @@ partial class HotkeyConfigurator
         // 
         checkCtrl.AutoSize = true;
         checkCtrl.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkCtrl.Location = new System.Drawing.Point(163, 124);
+        checkCtrl.Location = new System.Drawing.Point(141, 124);
         checkCtrl.Name = "checkCtrl";
-        checkCtrl.Size = new System.Drawing.Size(81, 31);
+        checkCtrl.Size = new System.Drawing.Size(98, 35);
         checkCtrl.TabIndex = 0;
         checkCtrl.Text = "CTRL";
         checkCtrl.UseVisualStyleBackColor = true;
@@ -64,9 +62,9 @@ partial class HotkeyConfigurator
         // 
         checkShift.AutoSize = true;
         checkShift.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkShift.Location = new System.Drawing.Point(271, 124);
+        checkShift.Location = new System.Drawing.Point(296, 124);
         checkShift.Name = "checkShift";
-        checkShift.Size = new System.Drawing.Size(77, 31);
+        checkShift.Size = new System.Drawing.Size(92, 35);
         checkShift.TabIndex = 1;
         checkShift.Text = "Shift";
         checkShift.UseVisualStyleBackColor = true;
@@ -75,36 +73,37 @@ partial class HotkeyConfigurator
         // 
         checkAlt.AutoSize = true;
         checkAlt.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkAlt.Location = new System.Drawing.Point(374, 124);
+        checkAlt.Location = new System.Drawing.Point(455, 124);
         checkAlt.Name = "checkAlt";
-        checkAlt.Size = new System.Drawing.Size(60, 31);
+        checkAlt.Size = new System.Drawing.Size(72, 35);
         checkAlt.TabIndex = 2;
         checkAlt.Text = "Alt";
         checkAlt.UseVisualStyleBackColor = true;
         // 
         // key
         // 
+        key.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         key.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         key.Cursor = System.Windows.Forms.Cursors.Hand;
         key.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         key.Font = new System.Drawing.Font("微软雅黑", 12F);
         key.Icon = null;
-        key.Location = new System.Drawing.Point(460, 120);
+        key.Location = new System.Drawing.Point(16, 243);
         key.Margin = new System.Windows.Forms.Padding(4);
         key.Name = "key";
         key.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
         key.SelectedIndex = -1;
         key.SelectedItem = null;
-        key.Size = new System.Drawing.Size(200, 39);
+        key.Size = new System.Drawing.Size(542, 51);
         key.TabIndex = 3;
         // 
         // label1
         // 
         label1.AutoSize = true;
         label1.Font = new System.Drawing.Font("微软雅黑", 12F);
-        label1.Location = new System.Drawing.Point(241, 127);
+        label1.Location = new System.Drawing.Point(254, 127);
         label1.Name = "label1";
-        label1.Size = new System.Drawing.Size(27, 27);
+        label1.Size = new System.Drawing.Size(32, 31);
         label1.TabIndex = 4;
         label1.Text = "+";
         // 
@@ -112,44 +111,19 @@ partial class HotkeyConfigurator
         // 
         label2.AutoSize = true;
         label2.Font = new System.Drawing.Font("微软雅黑", 12F);
-        label2.Location = new System.Drawing.Point(344, 127);
+        label2.Location = new System.Drawing.Point(409, 127);
         label2.Name = "label2";
-        label2.Size = new System.Drawing.Size(27, 27);
+        label2.Size = new System.Drawing.Size(32, 31);
         label2.TabIndex = 5;
         label2.Text = "+";
-        // 
-        // label3
-        // 
-        label3.AutoSize = true;
-        label3.Font = new System.Drawing.Font("微软雅黑", 12F);
-        label3.Location = new System.Drawing.Point(430, 127);
-        label3.Name = "label3";
-        label3.Size = new System.Drawing.Size(27, 27);
-        label3.TabIndex = 6;
-        label3.Text = "+";
-        // 
-        // lblDetails
-        // 
-        lblDetails.ActiveLinkColor = System.Drawing.Color.Silver;
-        lblDetails.AutoSize = true;
-        lblDetails.Font = new System.Drawing.Font("微软雅黑", 12F);
-        lblDetails.LinkColor = System.Drawing.Color.Silver;
-        lblDetails.Location = new System.Drawing.Point(671, 126);
-        lblDetails.Name = "lblDetails";
-        lblDetails.Size = new System.Drawing.Size(80, 27);
-        lblDetails.TabIndex = 7;
-        lblDetails.TabStop = true;
-        lblDetails.Text = "-=？=-";
-        lblDetails.VisitedLinkColor = System.Drawing.Color.Silver;
-        lblDetails.LinkClicked += LblDetails_LinkClicked;
         // 
         // checkLCtrl
         // 
         checkLCtrl.AutoSize = true;
         checkLCtrl.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkLCtrl.Location = new System.Drawing.Point(163, 97);
+        checkLCtrl.Location = new System.Drawing.Point(141, 80);
         checkLCtrl.Name = "checkLCtrl";
-        checkLCtrl.Size = new System.Drawing.Size(91, 31);
+        checkLCtrl.Size = new System.Drawing.Size(110, 35);
         checkLCtrl.TabIndex = 8;
         checkLCtrl.Text = "LCTRL";
         checkLCtrl.UseVisualStyleBackColor = true;
@@ -158,9 +132,9 @@ partial class HotkeyConfigurator
         // 
         checkRCtrl.AutoSize = true;
         checkRCtrl.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkRCtrl.Location = new System.Drawing.Point(163, 151);
+        checkRCtrl.Location = new System.Drawing.Point(141, 168);
         checkRCtrl.Name = "checkRCtrl";
-        checkRCtrl.Size = new System.Drawing.Size(94, 31);
+        checkRCtrl.Size = new System.Drawing.Size(114, 35);
         checkRCtrl.TabIndex = 9;
         checkRCtrl.Text = "RCTRL";
         checkRCtrl.UseVisualStyleBackColor = true;
@@ -169,9 +143,9 @@ partial class HotkeyConfigurator
         // 
         checkLShift.AutoSize = true;
         checkLShift.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkLShift.Location = new System.Drawing.Point(271, 97);
+        checkLShift.Location = new System.Drawing.Point(297, 80);
         checkLShift.Name = "checkLShift";
-        checkLShift.Size = new System.Drawing.Size(87, 31);
+        checkLShift.Size = new System.Drawing.Size(104, 35);
         checkLShift.TabIndex = 10;
         checkLShift.Text = "LShift";
         checkLShift.UseVisualStyleBackColor = true;
@@ -180,9 +154,9 @@ partial class HotkeyConfigurator
         // 
         checkRShift.AutoSize = true;
         checkRShift.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkRShift.Location = new System.Drawing.Point(271, 151);
+        checkRShift.Location = new System.Drawing.Point(297, 168);
         checkRShift.Name = "checkRShift";
-        checkRShift.Size = new System.Drawing.Size(90, 31);
+        checkRShift.Size = new System.Drawing.Size(108, 35);
         checkRShift.TabIndex = 11;
         checkRShift.Text = "RShift";
         checkRShift.UseVisualStyleBackColor = true;
@@ -191,9 +165,9 @@ partial class HotkeyConfigurator
         // 
         checkLAlt.AutoSize = true;
         checkLAlt.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkLAlt.Location = new System.Drawing.Point(374, 97);
+        checkLAlt.Location = new System.Drawing.Point(455, 80);
         checkLAlt.Name = "checkLAlt";
-        checkLAlt.Size = new System.Drawing.Size(70, 31);
+        checkLAlt.Size = new System.Drawing.Size(84, 35);
         checkLAlt.TabIndex = 12;
         checkLAlt.Text = "LAlt";
         checkLAlt.UseVisualStyleBackColor = true;
@@ -202,9 +176,9 @@ partial class HotkeyConfigurator
         // 
         checkRAlt.AutoSize = true;
         checkRAlt.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkRAlt.Location = new System.Drawing.Point(374, 151);
+        checkRAlt.Location = new System.Drawing.Point(455, 168);
         checkRAlt.Name = "checkRAlt";
-        checkRAlt.Size = new System.Drawing.Size(73, 31);
+        checkRAlt.Size = new System.Drawing.Size(88, 35);
         checkRAlt.TabIndex = 13;
         checkRAlt.Text = "RAlt";
         checkRAlt.UseVisualStyleBackColor = true;
@@ -213,9 +187,9 @@ partial class HotkeyConfigurator
         // 
         checkRWin.AutoSize = true;
         checkRWin.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkRWin.Location = new System.Drawing.Point(55, 137);
+        checkRWin.Location = new System.Drawing.Point(16, 141);
         checkRWin.Name = "checkRWin";
-        checkRWin.Size = new System.Drawing.Size(89, 31);
+        checkRWin.Size = new System.Drawing.Size(107, 35);
         checkRWin.TabIndex = 17;
         checkRWin.Text = "RWIN";
         checkRWin.UseVisualStyleBackColor = true;
@@ -224,9 +198,9 @@ partial class HotkeyConfigurator
         // 
         checkLWin.AutoSize = true;
         checkLWin.Font = new System.Drawing.Font("微软雅黑", 12F);
-        checkLWin.Location = new System.Drawing.Point(55, 110);
+        checkLWin.Location = new System.Drawing.Point(16, 106);
         checkLWin.Name = "checkLWin";
-        checkLWin.Size = new System.Drawing.Size(86, 31);
+        checkLWin.Size = new System.Drawing.Size(103, 35);
         checkLWin.TabIndex = 16;
         checkLWin.Text = "LWIN";
         checkLWin.UseVisualStyleBackColor = true;
@@ -235,15 +209,15 @@ partial class HotkeyConfigurator
         // 
         label4.AutoSize = true;
         label4.Font = new System.Drawing.Font("微软雅黑", 12F);
-        label4.Location = new System.Drawing.Point(133, 128);
+        label4.Location = new System.Drawing.Point(94, 128);
         label4.Name = "label4";
-        label4.Size = new System.Drawing.Size(27, 27);
+        label4.Size = new System.Drawing.Size(32, 31);
         label4.TabIndex = 15;
         label4.Text = "+";
         // 
         // HotkeyConfigurator
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
+        AutoScaleDimensions = new System.Drawing.SizeF(16F, 35F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         Controls.Add(checkRWin);
         Controls.Add(checkLWin);
@@ -254,8 +228,6 @@ partial class HotkeyConfigurator
         Controls.Add(checkLShift);
         Controls.Add(checkRCtrl);
         Controls.Add(checkLCtrl);
-        Controls.Add(lblDetails);
-        Controls.Add(label3);
         Controls.Add(label2);
         Controls.Add(label1);
         Controls.Add(key);
@@ -263,6 +235,7 @@ partial class HotkeyConfigurator
         Controls.Add(checkShift);
         Controls.Add(checkCtrl);
         Name = "HotkeyConfigurator";
+        Size = new System.Drawing.Size(1183, 424);
         ResumeLayout(false);
         PerformLayout();
 
@@ -277,8 +250,6 @@ partial class HotkeyConfigurator
     private RoundedComboBox key;  // 主键选择下拉框
     private System.Windows.Forms.Label label1;  // "+"分隔符（CTRL与Shift之间）
     private System.Windows.Forms.Label label2;  // "+"分隔符（Shift与Alt之间）
-    private System.Windows.Forms.Label label3;  // "+"分隔符（Alt与主键之间）
-    private System.Windows.Forms.LinkLabel lblDetails;  // 帮助链接标签
     private System.Windows.Forms.CheckBox checkLCtrl;  // 左CTRL复选框（高级模式）
     private System.Windows.Forms.CheckBox checkRCtrl;  // 右CTRL复选框（高级模式）
     private System.Windows.Forms.CheckBox checkLShift;  // 左Shift复选框（高级模式）

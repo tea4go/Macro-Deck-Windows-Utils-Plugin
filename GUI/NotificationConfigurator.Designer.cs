@@ -41,19 +41,19 @@ partial class NotificationConfigurator
         title.Cursor = System.Windows.Forms.Cursors.Hand;
         title.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic);
         title.Icon = null;
-        title.Location = new System.Drawing.Point(229, 79);
-        title.Margin = new System.Windows.Forms.Padding(4);
+        title.Location = new System.Drawing.Point(275, 95);
+        title.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
         title.MaxCharacters = 32767;
         title.Multiline = false;
         title.Name = "title";
-        title.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
+        title.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
         title.PasswordChar = false;
         title.PlaceHolderColor = System.Drawing.Color.Gray;
         title.PlaceHolderText = "Title";
         title.ReadOnly = false;
         title.ScrollBars = System.Windows.Forms.ScrollBars.None;
         title.SelectionStart = 0;
-        title.Size = new System.Drawing.Size(641, 36);
+        title.Size = new System.Drawing.Size(769, 43);
         title.TabIndex = 5;
         title.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         // 
@@ -63,29 +63,29 @@ partial class NotificationConfigurator
         message.Cursor = System.Windows.Forms.Cursors.Hand;
         message.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic);
         message.Icon = null;
-        message.Location = new System.Drawing.Point(229, 135);
-        message.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+        message.Location = new System.Drawing.Point(275, 147);
+        message.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
         message.MaxCharacters = 32767;
         message.Multiline = true;
         message.Name = "message";
-        message.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
+        message.Padding = new System.Windows.Forms.Padding(12, 7, 12, 7);
         message.PasswordChar = false;
         message.PlaceHolderColor = System.Drawing.Color.Gray;
         message.PlaceHolderText = "Message";
         message.ReadOnly = false;
         message.ScrollBars = System.Windows.Forms.ScrollBars.None;
         message.SelectionStart = 0;
-        message.Size = new System.Drawing.Size(641, 94);
+        message.Size = new System.Drawing.Size(769, 113);
         message.TabIndex = 8;
         message.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
         // 
         // lblTitle
         // 
         lblTitle.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        lblTitle.Location = new System.Drawing.Point(0, 79);
-        lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+        lblTitle.Location = new System.Drawing.Point(0, 95);
+        lblTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
         lblTitle.Name = "lblTitle";
-        lblTitle.Size = new System.Drawing.Size(218, 36);
+        lblTitle.Size = new System.Drawing.Size(262, 43);
         lblTitle.TabIndex = 9;
         lblTitle.Text = "Title:";
         lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -93,24 +93,24 @@ partial class NotificationConfigurator
         // lblMessage
         // 
         lblMessage.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        lblMessage.Location = new System.Drawing.Point(0, 135);
-        lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+        lblMessage.Location = new System.Drawing.Point(0, 147);
+        lblMessage.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
         lblMessage.Name = "lblMessage";
-        lblMessage.Size = new System.Drawing.Size(218, 94);
+        lblMessage.Size = new System.Drawing.Size(262, 113);
         lblMessage.TabIndex = 10;
         lblMessage.Text = "Message:";
         lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         // 
         // NotificationConfigurator
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+        AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
         Controls.Add(lblMessage);
         Controls.Add(lblTitle);
         Controls.Add(message);
         Controls.Add(title);
-        Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+        Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
         Name = "NotificationConfigurator";
-        Size = new System.Drawing.Size(1071, 530);
+        Size = new System.Drawing.Size(1285, 636);
         ResumeLayout(false);
     }
 
