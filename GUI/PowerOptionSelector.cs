@@ -25,6 +25,7 @@ public partial class PowerOptionSelector : ActionConfigControl
         this.pluginAction = pluginAction;
 
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         this.lblPowerOption.Text = PluginLanguageManager.PluginStrings.ActionPowerOption + ":";
 

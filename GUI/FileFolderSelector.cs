@@ -33,6 +33,7 @@ public partial class FileFolderSelector : ActionConfigControl
         this.pluginAction = pluginAction;
         this.type = selectType;
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         this.lblPath.Text = PluginLanguageManager.PluginStrings.Path;
 

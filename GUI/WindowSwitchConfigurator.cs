@@ -27,6 +27,7 @@ public partial class WindowSwitchConfigurator : ActionConfigControl
         this.pluginAction = pluginAction;
 
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         this.lblPattern.Text = PluginLanguageManager.PluginStrings.Pattern + ": ";
         this.lblMatchMode.Text = PluginLanguageManager.PluginStrings.MatchMode + ": ";

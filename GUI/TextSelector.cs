@@ -23,6 +23,7 @@ public partial class TextSelector : ActionConfigControl
     {
         this.pluginAction = pluginAction;
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         this.btnAddVariable.Text = PluginLanguageManager.PluginStrings.AddVariable;
         this.textBox.PlaceHolderText = PluginLanguageManager.PluginStrings.TypeTextHere;

@@ -26,6 +26,7 @@ public partial class CommandSelector : ActionConfigControl
         this.pluginAction = pluginAction;
 
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         // 根据当前语言设置各控件的显示文本
         this.lblCommand.Text = PluginLanguageManager.PluginStrings.Command;

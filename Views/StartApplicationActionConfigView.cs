@@ -28,6 +28,7 @@ public partial class StartApplicationActionConfigView : ActionConfigControl
     public StartApplicationActionConfigView(PluginAction action)
     {
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         // 使用 ??= 确保只在 action 为空时才赋值（实际上 action 始终不为空）
         this._action ??= action;

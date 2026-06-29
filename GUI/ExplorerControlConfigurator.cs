@@ -24,6 +24,7 @@ public partial class ExplorerControlConfigurator : ActionConfigControl
         this.pluginAction = pluginAction;
         this.actionConfigurator = actionConfigurator;
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         // 根据当前语言设置单选按键的显示文本
         this.lblAction.Text = PluginLanguageManager.PluginStrings.Action;

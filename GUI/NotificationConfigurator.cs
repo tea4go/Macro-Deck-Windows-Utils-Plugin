@@ -22,6 +22,7 @@ public partial class NotificationConfigurator : ActionConfigControl
         this.pluginAction = pluginAction;
 
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         // 根据语言包设置标签文本
         this.lblTitle.Text = PluginLanguageManager.PluginStrings.Title + ": ";

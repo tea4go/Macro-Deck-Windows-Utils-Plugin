@@ -20,6 +20,7 @@ public partial class MultiHotkeyActionConfigView : ActionConfigControl
     public MultiHotkeyActionConfigView(PluginAction action)
     {
         InitializeComponent();
+        SuchByte.WindowsUtils.Utils.FontHelper.ApplyMacroDeckFont(this);
         this._viewModel = new MultiHotkeyActionConfigViewModel(action);
     }
 

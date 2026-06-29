@@ -24,6 +24,7 @@ public partial class HotkeyConfigurator : ActionConfigControl
     {
         this.pluginAction = pluginAction;
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         this.LoadConfig();
     }

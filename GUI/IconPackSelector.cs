@@ -30,6 +30,7 @@ public partial class IconPackSelector : DialogForm
     public IconPackSelector()
     {
         InitializeComponent();
+        Utils.FontHelper.ApplyMacroDeckFont(this);
 
         this.btnOk.Text = LanguageManager.Strings.Ok;
 
