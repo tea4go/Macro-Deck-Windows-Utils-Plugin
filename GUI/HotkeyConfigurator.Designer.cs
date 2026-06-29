@@ -30,241 +30,241 @@ partial class HotkeyConfigurator
     /// </summary>
     private void InitializeComponent()
     {
-        // 创建热键配置器的界面控件（支持左右区分修饰键 + Win键 + 主键选择）
-        this.checkCtrl = new System.Windows.Forms.CheckBox();
-        this.checkShift = new System.Windows.Forms.CheckBox();
-        this.checkAlt = new System.Windows.Forms.CheckBox();
-        this.key = new SuchByte.MacroDeck.GUI.CustomControls.RoundedComboBox();
-        this.label1 = new System.Windows.Forms.Label();
-        this.label2 = new System.Windows.Forms.Label();
-        this.label3 = new System.Windows.Forms.Label();
-        this.lblDetails = new System.Windows.Forms.LinkLabel();
-        this.checkLCtrl = new System.Windows.Forms.CheckBox();
-        this.checkRCtrl = new System.Windows.Forms.CheckBox();
-        this.checkLShift = new System.Windows.Forms.CheckBox();
-        this.checkRShift = new System.Windows.Forms.CheckBox();
-        this.checkLAlt = new System.Windows.Forms.CheckBox();
-        this.checkRAlt = new System.Windows.Forms.CheckBox();
-        this.checkRWin = new System.Windows.Forms.CheckBox();
-        this.checkLWin = new System.Windows.Forms.CheckBox();
-        this.label4 = new System.Windows.Forms.Label();
-        this.SuspendLayout();  // 挂起布局，批量设置属性以提高性能
-        //
-        // checkCtrl - "CTRL"修饰键复选框（简单模式）
-        //
-        this.checkCtrl.AutoSize = true;  // 自动调整大小
-        this.checkCtrl.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkCtrl.Location = new System.Drawing.Point(163, 124);
-        this.checkCtrl.Name = "checkCtrl";
-        this.checkCtrl.Size = new System.Drawing.Size(66, 23);
-        this.checkCtrl.TabIndex = 0;
-        this.checkCtrl.Text = "CTRL";
-        this.checkCtrl.UseVisualStyleBackColor = true;
-        //
-        // checkShift - "Shift"修饰键复选框（简单模式）
-        //
-        this.checkShift.AutoSize = true;
-        this.checkShift.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkShift.Location = new System.Drawing.Point(271, 124);
-        this.checkShift.Name = "checkShift";
-        this.checkShift.Size = new System.Drawing.Size(60, 23);
-        this.checkShift.TabIndex = 1;
-        this.checkShift.Text = "Shift";
-        this.checkShift.UseVisualStyleBackColor = true;
-        //
-        // checkAlt - "Alt"修饰键复选框（简单模式）
-        //
-        this.checkAlt.AutoSize = true;
-        this.checkAlt.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkAlt.Location = new System.Drawing.Point(374, 124);
-        this.checkAlt.Name = "checkAlt";
-        this.checkAlt.Size = new System.Drawing.Size(48, 23);
-        this.checkAlt.TabIndex = 2;
-        this.checkAlt.Text = "Alt";
-        this.checkAlt.UseVisualStyleBackColor = true;
-        //
-        // key - 主键选择下拉框
-        //
-        this.key.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-        this.key.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.key.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;  // 只允许从列表中选择
-        this.key.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.key.Icon = null;
-        this.key.Location = new System.Drawing.Point(460, 120);
-        this.key.Name = "key";
-        this.key.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
-        this.key.SelectedIndex = -1;  // 无默认选中项
-        this.key.SelectedItem = null;
-        this.key.Size = new System.Drawing.Size(200, 31);
-        this.key.TabIndex = 3;
-        //
-        // label1 - "+"分隔符（CTRL与Shift之间）
-        //
-        this.label1.AutoSize = true;
-        this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.label1.Location = new System.Drawing.Point(241, 127);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(21, 19);
-        this.label1.TabIndex = 4;
-        this.label1.Text = "+";
-        //
-        // label2 - "+"分隔符（Shift与Alt之间）
-        //
-        this.label2.AutoSize = true;
-        this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.label2.Location = new System.Drawing.Point(344, 127);
-        this.label2.Name = "label2";
-        this.label2.Size = new System.Drawing.Size(21, 19);
-        this.label2.TabIndex = 5;
-        this.label2.Text = "+";
-        //
-        // label3 - "+"分隔符（Alt与主键之间）
-        //
-        this.label3.AutoSize = true;
-        this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.label3.Location = new System.Drawing.Point(430, 127);
-        this.label3.Name = "label3";
-        this.label3.Size = new System.Drawing.Size(21, 19);
-        this.label3.TabIndex = 6;
-        this.label3.Text = "+";
-        //
-        // lblDetails - 帮助链接标签
-        //
-        this.lblDetails.ActiveLinkColor = System.Drawing.Color.Silver;  // 点击时的链接颜色
-        this.lblDetails.AutoSize = true;
-        this.lblDetails.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.lblDetails.LinkColor = System.Drawing.Color.Silver;  // 默认链接颜色
-        this.lblDetails.Location = new System.Drawing.Point(666, 126);
-        this.lblDetails.Name = "lblDetails";
-        this.lblDetails.Size = new System.Drawing.Size(15, 18);
-        this.lblDetails.TabIndex = 7;
-        this.lblDetails.TabStop = true;
-        this.lblDetails.Text = "-=？=-";
-        this.lblDetails.VisitedLinkColor = System.Drawing.Color.Silver;  // 访问后的链接颜色
-        this.lblDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblDetails_LinkClicked);  // 点击查看详细说明
-        //
-        // checkLCtrl - 左CTRL复选框（高级模式）
-        //
-        this.checkLCtrl.AutoSize = true;
-        this.checkLCtrl.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkLCtrl.Location = new System.Drawing.Point(163, 97);
-        this.checkLCtrl.Name = "checkLCtrl";
-        this.checkLCtrl.Size = new System.Drawing.Size(74, 23);
-        this.checkLCtrl.TabIndex = 8;
-        this.checkLCtrl.Text = "LCTRL";
-        this.checkLCtrl.UseVisualStyleBackColor = true;
-        //
-        // checkRCtrl - 右CTRL复选框（高级模式）
-        //
-        this.checkRCtrl.AutoSize = true;
-        this.checkRCtrl.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkRCtrl.Location = new System.Drawing.Point(163, 151);
-        this.checkRCtrl.Name = "checkRCtrl";
-        this.checkRCtrl.Size = new System.Drawing.Size(76, 23);
-        this.checkRCtrl.TabIndex = 9;
-        this.checkRCtrl.Text = "RCTRL";
-        this.checkRCtrl.UseVisualStyleBackColor = true;
-        //
-        // checkLShift - 左Shift复选框（高级模式）
-        //
-        this.checkLShift.AutoSize = true;
-        this.checkLShift.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkLShift.Location = new System.Drawing.Point(271, 97);
-        this.checkLShift.Name = "checkLShift";
-        this.checkLShift.Size = new System.Drawing.Size(68, 23);
-        this.checkLShift.TabIndex = 10;
-        this.checkLShift.Text = "LShift";
-        this.checkLShift.UseVisualStyleBackColor = true;
-        //
-        // checkRShift - 右Shift复选框（高级模式）
-        //
-        this.checkRShift.AutoSize = true;
-        this.checkRShift.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkRShift.Location = new System.Drawing.Point(271, 151);
-        this.checkRShift.Name = "checkRShift";
-        this.checkRShift.Size = new System.Drawing.Size(70, 23);
-        this.checkRShift.TabIndex = 11;
-        this.checkRShift.Text = "RShift";
-        this.checkRShift.UseVisualStyleBackColor = true;
-        //
-        // checkLAlt - 左Alt复选框（高级模式）
-        //
-        this.checkLAlt.AutoSize = true;
-        this.checkLAlt.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkLAlt.Location = new System.Drawing.Point(374, 97);
-        this.checkLAlt.Name = "checkLAlt";
-        this.checkLAlt.Size = new System.Drawing.Size(56, 23);
-        this.checkLAlt.TabIndex = 12;
-        this.checkLAlt.Text = "LAlt";
-        this.checkLAlt.UseVisualStyleBackColor = true;
-        //
-        // checkRAlt - 右Alt复选框（高级模式）
-        //
-        this.checkRAlt.AutoSize = true;
-        this.checkRAlt.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkRAlt.Location = new System.Drawing.Point(374, 151);
-        this.checkRAlt.Name = "checkRAlt";
-        this.checkRAlt.Size = new System.Drawing.Size(58, 23);
-        this.checkRAlt.TabIndex = 13;
-        this.checkRAlt.Text = "RAlt";
-        this.checkRAlt.UseVisualStyleBackColor = true;
-        //
-        // checkRWin - 右Win键复选框（高级模式）
-        //
-        this.checkRWin.AutoSize = true;
-        this.checkRWin.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkRWin.Location = new System.Drawing.Point(55, 137);
-        this.checkRWin.Name = "checkRWin";
-        this.checkRWin.Size = new System.Drawing.Size(69, 23);
-        this.checkRWin.TabIndex = 17;
-        this.checkRWin.Text = "RWIN";
-        this.checkRWin.UseVisualStyleBackColor = true;
-        //
-        // checkLWin - 左Win键复选框（高级模式）
-        //
-        this.checkLWin.AutoSize = true;
-        this.checkLWin.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.checkLWin.Location = new System.Drawing.Point(55, 110);
-        this.checkLWin.Name = "checkLWin";
-        this.checkLWin.Size = new System.Drawing.Size(67, 23);
-        this.checkLWin.TabIndex = 16;
-        this.checkLWin.Text = "LWIN";
-        this.checkLWin.UseVisualStyleBackColor = true;
-        //
-        // label4 - "+"分隔符（Win键与修饰键之间）
-        //
-        this.label4.AutoSize = true;
-        this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.label4.Location = new System.Drawing.Point(133, 128);
-        this.label4.Name = "label4";
-        this.label4.Size = new System.Drawing.Size(21, 19);
-        this.label4.TabIndex = 15;
-        this.label4.Text = "+";
-        //
-        // HotkeyConfigurator - 热键配置器主控件
-        //
-        this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.Controls.Add(this.checkRWin);
-        this.Controls.Add(this.checkLWin);
-        this.Controls.Add(this.label4);
-        this.Controls.Add(this.checkRAlt);
-        this.Controls.Add(this.checkLAlt);
-        this.Controls.Add(this.checkRShift);
-        this.Controls.Add(this.checkLShift);
-        this.Controls.Add(this.checkRCtrl);
-        this.Controls.Add(this.checkLCtrl);
-        this.Controls.Add(this.lblDetails);
-        this.Controls.Add(this.label3);
-        this.Controls.Add(this.label2);
-        this.Controls.Add(this.label1);
-        this.Controls.Add(this.key);
-        this.Controls.Add(this.checkAlt);
-        this.Controls.Add(this.checkShift);
-        this.Controls.Add(this.checkCtrl);
-        this.Name = "HotkeyConfigurator";
-        this.ResumeLayout(false);  // 恢复布局，应用所有属性设置
-        this.PerformLayout();  // 强制立即布局计算
+        checkCtrl = new System.Windows.Forms.CheckBox();
+        checkShift = new System.Windows.Forms.CheckBox();
+        checkAlt = new System.Windows.Forms.CheckBox();
+        key = new RoundedComboBox();
+        label1 = new System.Windows.Forms.Label();
+        label2 = new System.Windows.Forms.Label();
+        label3 = new System.Windows.Forms.Label();
+        lblDetails = new System.Windows.Forms.LinkLabel();
+        checkLCtrl = new System.Windows.Forms.CheckBox();
+        checkRCtrl = new System.Windows.Forms.CheckBox();
+        checkLShift = new System.Windows.Forms.CheckBox();
+        checkRShift = new System.Windows.Forms.CheckBox();
+        checkLAlt = new System.Windows.Forms.CheckBox();
+        checkRAlt = new System.Windows.Forms.CheckBox();
+        checkRWin = new System.Windows.Forms.CheckBox();
+        checkLWin = new System.Windows.Forms.CheckBox();
+        label4 = new System.Windows.Forms.Label();
+        SuspendLayout();
+        // 
+        // checkCtrl
+        // 
+        checkCtrl.AutoSize = true;
+        checkCtrl.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkCtrl.Location = new System.Drawing.Point(163, 124);
+        checkCtrl.Name = "checkCtrl";
+        checkCtrl.Size = new System.Drawing.Size(81, 31);
+        checkCtrl.TabIndex = 0;
+        checkCtrl.Text = "CTRL";
+        checkCtrl.UseVisualStyleBackColor = true;
+        // 
+        // checkShift
+        // 
+        checkShift.AutoSize = true;
+        checkShift.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkShift.Location = new System.Drawing.Point(271, 124);
+        checkShift.Name = "checkShift";
+        checkShift.Size = new System.Drawing.Size(77, 31);
+        checkShift.TabIndex = 1;
+        checkShift.Text = "Shift";
+        checkShift.UseVisualStyleBackColor = true;
+        // 
+        // checkAlt
+        // 
+        checkAlt.AutoSize = true;
+        checkAlt.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkAlt.Location = new System.Drawing.Point(374, 124);
+        checkAlt.Name = "checkAlt";
+        checkAlt.Size = new System.Drawing.Size(60, 31);
+        checkAlt.TabIndex = 2;
+        checkAlt.Text = "Alt";
+        checkAlt.UseVisualStyleBackColor = true;
+        // 
+        // key
+        // 
+        key.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
+        key.Cursor = System.Windows.Forms.Cursors.Hand;
+        key.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        key.Font = new System.Drawing.Font("微软雅黑", 12F);
+        key.Icon = null;
+        key.Location = new System.Drawing.Point(460, 120);
+        key.Margin = new System.Windows.Forms.Padding(4);
+        key.Name = "key";
+        key.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
+        key.SelectedIndex = -1;
+        key.SelectedItem = null;
+        key.Size = new System.Drawing.Size(200, 39);
+        key.TabIndex = 3;
+        // 
+        // label1
+        // 
+        label1.AutoSize = true;
+        label1.Font = new System.Drawing.Font("微软雅黑", 12F);
+        label1.Location = new System.Drawing.Point(241, 127);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(27, 27);
+        label1.TabIndex = 4;
+        label1.Text = "+";
+        // 
+        // label2
+        // 
+        label2.AutoSize = true;
+        label2.Font = new System.Drawing.Font("微软雅黑", 12F);
+        label2.Location = new System.Drawing.Point(344, 127);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(27, 27);
+        label2.TabIndex = 5;
+        label2.Text = "+";
+        // 
+        // label3
+        // 
+        label3.AutoSize = true;
+        label3.Font = new System.Drawing.Font("微软雅黑", 12F);
+        label3.Location = new System.Drawing.Point(430, 127);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(27, 27);
+        label3.TabIndex = 6;
+        label3.Text = "+";
+        // 
+        // lblDetails
+        // 
+        lblDetails.ActiveLinkColor = System.Drawing.Color.Silver;
+        lblDetails.AutoSize = true;
+        lblDetails.Font = new System.Drawing.Font("微软雅黑", 12F);
+        lblDetails.LinkColor = System.Drawing.Color.Silver;
+        lblDetails.Location = new System.Drawing.Point(671, 126);
+        lblDetails.Name = "lblDetails";
+        lblDetails.Size = new System.Drawing.Size(80, 27);
+        lblDetails.TabIndex = 7;
+        lblDetails.TabStop = true;
+        lblDetails.Text = "-=？=-";
+        lblDetails.VisitedLinkColor = System.Drawing.Color.Silver;
+        lblDetails.LinkClicked += LblDetails_LinkClicked;
+        // 
+        // checkLCtrl
+        // 
+        checkLCtrl.AutoSize = true;
+        checkLCtrl.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkLCtrl.Location = new System.Drawing.Point(163, 97);
+        checkLCtrl.Name = "checkLCtrl";
+        checkLCtrl.Size = new System.Drawing.Size(91, 31);
+        checkLCtrl.TabIndex = 8;
+        checkLCtrl.Text = "LCTRL";
+        checkLCtrl.UseVisualStyleBackColor = true;
+        // 
+        // checkRCtrl
+        // 
+        checkRCtrl.AutoSize = true;
+        checkRCtrl.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkRCtrl.Location = new System.Drawing.Point(163, 151);
+        checkRCtrl.Name = "checkRCtrl";
+        checkRCtrl.Size = new System.Drawing.Size(94, 31);
+        checkRCtrl.TabIndex = 9;
+        checkRCtrl.Text = "RCTRL";
+        checkRCtrl.UseVisualStyleBackColor = true;
+        // 
+        // checkLShift
+        // 
+        checkLShift.AutoSize = true;
+        checkLShift.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkLShift.Location = new System.Drawing.Point(271, 97);
+        checkLShift.Name = "checkLShift";
+        checkLShift.Size = new System.Drawing.Size(87, 31);
+        checkLShift.TabIndex = 10;
+        checkLShift.Text = "LShift";
+        checkLShift.UseVisualStyleBackColor = true;
+        // 
+        // checkRShift
+        // 
+        checkRShift.AutoSize = true;
+        checkRShift.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkRShift.Location = new System.Drawing.Point(271, 151);
+        checkRShift.Name = "checkRShift";
+        checkRShift.Size = new System.Drawing.Size(90, 31);
+        checkRShift.TabIndex = 11;
+        checkRShift.Text = "RShift";
+        checkRShift.UseVisualStyleBackColor = true;
+        // 
+        // checkLAlt
+        // 
+        checkLAlt.AutoSize = true;
+        checkLAlt.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkLAlt.Location = new System.Drawing.Point(374, 97);
+        checkLAlt.Name = "checkLAlt";
+        checkLAlt.Size = new System.Drawing.Size(70, 31);
+        checkLAlt.TabIndex = 12;
+        checkLAlt.Text = "LAlt";
+        checkLAlt.UseVisualStyleBackColor = true;
+        // 
+        // checkRAlt
+        // 
+        checkRAlt.AutoSize = true;
+        checkRAlt.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkRAlt.Location = new System.Drawing.Point(374, 151);
+        checkRAlt.Name = "checkRAlt";
+        checkRAlt.Size = new System.Drawing.Size(73, 31);
+        checkRAlt.TabIndex = 13;
+        checkRAlt.Text = "RAlt";
+        checkRAlt.UseVisualStyleBackColor = true;
+        // 
+        // checkRWin
+        // 
+        checkRWin.AutoSize = true;
+        checkRWin.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkRWin.Location = new System.Drawing.Point(55, 137);
+        checkRWin.Name = "checkRWin";
+        checkRWin.Size = new System.Drawing.Size(89, 31);
+        checkRWin.TabIndex = 17;
+        checkRWin.Text = "RWIN";
+        checkRWin.UseVisualStyleBackColor = true;
+        // 
+        // checkLWin
+        // 
+        checkLWin.AutoSize = true;
+        checkLWin.Font = new System.Drawing.Font("微软雅黑", 12F);
+        checkLWin.Location = new System.Drawing.Point(55, 110);
+        checkLWin.Name = "checkLWin";
+        checkLWin.Size = new System.Drawing.Size(86, 31);
+        checkLWin.TabIndex = 16;
+        checkLWin.Text = "LWIN";
+        checkLWin.UseVisualStyleBackColor = true;
+        // 
+        // label4
+        // 
+        label4.AutoSize = true;
+        label4.Font = new System.Drawing.Font("微软雅黑", 12F);
+        label4.Location = new System.Drawing.Point(133, 128);
+        label4.Name = "label4";
+        label4.Size = new System.Drawing.Size(27, 27);
+        label4.TabIndex = 15;
+        label4.Text = "+";
+        // 
+        // HotkeyConfigurator
+        // 
+        AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        Controls.Add(checkRWin);
+        Controls.Add(checkLWin);
+        Controls.Add(label4);
+        Controls.Add(checkRAlt);
+        Controls.Add(checkLAlt);
+        Controls.Add(checkRShift);
+        Controls.Add(checkLShift);
+        Controls.Add(checkRCtrl);
+        Controls.Add(checkLCtrl);
+        Controls.Add(lblDetails);
+        Controls.Add(label3);
+        Controls.Add(label2);
+        Controls.Add(label1);
+        Controls.Add(key);
+        Controls.Add(checkAlt);
+        Controls.Add(checkShift);
+        Controls.Add(checkCtrl);
+        Name = "HotkeyConfigurator";
+        ResumeLayout(false);
+        PerformLayout();
 
     }
 

@@ -79,11 +79,14 @@ if ($Run) {
         Start-Sleep -Seconds 2
     }
 
-    # 复制发布输出到插件目录
+    # 复制发布输出到插件目录（publish/ 里已包含带时间戳版本号的 ExtensionManifest.json）
     Write-Host "正在复制插件文件到：$PluginDir"
     $absOutput = (Resolve-Path $Output).Path
     Copy-Item -Path (Join-Path $absOutput "*") -Destination $PluginDir -Recurse -Force
-    Copy-Item -Path "ExtensionManifest.json" -Destination $PluginDir -Force
+    # ExtensionManifest.json 已由构建过程注入到 publish/，无需再次覆盖
+    if (-not (Test-Path (Join-Path $PluginDir "ExtensionManifest.json"))) {
+        Copy-Item -Path "ExtensionManifest.json" -Destination $PluginDir -Force
+    }
     Copy-Item -Path "ExtensionIcon.png" -Destination $PluginDir -Force
 
     # 启动 Macro Deck

@@ -28,82 +28,84 @@ partial class FileFolderSelector
     /// </summary>
     private void InitializeComponent()
     {
-        // 创建文件/文件夹路径选择器的配置界面控件
-        this.btnBrowse = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
-        this.lblPath = new System.Windows.Forms.Label();
-        this.path = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
-        this.lblChoose = new System.Windows.Forms.Label();
-        this.SuspendLayout();  // 挂起布局，批量设置属性以提高性能
-        //
-        // btnBrowse - 浏览按钮
-        //
-        this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
-        this.btnBrowse.BorderRadius = 8;  // 圆角边框
-        this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnBrowse.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.btnBrowse.ForeColor = System.Drawing.Color.White;  // 白色前景文字
-        this.btnBrowse.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(184)))));  // 悬停时的颜色
-        this.btnBrowse.Icon = null;
-        this.btnBrowse.Location = new System.Drawing.Point(584, 121);
-        this.btnBrowse.Name = "btnBrowse";
-        this.btnBrowse.Progress = 0;
-        this.btnBrowse.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(46)))), ((int)(((byte)(94)))));
-        this.btnBrowse.Size = new System.Drawing.Size(38, 29);
-        this.btnBrowse.TabIndex = 5;
-        this.btnBrowse.Text = "...";
-        this.btnBrowse.UseVisualStyleBackColor = true;
-        this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);  // 浏览按钮点击事件
-        //
-        // lblPath - 路径标签
-        //
-        this.lblPath.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.lblPath.Location = new System.Drawing.Point(3, 121);
-        this.lblPath.Name = "lblPath";
-        this.lblPath.Size = new System.Drawing.Size(83, 29);
-        this.lblPath.TabIndex = 4;
-        this.lblPath.Text = "Path:";
-        this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        //
-        // path - 路径输入框
-        //
-        this.path.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-        this.path.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.path.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.path.Icon = null;
-        this.path.Location = new System.Drawing.Point(92, 121);
-        this.path.Multiline = false;  // 单行输入
-        this.path.Name = "path";
-        this.path.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
-        this.path.PasswordChar = false;
-        this.path.PlaceHolderColor = System.Drawing.Color.Gray;
-        this.path.PlaceHolderText = "";
-        this.path.ReadOnly = false;
-        this.path.SelectionStart = 0;
-        this.path.Size = new System.Drawing.Size(486, 29);
-        this.path.TabIndex = 3;
-        this.path.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-        //
-        // lblChoose - 拖拽提示标签
-        //
-        this.lblChoose.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.lblChoose.Location = new System.Drawing.Point(3, 184);
-        this.lblChoose.Name = "lblChoose";
-        this.lblChoose.Size = new System.Drawing.Size(709, 64);
-        this.lblChoose.TabIndex = 6;
-        this.lblChoose.Text = "Choose a file or drag and drop it here";
-        this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;  // 居中提示文字
-        //
-        // FileFolderSelector - 文件/文件夹选择器主控件
-        //
-        this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.Controls.Add(this.lblChoose);
-        this.Controls.Add(this.btnBrowse);
-        this.Controls.Add(this.lblPath);
-        this.Controls.Add(this.path);
-        this.Name = "FileFolderSelector";
-        this.ResumeLayout(false);  // 恢复布局，应用所有属性设置
+        btnBrowse = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
+        lblPath = new System.Windows.Forms.Label();
+        path = new SuchByte.MacroDeck.GUI.CustomControls.RoundedTextBox();
+        lblChoose = new System.Windows.Forms.Label();
+        SuspendLayout();
+        // 
+        // btnBrowse
+        // 
+        btnBrowse.BorderRadius = 8;
+        btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
+        btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        btnBrowse.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+        btnBrowse.ForeColor = System.Drawing.Color.White;
+        btnBrowse.HoverColor = System.Drawing.Color.FromArgb(0, 89, 184);
+        btnBrowse.Icon = null;
+        btnBrowse.Location = new System.Drawing.Point(584, 121);
+        btnBrowse.Name = "btnBrowse";
+        btnBrowse.Progress = 0;
+        btnBrowse.ProgressColor = System.Drawing.Color.FromArgb(0, 46, 94);
+        btnBrowse.Size = new System.Drawing.Size(50, 39);
+        btnBrowse.TabIndex = 5;
+        btnBrowse.Text = "...";
+        btnBrowse.UseVisualStyleBackColor = true;
+        btnBrowse.UseWindowsAccentColor = true;
+        btnBrowse.WriteProgress = true;
+        btnBrowse.Click += BtnBrowse_Click;
+        // 
+        // lblPath
+        // 
+        lblPath.Font = new System.Drawing.Font("微软雅黑", 12F);
+        lblPath.Location = new System.Drawing.Point(3, 126);
+        lblPath.Name = "lblPath";
+        lblPath.Size = new System.Drawing.Size(83, 29);
+        lblPath.TabIndex = 4;
+        lblPath.Text = "Path:";
+        lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // path
+        // 
+        path.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
+        path.Cursor = System.Windows.Forms.Cursors.Hand;
+        path.Font = new System.Drawing.Font("微软雅黑", 12F);
+        path.Icon = null;
+        path.Location = new System.Drawing.Point(92, 121);
+        path.MaxCharacters = 32767;
+        path.Multiline = false;
+        path.Name = "path";
+        path.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
+        path.PasswordChar = false;
+        path.PlaceHolderColor = System.Drawing.Color.Gray;
+        path.PlaceHolderText = "";
+        path.ReadOnly = false;
+        path.ScrollBars = System.Windows.Forms.ScrollBars.None;
+        path.SelectionStart = 0;
+        path.Size = new System.Drawing.Size(486, 38);
+        path.TabIndex = 3;
+        path.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+        // 
+        // lblChoose
+        // 
+        lblChoose.Font = new System.Drawing.Font("微软雅黑", 12F);
+        lblChoose.Location = new System.Drawing.Point(3, 184);
+        lblChoose.Name = "lblChoose";
+        lblChoose.Size = new System.Drawing.Size(709, 64);
+        lblChoose.TabIndex = 6;
+        lblChoose.Text = "Choose a file or drag and drop it here";
+        lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        // 
+        // FileFolderSelector
+        // 
+        AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        Controls.Add(lblChoose);
+        Controls.Add(btnBrowse);
+        Controls.Add(lblPath);
+        Controls.Add(path);
+        Name = "FileFolderSelector";
+        ResumeLayout(false);
 
     }
 

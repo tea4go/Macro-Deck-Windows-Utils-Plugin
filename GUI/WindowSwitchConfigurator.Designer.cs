@@ -34,94 +34,100 @@ partial class WindowSwitchConfigurator
     /// </summary>
     private void InitializeComponent()
     {
-        // 创建窗口切换动作的配置界面控件
         lblPattern = new System.Windows.Forms.Label();
         pattern = new RoundedTextBox();
         lblMatchMode = new System.Windows.Forms.Label();
         matchMode = new RoundedComboBox();
         caseSensitive = new System.Windows.Forms.CheckBox();
-        SuspendLayout();  // 挂起布局，批量设置属性以提高性能
-        //
-        // lblPattern - 窗口标题匹配模式标签
-        //
+        SuspendLayout();
+        // 
+        // lblPattern
+        // 
         lblPattern.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        lblPattern.Location = new System.Drawing.Point(0, 63);
+        lblPattern.Location = new System.Drawing.Point(0, 79);
+        lblPattern.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
         lblPattern.Name = "lblPattern";
-        lblPattern.Size = new System.Drawing.Size(174, 29);
+        lblPattern.Size = new System.Drawing.Size(218, 36);
         lblPattern.TabIndex = 9;
         lblPattern.Text = "Pattern:";
-        lblPattern.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;  // 左对齐居中显示
-        //
-        // pattern - 匹配模式输入框
-        //
-        pattern.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);  // 深色背景
+        lblPattern.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // pattern
+        // 
+        pattern.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         pattern.Cursor = System.Windows.Forms.Cursors.Hand;
-        pattern.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic);  // 斜体字体
+        pattern.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Italic);
         pattern.Icon = null;
-        pattern.Location = new System.Drawing.Point(183, 63);
-        pattern.MaxCharacters = 32767;  // 最大字符数限制
-        pattern.Multiline = false;  // 单行输入
+        pattern.Location = new System.Drawing.Point(229, 79);
+        pattern.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+        pattern.MaxCharacters = 32767;
+        pattern.Multiline = false;
         pattern.Name = "pattern";
-        pattern.Padding = new System.Windows.Forms.Padding(8, 5, 8, 5);
+        pattern.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
         pattern.PasswordChar = false;
         pattern.PlaceHolderColor = System.Drawing.Color.Gray;
-        pattern.PlaceHolderText = "Pattern";  // 占位提示文字
+        pattern.PlaceHolderText = "Pattern";
         pattern.ReadOnly = false;
         pattern.ScrollBars = System.Windows.Forms.ScrollBars.None;
         pattern.SelectionStart = 0;
-        pattern.Size = new System.Drawing.Size(469, 29);
+        pattern.Size = new System.Drawing.Size(586, 36);
         pattern.TabIndex = 10;
         pattern.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-        //
-        // lblMatchMode - 匹配模式标签
-        //
+        // 
+        // lblMatchMode
+        // 
         lblMatchMode.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        lblMatchMode.Location = new System.Drawing.Point(0, 98);
+        lblMatchMode.Location = new System.Drawing.Point(0, 135);
+        lblMatchMode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
         lblMatchMode.Name = "lblMatchMode";
-        lblMatchMode.Size = new System.Drawing.Size(174, 29);
+        lblMatchMode.Size = new System.Drawing.Size(218, 36);
         lblMatchMode.TabIndex = 11;
         lblMatchMode.Text = "Match mode:";
-        lblMatchMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;  // 左对齐居中显示
-        //
-        // matchMode - 匹配模式下拉选择框
-        //
-        matchMode.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);  // 深色背景
+        lblMatchMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        // 
+        // matchMode
+        // 
+        matchMode.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
         matchMode.Cursor = System.Windows.Forms.Cursors.Hand;
-        matchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;  // 只允许从列表中选择
+        matchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         matchMode.Font = new System.Drawing.Font("Tahoma", 9.75F);
         matchMode.Icon = null;
-        matchMode.Location = new System.Drawing.Point(183, 98);
+        matchMode.Location = new System.Drawing.Point(229, 135);
+        matchMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
         matchMode.Name = "matchMode";
-        matchMode.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
-        matchMode.SelectedIndex = -1;  // 无默认选中项
+        matchMode.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
+        matchMode.SelectedIndex = -1;
         matchMode.SelectedItem = null;
-        matchMode.Size = new System.Drawing.Size(250, 28);
+        matchMode.Size = new System.Drawing.Size(586, 31);
         matchMode.TabIndex = 13;
-        //
-        // caseSensitive - 大小写敏感复选框
-        //
-        caseSensitive.AutoSize = true;  // 自动调整大小
-        caseSensitive.Checked = true;  // 默认勾选：大小写敏感
+        // 
+        // caseSensitive
+        // 
+        caseSensitive.AutoSize = true;
+        caseSensitive.Checked = true;
         caseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
         caseSensitive.Font = new System.Drawing.Font("Tahoma", 11.25F);
-        caseSensitive.Location = new System.Drawing.Point(0, 133);
+        caseSensitive.Location = new System.Drawing.Point(0, 193);
+        caseSensitive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
         caseSensitive.Name = "caseSensitive";
-        caseSensitive.Size = new System.Drawing.Size(119, 22);
+        caseSensitive.Size = new System.Drawing.Size(147, 27);
         caseSensitive.TabIndex = 15;
         caseSensitive.Text = "Case sensitive";
         caseSensitive.UseVisualStyleBackColor = true;
-        //
-        // WindowSwitchConfigurator - 窗口切换配置器主控件
-        //
-        AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+        // 
+        // WindowSwitchConfigurator
+        // 
+        AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
         Controls.Add(caseSensitive);
         Controls.Add(matchMode);
         Controls.Add(lblMatchMode);
         Controls.Add(pattern);
         Controls.Add(lblPattern);
+        Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
         Name = "WindowSwitchConfigurator";
-        ResumeLayout(false);  // 恢复布局，应用所有属性设置
-        PerformLayout();  // 强制立即布局计算
+        Size = new System.Drawing.Size(1071, 530);
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion

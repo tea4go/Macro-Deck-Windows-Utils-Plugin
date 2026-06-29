@@ -11,7 +11,14 @@
     <Company>Macro Deck</Company>
     <AssemblyVersion>1.6.5.0</AssemblyVersion>
     <FileVersion>1.6.5.0</FileVersion>
-    <Version>1.6.5</Version>
+    <!--
+      版本号格式：1.6.5-bYYMMDDHHMM（SemVer 2.0 预发布版本）。
+      每次构建动态生成，便于在 Macro Deck 中区分构建版本。
+      AssemblyVersion / FileVersion 仍用纯数字四段式，避免破坏依赖该格式的工具。
+    -->
+    <VersionBase>1.6.5</VersionBase>
+    <BuildTimestamp>$([System.DateTime]::Now.ToString("yyMMddHHmm"))</BuildTimestamp>
+    <Version>$(VersionBase)-b$(BuildTimestamp)</Version>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
@@ -101,5 +108,21 @@
     <EmbeddedResource Remove="GUI\CustomControls\**\*.resx" />
     <None Remove="GUI\CustomControls\**\*" />
   </ItemGroup>
+
+  <!--
+    发布后把 ExtensionManifest.json 拷贝到 publish/，并把 version 字段替换为带时间戳的 $(Version)。
+    源文件 ExtensionManifest.json 保持纯版本号（1.6.5），避免每次构建污染 git 工作区。
+  -->
+  <Target Name="StampExtensionManifest" AfterTargets="Publish">
+    <PropertyGroup>
+      <_ManifestSource>$(MSBuildProjectDirectory)\ExtensionManifest.json</_ManifestSource>
+      <_ManifestTarget>$(PublishDir)ExtensionManifest.json</_ManifestTarget>
+    </PropertyGroup>
+    <Copy SourceFiles="$(_ManifestSource)" DestinationFiles="$(_ManifestTarget)" />
+    <WriteLinesToFile File="$(_ManifestTarget)"
+                      Lines="$([System.Text.RegularExpressions.Regex]::Replace($([System.IO.File]::ReadAllText('$(_ManifestTarget)')), '&quot;version&quot;\s*:\s*&quot;[^&quot;]*&quot;', '&quot;version&quot; : &quot;$(Version)&quot;'))"
+                      Overwrite="true" />
+    <Message Importance="high" Text="ExtensionManifest.json 已生成 -> $(_ManifestTarget) (version = $(Version))" />
+  </Target>
 
 </Project>

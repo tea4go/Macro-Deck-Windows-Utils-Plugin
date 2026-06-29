@@ -30,58 +30,57 @@ partial class IconPackSelector
     /// </summary>
     private void InitializeComponent()
     {
-        // 创建图标包选择对话框的界面控件
-        this.iconPacks = new SuchByte.MacroDeck.GUI.CustomControls.RoundedComboBox();
-        this.btnOk = new SuchByte.MacroDeck.GUI.CustomControls.ButtonPrimary();
-        this.SuspendLayout();  // 挂起布局，批量设置属性以提高性能
-        //
-        // iconPacks - 图标包下拉选择框
-        //
-        this.iconPacks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-        this.iconPacks.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.iconPacks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;  // 只允许从列表中选择
-        this.iconPacks.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.iconPacks.Icon = null;
-        this.iconPacks.Location = new System.Drawing.Point(9, 20);
-        this.iconPacks.Name = "iconPacks";
-        this.iconPacks.Padding = new System.Windows.Forms.Padding(8, 2, 8, 2);
-        this.iconPacks.SelectedIndex = -1;  // 无默认选中项
-        this.iconPacks.SelectedItem = null;
-        this.iconPacks.Size = new System.Drawing.Size(308, 30);
-        this.iconPacks.TabIndex = 2;
-        //
-        // btnOk - 确认按钮
-        //
-        this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
-        this.btnOk.BorderRadius = 8;  // 圆角边框
-        this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        this.btnOk.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-        this.btnOk.ForeColor = System.Drawing.Color.White;  // 白色前景文字
-        this.btnOk.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(184)))));  // 悬停时的颜色
-        this.btnOk.Icon = null;
-        this.btnOk.Location = new System.Drawing.Point(271, 65);
-        this.btnOk.Name = "btnOk";
-        this.btnOk.Progress = 0;
-        this.btnOk.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(46)))), ((int)(((byte)(94)))));
-        this.btnOk.Size = new System.Drawing.Size(75, 25);
-        this.btnOk.TabIndex = 3;
-        this.btnOk.Text = "Ok";
-        this.btnOk.UseVisualStyleBackColor = true;
-        this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);  // 确认按钮点击事件
-        //
-        // IconPackSelector - 图标包选择器主对话框
-        //
-        this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(363, 108);  // 设置对话框尺寸
-        this.Controls.Add(this.btnOk);
-        this.Controls.Add(this.iconPacks);
-        this.Name = "IconPackSelector";
-        this.Text = "IconPackSelector";
-        this.Controls.SetChildIndex(this.iconPacks, 0);  // 调整子控件层级
-        this.Controls.SetChildIndex(this.btnOk, 0);
-        this.ResumeLayout(false);  // 恢复布局，应用所有属性设置
+        iconPacks = new RoundedComboBox();
+        btnOk = new ButtonPrimary();
+        SuspendLayout();
+        // 
+        // iconPacks
+        // 
+        iconPacks.BackColor = System.Drawing.Color.FromArgb(65, 65, 65);
+        iconPacks.Cursor = System.Windows.Forms.Cursors.Hand;
+        iconPacks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        iconPacks.Font = new System.Drawing.Font("微软雅黑", 12F);
+        iconPacks.Icon = null;
+        iconPacks.Location = new System.Drawing.Point(9, 20);
+        iconPacks.Margin = new System.Windows.Forms.Padding(4);
+        iconPacks.Name = "iconPacks";
+        iconPacks.Padding = new System.Windows.Forms.Padding(10, 6, 10, 6);
+        iconPacks.SelectedIndex = -1;
+        iconPacks.SelectedItem = null;
+        iconPacks.Size = new System.Drawing.Size(333, 35);
+        iconPacks.TabIndex = 2;
+        // 
+        // btnOk
+        // 
+        btnOk.BorderRadius = 8;
+        btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
+        btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        btnOk.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+        btnOk.ForeColor = System.Drawing.Color.White;
+        btnOk.HoverColor = System.Drawing.Color.FromArgb(0, 89, 184);
+        btnOk.Icon = null;
+        btnOk.Location = new System.Drawing.Point(267, 81);
+        btnOk.Name = "btnOk";
+        btnOk.Progress = 0;
+        btnOk.ProgressColor = System.Drawing.Color.FromArgb(0, 46, 94);
+        btnOk.Size = new System.Drawing.Size(75, 39);
+        btnOk.TabIndex = 3;
+        btnOk.Text = "Ok";
+        btnOk.UseVisualStyleBackColor = true;
+        btnOk.UseWindowsAccentColor = true;
+        btnOk.WriteProgress = true;
+        btnOk.Click += BtnOk_Click;
+        // 
+        // IconPackSelector
+        // 
+        AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        ClientSize = new System.Drawing.Size(363, 136);
+        Controls.Add(btnOk);
+        Controls.Add(iconPacks);
+        Name = "IconPackSelector";
+        Text = "IconPackSelector";
+        ResumeLayout(false);
 
     }
 
