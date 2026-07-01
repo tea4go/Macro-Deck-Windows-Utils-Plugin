@@ -3,7 +3,7 @@ schema_version: 1
 locale: zh-CN
 branch: master
 nodes_managed: true
-exported_at: "2026-06-25T12:05:47Z"
+exported_at: "2026-06-30T08:34:24Z"
 modules:
     "":
         dir_name: Macro Deck Windows 系统自动化插件_2

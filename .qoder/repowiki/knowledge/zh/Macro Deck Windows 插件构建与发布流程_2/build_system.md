@@ -8,8 +8,8 @@
 - **CI/CD**: GitHub Actions
 
 ## 2. 关键配置文件
-- **`.github/workflows/build.yml`**: 定义了 CI 流水线。在 `windows-latest` 环境下运行，执行 `dotnet restore` 和 `dotnet build`，并将生成的 `Windows Utils.dll` 作为 Artifact 上传。若检测到 Tag 推送，会自动打包包含 `ExtensionManifest.json` 的 ZIP 并发布到 GitHub Releases。
-- **`Windows Utils.csproj`**: 项目核心配置。指定了目标框架、版本号、平台（x64）以及特殊的引用逻辑。包含一个 `PostBuild` 钩子，用于在非 CI 环境下自动部署 DLL 到宿主程序目录。
+- **`.github/workflows/build.yml`**: 定义了 CI 流水线。在 `windows-latest` 环境下运行，执行 `dotnet restore` 和 `dotnet build`，并将生成的 `Windows Utils.dll` 作为 Artifact 上传。若检测到版本标签（如 `v1.6.0`），会自动打包包含 `ExtensionManifest.json` 的 ZIP 文件并发布到 GitHub Releases。
+- **`Windows Utils.csproj`**: 项目核心配置。指定了目标框架、版本号、平台（x64）以及特殊的引用逻辑。
 - **`ExtensionManifest.json`**: 插件元数据文件，定义了插件 ID (`SuchByte.WindowsUtils`)、版本及入口 DLL，是 Macro Deck 识别插件的关键。
 - **`autorun.bat`**: 本地开发辅助脚本，用于快速重启 Macro Deck 并加载最新编译的插件。
 
